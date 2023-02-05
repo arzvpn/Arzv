@@ -1,4 +1,108 @@
 #!/bin/bash
+# =========================================
+# Quick Setup | Script Setup Manager
+# Edition : Stable Edition V1.0
+# Auther  : Geo Project
+# (C) Copyright 2022
+# =========================================
+clear
+DEFBOLD='\e[39;1m'
+RB='\e[31;1m'
+GB='\e[32;1m'
+YB='\e[33;1m'
+BB='\e[34;1m'
+MB='\e[35;1m'
+CB='\e[35;1m'
+WB='\e[37;1m'
+red='\e[1;31m'
+green='\e[0;32m'
+purple='\e[0;35m'
+orange='\e[0;33m'
+NC='\e[0m'
+export Server_URL="raw.githubusercontent.com/wunuit/Multiport/main"
+dateFromServer=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
+biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
+#########################
+MYIP=$(wget -qO- ipv4.icanhazip.com);
+echo "Checking VPS"
+clear
+red='\e[1;31m'
+green='\e[0;32m'
+yell='\e[1;33m'
+tyblue='\e[1;36m'
+purple='\e[0;35m'
+NC='\e[0m'
+purple() { echo -e "\\033[35;1m${*}\\033[0m"; }
+tyblue() { echo -e "\\033[36;1m${*}\\033[0m"; }
+yellow() { echo -e "\\033[33;1m${*}\\033[0m"; }
+green() { echo -e "\\033[32;1m${*}\\033[0m"; }
+red() { echo -e "\\033[31;1m${*}\\033[0m"; }
+cek=$( curl -sS https://raw.githubusercontent.com/wunuit/IP/main/access | awk '{print $2}'  | grep $MYIP )
+Name=$(curl -sS https://raw.githubusercontent.com/wunuit/IP/main/access | grep $MYIP | awk '{print $4}')
+if [[ $cek = $MYIP ]]; then
+echo -e "${green}Permission Accepted...${NC}"
+else
+echo -e "${red}Permission Denied!${NC}";
+echo ""
+echo -e "Your IP is ${red}NOT REGISTER${NC} @ ${red}EXPIRED${NC}"
+echo ""
+echo -e "Please Contact ${green}Admin${NC}"
+echo -e "Telegram : t.me/wunuit"
+rm -f setup-lite.sh
+exit 0
+fi
+clear
+
+BURIQ() {
+    curl -sS https://raw.githubusercontent.com/wunuit/IP/main/access >/root/tmp
+    data=($(cat /root/tmp | grep -E "^### " | awk '{print $4}'))
+    for user in "${data[@]}"; do
+        exp=($(grep -E "^### $user" "/root/tmp" | awk '{print $3}'))
+        d1=($(date -d "$exp" +%s))
+        d2=($(date -d "$biji" +%s))
+        exp2=$(((d1 - d2) / 86400))
+        if [[ "$exp2" -le "0" ]]; then
+            echo $user >/etc/.$user.ini
+        else
+            rm -f /etc/.$user.ini >/dev/null 2>&1
+        fi
+    done
+    rm -f /root/tmp
+}
+
+MYIP=$(wget -qO- ipv4.icanhazip.com);
+Name=$(curl -sS https://raw.githubusercontent.com/wunuit/IP/main/access | grep $MYIP | awk '{print $4}')
+echo $Name >/usr/local/etc/.$Name.ini
+CekOne=$(cat /usr/local/etc/.$Name.ini)
+
+Bloman() {
+    if [[ -f "/etc/.$Name.ini" ]]; then
+        CekTwo=$(cat /etc/.$Name.ini)
+        if [[ "$CekOne" = "$CekTwo" ]]; then
+            res="Expired"
+        fi
+    else
+        res="Permission Accepted..."
+    fi
+}
+
+PERMISSION() {
+    MYIP=$(wget -qO- ipv4.icanhazip.com);
+    IZIN=$(curl -sS https://raw.githubusercontent.com/wunuit/IP/main/access | awk '{print $2}' | grep $MYIP)
+    if [[ "$MYIP" = "$IZIN" ]]; then
+        Bloman
+    else
+        res="Permission Denied!"
+    fi
+    BURIQ
+}
+red='\e[1;31m'
+green='\e[0;32m'
+NC='\e[0m'
+green() { echo -e "\\033[32;1m${*}\\033[0m"; }
+red() { echo -e "\\033[31;1m${*}\\033[0m"; }
+PERMISSION
+
 if [ "${EUID}" -ne 0 ]; then
 		echo "You need to run this script as root"
 		exit 1
@@ -7,224 +111,144 @@ if [ "$(systemd-detect-virt)" == "openvz" ]; then
 		echo "OpenVZ is not supported"
 		exit 1
 fi
-# ==========================================
-# Color
-RED='\033[0;31m'
-NC='\033[0m'
-GREEN='\033[0;32m'
-ORANGE='\033[0;33m'
-BLUE='\033[0;34m'
-PURPLE='\033[0;35m'
-CYAN='\033[0;36m'
-LIGHT='\033[0;37m'
-# ==========================================
-# Link Hosting Kalian Untuk Ssh Vpn
-tarapkuhing="raw.githubusercontent.com/Tarap-Kuhing/multiport/main/ssh"
-# Link Hosting Kalian Untuk Sstp
-tarapkuhing="raw.githubusercontent.com/Tarap-Kuhing/multiport/main/sstp"
-# Link Hosting Kalian Untuk Ssr
-tarapkuhing="raw.githubusercontent.com/Tarap-Kuhing/multiport/main/ssr"
-# Link Hosting Kalian Untuk Shadowsocks
-tarapkuhing="raw.githubusercontent.com/Tarap-Kuhing/multiport/main/shadowsocks"
-# Link Hosting Kalian Untuk Wireguard
-tarapkuhing="raw.githubusercontent.com/Tarap-Kuhing/multiport/main/wireguard"
-# Link Hosting Kalian Untuk Xray
-tarapkuhing="raw.githubusercontent.com/Tarap-Kuhing/multiport/main/xray"
-# Link Hosting Kalian Untuk Ipsec
-tarapkuhing="raw.githubusercontent.com/Tarap-Kuhing/multiport/main/ipsec"
-# Link Hosting Kalian Untuk Backup
-tarapkuhing="raw.githubusercontent.com/Tarap-Kuhing/multiport/main/backup"
-# Link Hosting Kalian Untuk Websocket
-tarapkuhing="raw.githubusercontent.com/Tarap-Kuhing/multiport/main/websocket"
-# Link Hosting Kalian Untuk Ohp
-tarapkuhing="raw.githubusercontent.com/Tarap-Kuhing/multiport/main/ohp"
+MYIP=$(wget -qO- icanhazip.com/ip);
+secs_to_human() {
+    echo "Installation time : $(( ${1} / 3600 )) hours $(( (${1} / 60) % 60 )) minutes $(( ${1} % 60 )) seconds"
+}
+start=$(date +%s)
 
-# Getting
-MYIP=$(wget -qO- ipinfo.io/ip);
-rm -f setup.sh
+echo -e "[ ${green}INFO${NC} ] Preparing the autoscript installation ~"
+apt install git curl -y >/dev/null 2>&1
+echo -e "[ ${green}INFO${NC} ] Installation file is ready to begin !"
+sleep 1
 
-#if [ -f "/etc/v2ray/domain" ]; then
-if [ -f "/etc/xray/domain" ]; then
+if [ -f "/usr/local/etc/xray/domain" ]; then
 echo "Script Already Installed"
 exit 0
 fi
-mkdir /var/lib/tarapkuhing;
-echo "IP=" >> /var/lib/tarapkuhing/ipvps.conf
-wget https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/ssh/cf.sh && chmod +x cf.sh && ./cf.sh
-#install v2ray
-wget https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/xray/ins-xray.sh && chmod +x ins-xray.sh && screen -S xray ./ins-xray.sh
-#install ssh ovpn
-wget https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/ssh/ssh-vpn.sh && chmod +x ssh-vpn.sh && screen -S ssh-vpn ./ssh-vpn.sh
-wget https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/sstp/sstp.sh && chmod +x sstp.sh && screen -S sstp ./sstp.sh
-#install ssr
-wget https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/ssr/ssr.sh && chmod +x ssr.sh && screen -S ssr ./ssr.sh
-wget https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/shadowsocks/sodosok.sh && chmod +x sodosok.sh && screen -S ss ./sodosok.sh
-#wget https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/Shadowsocks/ins-ssrust.sh.sh && chmod +x ins-ssrust.sh && screen -S ssws ./ins-ssrust.sh
-#installwg
-wget https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/wireguard/wg.sh && chmod +x wg.sh && screen -S wg ./wg.sh
-#install L2TP
-wget https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/ipsec/ipsec.sh && chmod +x ipsec.sh && screen -S ipsec ./ipsec.sh
-wget https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/backup/set-br.sh && chmod +x set-br.sh && ./set-br.sh
-# Websocket
-wget https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/websocket/python.sh && chmod +x python.sh && ./python.sh
-# Ohp Server
-wget https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/ohp/ohp.sh && chmod +x ohp.sh && ./ohp.sh
 
-rm -f /root/ssh-vpn.sh
-rm -f /root/sstp.sh
-rm -f /root/wg.sh
-rm -f /root/ss.sh
-rm -f /root/ssr.sh
-#rm -f /root/ins-ssrust.sh
+mkdir /var/lib/premium-script;
+mkdir /var/lib/crot-script;
+clear
+#echo -e "${red}♦️${NC} ${green}Established By wunuit 2022${NC} ${red}♦️${NC}"
+#DOWNLOAD SOURCE SCRIPT
+echo -e "${red}    ♦️${NC} ${green} CUSTOM SETUP DOMAIN VPS     ${NC}"
+echo -e "${red}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
+echo "1. Use Domain From Script / Gunakan Domain Dari Script"
+echo "2. Choose Your Own Domain / Pilih Domain Sendiri"
+echo -e "${red}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
+read -rp "Choose Your Domain Installation : " dom 
+
+if test $dom -eq 1; then
+clear
+wget -q -O /root/cf.sh "https://${Server_URL}/cf.sh"
+chmod +x /root/cf.sh
+./cf.sh
+elif test $dom -eq 2; then
+read -rp "Enter Your Domain : " domen 
+echo $domen > /root/domain
+else 
+echo "Not Found Argument"
+exit 1
+fi
+echo -e "${GREEN}Done!${NC}"
+sleep 2
+clear
+echo "IP=$host" >> /var/lib/premium-script/ipvps.conf
+echo "IP=$host" >> /var/lib/crot-script/ipvps.conf
+echo "$host" >> /root/domain
+#clear
+#echo -e "\e[0;32mREADY FOR INSTALLATION SCRIPT...\e[0m"
+#echo -e ""
+#sleep 1
+#Install SSH-VPN
+echo -e "\e[0;32mINSTALLING SSH-VPN...\e[0m"
+sleep 1
+wget https://${Server_URL}/ssh-vpn.sh && chmod +x ssh-vpn.sh && ./ssh-vpn.sh
+sleep 3
+clear
+echo -e "\e[0;32mINSTALLING XRAY CORE...\e[0m"
+sleep 3
+wget -q -O /root/xray.sh "https://${Server_URL}/xray.sh"
+chmod +x /root/xray.sh
+./xray.sh
+echo -e "${GREEN}Done!${NC}"
+sleep 2
+clear
+#Install SET-BR
+echo -e "\e[0;32mINSTALLING SET-BR...\e[0m"
+sleep 1
+wget -q -O /root/set-br.sh "https://${Server_URL}/set-br.sh"
+chmod +x /root/set-br.sh
+./set-br.sh
+echo -e "${GREEN}Done!${NC}"
+sleep 2
+clear
+
+#rm -rf /usr/share/nginx/html/index.html
+#wget -q -O /usr/share/nginx/html/index.html "https://raw.githubusercontent.com/wunuit/Multiport/main/OTHERS/index.html"
+
+# Finish
 rm -f /root/ins-xray.sh
-rm -f /root/ipsec.sh
 rm -f /root/set-br.sh
-rm -f /root/python.sh
-rm -f /root/ohp.sh
-cat <<EOF> /etc/systemd/system/autosett.service
-[Unit]
-Description=autosetting
-Documentation=https://t.me/zerossl
+rm -f /root/ssh-vpn.sh
 
-[Service]
-Type=oneshot
-ExecStart=/bin/bash /etc/set.sh
-RemainAfterExit=yes
-
-[Install]
-WantedBy=multi-user.target
-EOF
-systemctl daemon-reload
-systemctl enable autosett
-
-wget -O /etc/set.sh "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/ssh/set.sh"
-chmod +x /etc/set.sh
-history -c
-echo "1.2" > /home/ver
-echo " "
-echo "Installation has been completed!!"
-echo ""                                                    |tee -a log-install.txt
-echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" |tee -a log-install.txt
-echo -e "\E[44;1;41m           🔰 Bagoes Vpn🔰            \E[0m"  |tee -a log-install.txt
-echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" |tee -a log-install.txt
-echo ""                                                    |tee -a log-install.txt
-echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" |tee -a log-install.txt
-echo -e " 🔰 >>> Service & Port"                           |tee -a log-install.txt
-echo -r " 🔰 MULTI PROTOCOL TUNNEL GANDRING"               |tee -a log-install.txt
-echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" |tee -a log-install.txt
-echo -e " 🔰 PORT OPENSSH                   : 443"         |tee -a log-install.txt
-echo -e " 🔰 PORT OVPN SSL                  : 443"         |tee -a log-install.txt
-echo -e " 🔰 PORT DROPBEAR                  : 443"         |tee -a log-install.txt
-echo -e " 🔰 PORT OVPN WS TLS               : 443"         |tee -a log-install.txt
-echo -e " 🔰 WEBSOCKET TLS                  : 8443,2096,2053,443" |tee -a log-install.txt
-echo -e " 🔰 VLESS XTLS                     : 443"         |tee -a log-install.txt
-echo -e " 🔰 VLESS GFW                      : 443"         |tee -a log-install.txt
-echo -e " 🔰 VLESS WS TLS                   : 443"         |tee -a log-install.txt
-echo -e " 🔰 VLESS GRPC TLS                 : 443"         |tee -a log-install.txt
-echo -e " 🔰 VLESS HTTP TLS                 : 443"         |tee -a log-install.txt
-echo -e " 🔰 VLESS QUIC TLS                 : 443"         |tee -a log-install.txt
-echo -e " 🔰 TROJAN GFW                     : 443"         |tee -a log-install.txt
-echo -e " 🔰 TROJAN GRPC TLS                : 443"         |tee -a log-install.txt
-echo -e " 🔰 TROJAN WS TLS                  : 443"         |tee -a log-install.txt
-echo -e " 🔰 TROJAN HTTP TLS                : 443"         |tee -a log-install.txt
-echo -e " 🔰 VMESS WS TLS                   : 443"         |tee -a log-install.txt
-echo -e " 🔰 VMESS GRPC TLS                 : 443"         |tee -a log-install.txt
-echo -e " 🔰 VMESS HTTP TLS                 : 443"         |tee -a log-install.txt
-echo -e " 🔰 SOCKS5 WS TLS                  : 443"         |tee -a log-install.txt
-echo -e " 🔰 SOCKS5 GRPC TLS                : 443"         |tee -a log-install.txt
-echo -e " 🔰 SOCKS5 HTTP TLS                : 443"         |tee -a log-install.txt
-echo -e " 🔰 SHADOWSOCKS 2022 WS TLS        : 443"         |tee -a log-install.txt
-echo -e " 🔰 SHADOWSOCKS 2022 GRPC TLS      : 443"         |tee -a log-install.txt
-echo -e " 🔰 SHADOWSOCKS 2022 HTTP TLS      : 443"         |tee -a log-install.txt
-echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e " 🔰 PORT SQUID                     : 4000,5000"   |tee -a log-install.txt
-echo -e " 🔰 PORT STUNNEL5                  : 500"         |tee -a log-install.txt
-echo -e " 🔰 PORT PRIVOXY                   : 3128,3228"   |tee -a log-install.txt
-echo -e " 🔰 PORT UDPGW                     : 99"          |tee -a log-install.txt
-echo -e " 🔰 L2TP/IPSEC VPN                 : 443"         |tee -a log-install.txt
-echo -e " 🔰 PPTP VPN                       : 443"         |tee -a log-install.txt
-echo -e " 🔰 SSTP VPN                       : 444"         |tee -a log-install.txt
-echo -e " 🔰 NGINX                          : 88"          |tee -a log-install.txt
-echo -e " 🔰 SHADOWSOCKS-R                  : 1444-1944"   |tee -a log-install.txt
-echo -e " 🔰 SS-OBFS TLS                    : 2444-2943"   |tee -a log-install.txt
-echo -e " 🔰 SS-OBFS HTTP                   : 2944-3442"   |tee -a log-install.txt
-echo -e " 🔰 WEBSOCKET NON TLS              : 8880,80"     |tee -a log-install.txt
-echo -e " 🔰 WIREGUARD                      : 600"         |tee -a log-install.txt
-echo -e " 🔰 PORT OVPN WS NON TLS           : 8080,80"     |tee -a log-install.txt
-echo -e " 🔰 OHP SSH                        : 8181"        |tee -a log-install.txt
-echo -e " 🔰 OHP DROPBEAR                   : 8282"        |tee -a log-install.txt
-echo -e " 🔰 OHP OVPN                       : 8383"        |tee -a log-install.txt
-echo -e " 🔰 PORT OVPN TCP                  : 700"         |tee -a log-install.txt
-echo -e " 🔰 PORT OVPN UDP                  : 800"         |tee -a log-install.txt
-echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e " 🔰 TROJAN H2C TLS                 : 1110"        |tee -a log-install.txt
-echo -e " 🔰 VLESS H2C TLS                  : 1120"        |tee -a log-install.txt
-echo -e " 🔰 VMESS H2C TLS                  : 1130"        |tee -a log-install.txt
-echo -e " 🔰 SHADOWSOCKS 2022 H2C TLS       : 1140"        |tee -a log-install.txt
-echo -e " 🔰 SOCKS5 H2C TLS                 : 1150"        |tee -a log-install.txt
-echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e " 🔰 TROJAN KCP TLS                 : 202"         |tee -a log-install.txt
-echo -e " 🔰 VLESS KCP TLS                  : 302"         |tee -a log-install.txt
-echo -e " 🔰 VMESS KCP TLS                  : 402"         |tee -a log-install.txt
-echo -e " 🔰 SHADOWSOCKS 2022 KCP TLS       : 502"         |tee -a log-install.txt
-echo -e " 🔰 SOCKS5 KCP TLS                 : 602"         |tee -a log-install.txt
-echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e " 🔰 TROJAN KCP NON TLS             : 203"         |tee -a log-install.txt
-echo -e " 🔰 VLESS KCP NON TLS              : 303"         |tee -a log-install.txt
-echo -e " 🔰 VMESS KCP NON TLS              : 403"         |tee -a log-install.txt
-echo -e " 🔰 SHADOWSOCKS 2022 KCP NON TLS   : 503"         |tee -a log-install.txt
-echo -e " 🔰 SOCKS5 KCP NON TLS             : 603"         |tee -a log-install.txt
-echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e " 🔰 TROJAN HTTP NON TLS            : 880"         |tee -a log-install.txt
-echo -e " 🔰 VLESS HTTP NON TLS             : 8088"        |tee -a log-install.txt
-echo -e " 🔰 VMESS HTTP NON TLS             : 808"         |tee -a log-install.txt
-echo -e " 🔰 SHADOWSOCKS 2022 HTTP NON TLS  : 888"         |tee -a log-install.txt
-echo -e " 🔰 SOCKS5 HTTP NON TLS            : 8888"        |tee -a log-install.txt
-echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e " 🔰 TROJAN XTLS                    : 1443"        |tee -a log-install.txt
-echo -e " 🔰 TROJAN QUIC TLS                : 401"         |tee -a log-install.txt
-echo -e " 🔰 VMESS QUIC TLS                 : 501"         |tee -a log-install.txt
-echo -e " 🔰 SHADOWSOCKS 2022 QUIC TLS      : 601"         |tee -a log-install.txt
-echo -e " 🔰 SOCKS QUIC TLS                 : 701"         |tee -a log-install.txt
-echo -e " 🔰 TROJAN WS NON TLS              : 80"          |tee -a log-install.txt
-echo -e " 🔰 VLESS WS NON TLS               : 80"          |tee -a log-install.txt
-echo -e " 🔰 VLESS GRPC NON TLS             : 80"          |tee -a log-install.txt
-echo -e " 🔰 VMESS WS NON TLS               : 80"          |tee -a log-install.txt
-echo -e " 🔰 VMESS GRPC NON TLS             : 80"          |tee -a log-install.txt
-echo -e " 🔰 SHADOWSOCKS 2022 WS NON TLS    : 80"          |tee -a log-install.txt
-echo -e " 🔰 SHADOWSOCKS 2022 GRPC NON TLS  : 80"          |tee -a log-install.txt
-echo -e " 🔰 SOCKS5 WS NON TLS              : 80"          |tee -a log-install.txt
-echo -e " 🔰 SOCKS5 GRPC NON TLS            : 80"          |tee -a log-install.txt
-echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e " 🔰 TROJAN GO                      : 2083"        |tee -a log-install.txt
-echo -e " 🔰 SHADOWSOCKS 2022 UDP           : 212"         |tee -a log-install.txt
-echo -e " 🔰 SHADOWSOCKS 2022 TCP           : 414"         |tee -a log-install.txt
-echo -e " 🔰 SOCKS5 TCP TLS                 : 1080"       |tee -a log-install.txt
-echo -e " 🔰 SOCKS UDP                      : 999"         |tee -a log-install.txt
-echo -e " 🔰 XRAY MT PROTO                  : 111"         |tee -a log-install.txt
-echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"  |tee -a log-install.txt
-echo -e "\E[44;1;41m           🔰 SOLO THE SPIRIT OF JAVA 🔰            \E[0m"  |tee -a log-install.txt
-echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"  |tee -a log-install.txt
-echo ""  |tee -a log-install.txt
-echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"  |tee -a log-install.txt
-echo -e " 🔰>> Server Information & Other Features"        |tee -a log-install.txt
-echo -e " 🔰 Timezone            : Asia/Jakarta (GMT +7)"  |tee -a log-install.txt
-echo -e " 🔰 Fail2Ban            : [ON]"                   |tee -a log-install.txt
-echo -e " 🔰 Dflate              : [ON]"                   |tee -a log-install.txt
-echo -e " 🔰 IPtables            : [ON]"                   |tee -a log-install.txt
-echo -e " 🔰 Auto-Reboot         : [ON]"                   |tee -a log-install.txt
-echo -e " 🔰 IPv6               : [OFF]"                   |tee -a log-install.txt
-echo -e " 🔰 Autoreboot On 04.00 GMT +7"                   |tee -a log-install.txt
-echo -e " 🔰 Autobackup Data"                              |tee -a log-install.txt
-echo -e " 🔰 Restore Data"                                 |tee -a log-install.txt
-echo -e " 🔰 Auto Delete Expired Account"                  |tee -a log-install.txt
-echo -e " 🔰 NGUTER,CENTRAL JAVA,INDONESIA"                |tee -a log-install.txt
-echo -e " 🔰 Editing and Scan Typo by TARAP KUHING"        |tee -a log-install.txt
-echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"  |tee -a log-install.txt
-echo -e "\E[44;1;41m           🔰 SOLO THE SPIRIT OF JAVA 🔰            \E[0m"  |tee -a log-install.txt
-echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"  |tee -a log-install.txt
-echo -e " 🔰 Installation Log --> /root/log-install.txt" |tee -a log-install.txt
-echo " Reboot 15 Sec"
-sleep 15
-rm -f setup.sh
+# Version
+echo "1.0" > /home/ver
+clear
+echo ""
+echo -e "${RB}      .-------------------------------------------.${NC}"
+echo -e "${RB}      |${NC}      ${CB}Installation Has Been Completed${NC}      ${RB}|${NC}"
+echo -e "${RB}      '-------------------------------------------'${NC}"
+echo -e "${BB}————————————————————————————————————————————————————————${NC}"
+echo -e "      ${WB}Multiport Websocket Autoscript By wunuit${NC}"
+echo -e "${BB}————————————————————————————————————————————————————————${NC}"
+echo -e "  ${WB}»»» Protocol Service «««  |  »»» Network Protocol «««${NC}  "
+echo -e "${BB}————————————————————————————————————————————————————————${NC}"
+echo -e "  ${RB}♦️${NC} ${YB}Vmess Websocket${NC}         ${WB}|${NC}  ${YB}- Websocket (CDN) TLS${NC}"
+echo -e "  ${RB}♦️${NC} ${YB}Vless Websocket${NC}         ${WB}|${NC}  ${YB}- Websocket (CDN) NTLS${NC}"
+echo -e "  ${RB}♦️${NC} ${YB}Trojan Websocket${NC}        ${WB}|${NC}  ${YB}- TCP XTLS${NC}"
+echo -e "  ${RB}♦️${NC} ${YB}Trojan TCP XTLS${NC}         ${WB}|${NC}  ${YB}- TCP TLS${NC}"
+echo -e "  ${RB}♦️${NC} ${YB}Trojan TCP${NC}              ${WB}|${NC}"
+echo -e "${BB}————————————————————————————————————————————————————————${NC}"
+echo -e "           ${WB}»»» YAML Service Information «««${NC}          "
+echo -e "${BB}————————————————————————————————————————————————————————${NC}"
+echo -e "  ${RB}♦️${NC} ${YB}YAML XRAY VMESS WS${NC}"
+echo -e "  ${RB}♦️${NC} ${YB}YAML XRAY VLESS WS${NC}"
+echo -e "  ${RB}♦️${NC} ${YB}YAML XRAY TROJAN WS${NC}"
+echo -e "  ${RB}♦️${NC} ${YB}YAML XRAY TROJAN XTLS${NC}"
+echo -e "  ${RB}♦️${NC} ${YB}YAML XRAY TROJAN TCP${NC}"
+echo -e "${BB}————————————————————————————————————————————————————————${NC}"
+echo -e "             ${WB}»»» Server Information «««${NC}                 "
+echo -e "${BB}————————————————————————————————————————————————————————${NC}"
+echo -e "  ${RB}♦️${NC} ${YB}Timezone                : Asia/Kuala_Lumpur (GMT +8)${NC}"
+echo -e "  ${RB}♦️${NC} ${YB}Fail2Ban                : [ON]${NC}"
+echo -e "  ${RB}♦️${NC} ${YB}Dflate                  : [ON]${NC}"
+echo -e "  ${RB}♦️${NC} ${YB}IPtables                : [ON]${NC}"
+echo -e "  ${RB}♦️${NC} ${YB}Auto-Reboot             : [ON]${NC}"
+echo -e "  ${RB}♦️${NC} ${YB}IPV6                    : [OFF]${NC}"
+echo -e ""
+echo -e "  ${RB}♦️${NC} ${YB}Autoreboot On 06.00 GMT +8${NC}"
+echo -e "  ${RB}♦️${NC} ${YB}Backup & Restore VPS Data${NC}"
+echo -e "  ${RB}♦️${NC} ${YB}Automatic Delete Expired Account${NC}"
+echo -e "  ${RB}♦️${NC} ${YB}Bandwith Monitor${NC}"
+echo -e "  ${RB}♦️${NC} ${YB}RAM & CPU Monitor${NC}"
+echo -e "  ${RB}♦️${NC} ${YB}Check Login User${NC}"
+echo -e "  ${RB}♦️${NC} ${YB}Check Created Config${NC}"
+echo -e "  ${RB}♦️${NC} ${YB}Automatic Clear Log${NC}"
+echo -e "  ${RB}♦️${NC} ${YB}Media Checker${NC}"
+echo -e "  ${RB}♦️${NC} ${YB}DNS Changer${NC}"
+echo -e "${BB}————————————————————————————————————————————————————————${NC}"
+echo -e "              ${WB}»»» Network Port Service «««${NC}             "
+echo -e "${BB}————————————————————————————————————————————————————————${NC}"
+echo -e "  ${RB}♦️${NC} ${YB}HTTP                    : 443${NC}"
+echo -e "  ${RB}♦️${NC} ${YB}HTTPS                   : 80, 8080, 8880${NC}"
+echo -e "${BB}————————————————————————————————————————————————————————${NC}"
+echo ""
+secs_to_human "$(($(date +%s) - ${start}))"
+echo ""
+rm -r setup.sh
+echo ""
+echo ""
+read -p "$( echo -e "Press ${orange}[ ${NC}${green}Enter${NC} ${CYAN}]${NC} For Reboot") "
 reboot
