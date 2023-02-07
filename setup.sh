@@ -1,108 +1,35 @@
 #!/bin/bash
-# =========================================
-# Quick Setup | Script Setup Manager
-# Edition : Stable Edition V1.0
-# Auther  : Geo Project
-# (C) Copyright 2022
-# =========================================
+#wget https://github.com/${GitUser}/
+GitUser="CHEKS-HUNTER"
+# Color Validation
+Lred='\e[1;91m'
+Lgreen='\e[92m'
+Lyellow='\e[93m'
+green='\e[32m'
+RED='\033[0;31m'
+NC='\033[0m'
+BGBLUE='\e[1;44m'
+ORANGE='\033[0;33m'
+BLUE='\033[0;34m'
+PURPLE='\033[0;35m'
+CYAN='\033[0;36m'
+NC='\033[0;37m'
+# ===================
+echo ''
 clear
-DEFBOLD='\e[39;1m'
-RB='\e[31;1m'
-GB='\e[32;1m'
-YB='\e[33;1m'
-BB='\e[34;1m'
-MB='\e[35;1m'
-CB='\e[35;1m'
-WB='\e[37;1m'
-red='\e[1;31m'
-green='\e[0;32m'
-purple='\e[0;35m'
-orange='\e[0;33m'
-NC='\e[0m'
-export Server_URL="raw.githubusercontent.com/wunuit/Multiport/main"
-dateFromServer=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
-biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
-#########################
-MYIP=$(wget -qO- ipv4.icanhazip.com);
-echo "Checking VPS"
+echo ''
+echo "                                                              "
+echo -e "$Lyellow                ⚡ PREMIUM SPEED SCRIPT ⚡"$NC
+echo -e "$green.........................................................."$NC
+echo -e "$Lyellow                  AUTOSCRIPT By NAKATAVPN"$NC
+echo -e "$Lyellow                    CONTACT TELEGRAM"$NC
+echo -e "$Lyellow                       @Nakata143"$NC
+echo -e "$green.........................................................."$NC
+echo ''
+echo -e "$Lyellow                       Tunggu 6 Saat!"$NC
+echo -e "$green.........................................................."$NC
+sleep 6
 clear
-red='\e[1;31m'
-green='\e[0;32m'
-yell='\e[1;33m'
-tyblue='\e[1;36m'
-purple='\e[0;35m'
-NC='\e[0m'
-purple() { echo -e "\\033[35;1m${*}\\033[0m"; }
-tyblue() { echo -e "\\033[36;1m${*}\\033[0m"; }
-yellow() { echo -e "\\033[33;1m${*}\\033[0m"; }
-green() { echo -e "\\033[32;1m${*}\\033[0m"; }
-red() { echo -e "\\033[31;1m${*}\\033[0m"; }
-cek=$( curl -sS https://raw.githubusercontent.com/wunuit/IP/main/access | awk '{print $2}'  | grep $MYIP )
-Name=$(curl -sS https://raw.githubusercontent.com/wunuit/IP/main/access | grep $MYIP | awk '{print $4}')
-if [[ $cek = $MYIP ]]; then
-echo -e "${green}Permission Accepted...${NC}"
-else
-echo -e "${red}Permission Denied!${NC}";
-echo ""
-echo -e "Your IP is ${red}NOT REGISTER${NC} @ ${red}EXPIRED${NC}"
-echo ""
-echo -e "Please Contact ${green}Admin${NC}"
-echo -e "Telegram : t.me/wunuit"
-rm -f setup-lite.sh
-exit 0
-fi
-clear
-
-BURIQ() {
-    curl -sS https://raw.githubusercontent.com/wunuit/IP/main/access >/root/tmp
-    data=($(cat /root/tmp | grep -E "^### " | awk '{print $4}'))
-    for user in "${data[@]}"; do
-        exp=($(grep -E "^### $user" "/root/tmp" | awk '{print $3}'))
-        d1=($(date -d "$exp" +%s))
-        d2=($(date -d "$biji" +%s))
-        exp2=$(((d1 - d2) / 86400))
-        if [[ "$exp2" -le "0" ]]; then
-            echo $user >/etc/.$user.ini
-        else
-            rm -f /etc/.$user.ini >/dev/null 2>&1
-        fi
-    done
-    rm -f /root/tmp
-}
-
-MYIP=$(wget -qO- ipv4.icanhazip.com);
-Name=$(curl -sS https://raw.githubusercontent.com/wunuit/IP/main/access | grep $MYIP | awk '{print $4}')
-echo $Name >/usr/local/etc/.$Name.ini
-CekOne=$(cat /usr/local/etc/.$Name.ini)
-
-Bloman() {
-    if [[ -f "/etc/.$Name.ini" ]]; then
-        CekTwo=$(cat /etc/.$Name.ini)
-        if [[ "$CekOne" = "$CekTwo" ]]; then
-            res="Expired"
-        fi
-    else
-        res="Permission Accepted..."
-    fi
-}
-
-PERMISSION() {
-    MYIP=$(wget -qO- ipv4.icanhazip.com);
-    IZIN=$(curl -sS https://raw.githubusercontent.com/wunuit/IP/main/access | awk '{print $2}' | grep $MYIP)
-    if [[ "$MYIP" = "$IZIN" ]]; then
-        Bloman
-    else
-        res="Permission Denied!"
-    fi
-    BURIQ
-}
-red='\e[1;31m'
-green='\e[0;32m'
-NC='\e[0m'
-green() { echo -e "\\033[32;1m${*}\\033[0m"; }
-red() { echo -e "\\033[31;1m${*}\\033[0m"; }
-PERMISSION
-
 if [ "${EUID}" -ne 0 ]; then
 		echo "You need to run this script as root"
 		exit 1
@@ -111,144 +38,246 @@ if [ "$(systemd-detect-virt)" == "openvz" ]; then
 		echo "OpenVZ is not supported"
 		exit 1
 fi
-MYIP=$(wget -qO- icanhazip.com/ip);
-secs_to_human() {
-    echo "Installation time : $(( ${1} / 3600 )) hours $(( (${1} / 60) % 60 )) minutes $(( ${1} % 60 )) seconds"
+red='\e[1;31m'
+green='\e[0;32m'
+NC='\e[0m'
+#IZIN SCRIPT
+MYIP=$(curl -sS ipv4.icanhazip.com)
+echo -e "\e[32mloading...\e[0m"
+clear
+# Valid Script
+VALIDITY() {
+    today=$(date -d "0 days" +"%Y-%m-%d")
+    Exp1=$(curl https://raw.githubusercontent.com/${GitUser}/allow/main/ipvps.conf | grep $MYIP | awk '{print $4}')
+    if [[ $today < $Exp1 ]]; then
+        echo -e "\e[32mTahniah! Anda Dibenarkan Menggunakan Autoscript Ini..\e[0m"
+        sleep 5
+    else
+        echo -e "\e[31mYOUR SCRIPT HAS EXPIRED!\e[0m"
+        echo -e "\e[31mPlease renew your ipvps first\e[0m"
+        exit 0
+    fi
 }
-start=$(date +%s)
-
-echo -e "[ ${green}INFO${NC} ] Preparing the autoscript installation ~"
-apt install git curl -y >/dev/null 2>&1
-echo -e "[ ${green}INFO${NC} ] Installation file is ready to begin !"
-sleep 1
-
-if [ -f "/usr/local/etc/xray/domain" ]; then
-echo "Script Already Installed"
-exit 0
+# Valid Script
+VALIDITY() {
+    today=$(date -d "0 days" +"%Y-%m-%d")
+    Exp1=$(curl https://raw.githubusercontent.com/${GitUser}/allow/main/ipvps.conf | grep $MYIP | awk '{print $4}')
+    if [[ $today < $Exp1 ]]; then
+        echo -e "\e[32mTahniah! Anda Dibenarkan Menggunakan Autoscript Ini..\e[0m"
+        sleep 5
+    else
+        echo -e "\e[31mYOUR SCRIPT HAS EXPIRED!\e[0m"
+        echo -e "\e[31mPlease renew your ipvps first\e[0m"
+        exit 0
+    fi
+}
+IZIN=$(curl https://raw.githubusercontent.com/${GitUser}/allow/main/ipvps.conf | awk '{print $5}' | grep $MYIP)
+if [ $MYIP = $IZIN ]; then
+    echo -e "\e[32mPermission Accepted...\e[0m"
+    VALIDITY
+else
+    echo -e "\e[31mPermission Denied!\e[0m"
+    echo -e "\e[31mPlease buy script first\e[0m"
+    rm -f setup.sh
+    exit 0
 fi
-
+clear
+echo -e "\e[32mloading...\e[0m"
+clear
 mkdir /var/lib/premium-script;
-mkdir /var/lib/crot-script;
+default_email=$( curl https://raw.githubusercontent.com/${GitUser}/email/main/default.conf )
 clear
-#echo -e "${red}♦️${NC} ${green}Established By wunuit 2022${NC} ${red}♦️${NC}"
-#DOWNLOAD SOURCE SCRIPT
-echo -e "${red}    ♦️${NC} ${green} CUSTOM SETUP DOMAIN VPS     ${NC}"
-echo -e "${red}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
-echo "1. Use Domain From Script / Gunakan Domain Dari Script"
-echo "2. Choose Your Own Domain / Pilih Domain Sendiri"
-echo -e "${red}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
-read -rp "Choose Your Domain Installation : " dom 
-
-if test $dom -eq 1; then
-clear
-wget -q -O /root/cf.sh "https://${Server_URL}/cf.sh"
-chmod +x /root/cf.sh
-./cf.sh
-elif test $dom -eq 2; then
-read -rp "Enter Your Domain : " domen 
-echo $domen > /root/domain
-else 
-echo "Not Found Argument"
-exit 1
+#Nama penyedia script
+echo -e "\e[1;32m════════════════════════════════════════════════════════════\e[0m"
+echo ""
+echo -e "   \e[1;32mPlease enter the name of Provider for Script."
+read -p "   Name : " nm
+echo $nm > /root/provided
+echo ""
+#Email domain
+echo -e "\e[1;32m════════════════════════════════════════════════════════════\e[0m"
+echo -e ""
+echo -e "   \e[1;32mPlease enter your email Domain/Cloudflare."
+echo -e "   \e[1;31m(Press ENTER for default email)\e[0m"
+read -p "   Email : " email
+default=${default_email}
+new_email=$email
+if [[ $email == "" ]]; then
+sts=$default_email
+else
+sts=$new_email
 fi
-echo -e "${GREEN}Done!${NC}"
-sleep 2
+# email
+mkdir -p /usr/local/etc/xray/
+touch /usr/local/etc/xray/email
+echo $sts > /usr/local/etc/xray/email
+echo ""
+echo -e "\e[1;32m════════════════════════════════════════════════════════════\e[0m"
+echo ""
+echo -e "   .----------------------------------."
+echo -e "   |\e[1;32mPlease select a domain type below \e[0m|"
+echo -e "   '----------------------------------'"
+echo -e "     \e[1;32m1)\e[0m Enter your Subdomain"
+echo -e "     \e[1;32m2)\e[0m Use a random Subdomain"
+echo -e "   ------------------------------------"
+read -p "   Please select numbers 1-2 or Any Button(Random) : " host
+echo ""
+if [[ $host == "1" ]]; then
+echo -e "   \e[1;32mPlease enter your subdomain "
+read -p "   Subdomain: " host1
+echo "IP=" >> /var/lib/premium-script/ipvps.conf
+echo $host1 > /root/domain
+echo ""
+elif [[ $host == "2" ]]; then
+#install cf
+wget https://raw.githubusercontent.com/${GitUser}/Multiport/main/install/cf.sh && chmod +x cf.sh && ./cf.sh
+rm -f /root/cf.sh
 clear
-echo "IP=$host" >> /var/lib/premium-script/ipvps.conf
-echo "IP=$host" >> /var/lib/crot-script/ipvps.conf
-echo "$host" >> /root/domain
-#clear
-#echo -e "\e[0;32mREADY FOR INSTALLATION SCRIPT...\e[0m"
-#echo -e ""
-#sleep 1
-#Install SSH-VPN
-echo -e "\e[0;32mINSTALLING SSH-VPN...\e[0m"
+else
+echo -e "Random Subdomain/Domain is used"
+wget https://raw.githubusercontent.com/${GitUser}/Multiport/main/install/cf.sh && chmod +x cf.sh && ./cf.sh
+rm -f /root/cf.sh
+clear
+fi
+echo ""
+clear
+echo -e "\e[0;32mREADY FOR INSTALLATION SCRIPT...\e[0m"
+sleep 2
+#install ssh ovpn
+echo -e "\e[0;32mINSTALLING SSH & OVPN...\e[0m"
 sleep 1
-wget https://${Server_URL}/ssh-vpn.sh && chmod +x ssh-vpn.sh && ./ssh-vpn.sh
-sleep 3
+wget https://raw.githubusercontent.com/${GitUser}/Multiport/main/install/ssh-vpn.sh && chmod +x ssh-vpn.sh && screen -S ssh-vpn ./ssh-vpn.sh
+echo -e "\e[0;32mDONE INSTALLING SSH & OVPN\e[0m"
 clear
+#install Xray
 echo -e "\e[0;32mINSTALLING XRAY CORE...\e[0m"
-sleep 3
-wget -q -O /root/xray.sh "https://${Server_URL}/xray.sh"
-chmod +x /root/xray.sh
-./xray.sh
-echo -e "${GREEN}Done!${NC}"
-sleep 2
+sleep 1
+wget https://raw.githubusercontent.com/${GitUser}/Multiport/main/install/ins-xray.sh && chmod +x ins-xray.sh && screen -S ins-xray ./ins-xray.sh
+echo -e "\e[0;32mDONE INSTALLING XRAY CORE\e[0m"
 clear
-#Install SET-BR
+#install ohp-server
+echo -e "\e[0;32mINSTALLING OHP PORT...\e[0m"
+sleep 1
+wget https://raw.githubusercontent.com/${GitUser}/Multiport/main/install/ohp.sh && chmod +x ohp.sh && ./ohp.sh
+wget https://raw.githubusercontent.com/${GitUser}/Multiport/main/install/ohp-dropbear.sh && chmod +x ohp-dropbear.sh && ./ohp-dropbear.sh
+wget https://raw.githubusercontent.com/${GitUser}/Multiport/main/install/ohp-ssh.sh && chmod +x ohp-ssh.sh && ./ohp-ssh.sh
+echo -e "\e[0;32mDONE INSTALLING OHP PORT\e[0m"
+clear
+#install websocket
+echo -e "\e[0;32mINSTALLING WEBSOCKET PORT...\e[0m"
+wget https://raw.githubusercontent.com/${GitUser}/Multiport/main/websocket-python/websocket.sh && chmod +x websocket.sh && screen -S websocket.sh ./websocket.sh
+echo -e "\e[0;32mDONE INSTALLING WEBSOCKET PORT\e[0m"
+clear
+#install SET-BR
 echo -e "\e[0;32mINSTALLING SET-BR...\e[0m"
 sleep 1
-wget -q -O /root/set-br.sh "https://${Server_URL}/set-br.sh"
-chmod +x /root/set-br.sh
-./set-br.sh
-echo -e "${GREEN}Done!${NC}"
-sleep 2
+wget https://raw.githubusercontent.com/${GitUser}/Multiport/main/install/set-br.sh && chmod +x set-br.sh && ./set-br.sh
+echo -e "\e[0;32mDONE INSTALLING SET-BR...\e[0m"
 clear
-
-#rm -rf /usr/share/nginx/html/index.html
-#wget -q -O /usr/share/nginx/html/index.html "https://raw.githubusercontent.com/wunuit/Multiport/main/OTHERS/index.html"
-
-# Finish
-rm -f /root/ins-xray.sh
-rm -f /root/set-br.sh
+# set time GMT +8
+ln -fs /usr/share/zoneinfo/Asia/Kuala_Lumpur /etc/localtime
+# install clouflare JQ
+apt install jq curl -y
+# install webserver
+apt -y install nginx
+cd
+rm /etc/nginx/sites-enabled/default
+rm /etc/nginx/sites-available/default
+wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/${GitUser}/Multiport/main/nginx.conf"
+mkdir -p /home/vps/public_html
+wget -O /etc/nginx/conf.d/vps.conf "https://raw.githubusercontent.com/${GitUser}/Multiport/main/vps.conf"
+/etc/init.d/nginx restart
+#finish
 rm -f /root/ssh-vpn.sh
-
+rm -f /root/ins-xray.sh
+rm -f /root/ohp.sh
+rm -f /root/ohp-dropbear.sh
+rm -f /root/ohp-ssh.sh
+rm -f /root/websocket.sh
+rm -f /root/set-br.sh
+# Colour Default
+echo "1;36m" > /etc/banner
+echo "30m" > /etc/box
+echo "1;31m" > /etc/line
+echo "1;32m" > /etc/text
+echo "1;33m" > /etc/below
+echo "47m" > /etc/back
+echo "1;35m" > /etc/number
+echo 3d > /usr/bin/test
 # Version
-echo "1.0" > /home/ver
+ver=$( curl https://raw.githubusercontent.com/${GitUser}/version/main/version.conf )
+history -c
+echo "$ver" > /home/ver
+clear
+echo " "
+echo "Installation has been completed!!"
+echo " "
+echo -e "\e[1;32m══════════════════AUTOSCRIPT NAKATAVPN══════════════════\e[0m" | tee -a log-install.txt
+echo ""  | tee -a log-install.txt
+echo "   >>> Service & Port"  | tee -a log-install.txt
+echo ""  | tee -a log-install.txt
+echo "    [INFORMASI SSH & OpenVPN]" | tee -a log-install.txt
+echo "    -------------------------" | tee -a log-install.txt
+echo "   - OpenSSH                 : 22"  | tee -a log-install.txt
+echo "   - OpenVPN                 : TCP 1194, UDP 2200"  | tee -a log-install.txt
+echo "   - OpenVPN SSL             : 110"  | tee -a log-install.txt
+echo "   - Stunnel4                : 222, 777"  | tee -a log-install.txt
+echo "   - Dropbear                : 143, 109"  | tee -a log-install.txt
+echo "   - OHP Dropbear            : 8585"  | tee -a log-install.txt
+echo "   - OHP SSH                 : 8686"  | tee -a log-install.txt
+echo "   - OHP OpenVPN             : 8787"  | tee -a log-install.txt
+echo "   - Websocket SSH(HTTP)     : 80"  | tee -a log-install.txt
+echo "   - Websocket SSL(HTTPS)    : 443, 2096"  | tee -a log-install.txt
+echo "   - Websocket OpenVPN       : 2097"  | tee -a log-install.txt
+echo ""  | tee -a log-install.txt
+echo "    [INFORMASI Sqd, Bdvp, Ngnx]" | tee -a log-install.txt
+echo "    ---------------------------" | tee -a log-install.txt
+echo "   - Squid Proxy             : 3128, 8000 (limit to IP Server)"  | tee -a log-install.txt
+echo "   - Badvpn                  : 7100, 7200, 7300"  | tee -a log-install.txt
+echo "   - Nginx                   : 81"  | tee -a log-install.txt
+echo ""  | tee -a log-install.txt
+echo "    [INFORMASI XRAY]"  | tee -a log-install.txt
+echo "    ----------------" | tee -a log-install.txt
+echo "   - Xray Vmess Ws Tls       : 443"  | tee -a log-install.txt
+echo "   - Xray Vless Ws Tls       : 443"  | tee -a log-install.txt
+echo "   - Xray Trojan Ws Tls      : 443"  | tee -a log-install.txt
+echo "   - Xray Vless Tcp Xtls     : 443"  | tee -a log-install.txt
+echo "   - Xray Trojan Tcp Tls     : 443"  | tee -a log-install.txt
+echo "   - Xray Vmess Ws None Tls  : 80"  | tee -a log-install.txt
+echo "   - Xray Vless Ws None Tls  : 80"  | tee -a log-install.txt
+echo "   - Xray Trojan Ws None Tls : 80"  | tee -a log-install.txt
+echo ""  | tee -a log-install.txt
+echo "    [INFORMASI CLASH FOR ANDROID (YAML)]"  | tee -a log-install.txt
+echo "    -----------------------------------" | tee -a log-install.txt
+echo "   - Xray Vmess Ws Yaml      : Yes"  | tee -a log-install.txt
+echo "   - Xray Vless Ws Yaml      : Yes"  | tee -a log-install.txt
+echo "   - Xray Trojan Ws Yaml     : Yes"  | tee -a log-install.txt
+echo "   --------------------------------------------------------------" | tee -a log-install.txt
+echo ""  | tee -a log-install.txt
+echo "   >>> Server Information & Other Features"  | tee -a log-install.txt
+echo "   - Timezone                : Asia/Kuala_Lumpur (GMT +8)"  | tee -a log-install.txt
+echo "   - Fail2Ban                : [ON]"  | tee -a log-install.txt
+echo "   - Dflate                  : [ON]"  | tee -a log-install.txt
+echo "   - IPtables                : [ON]"  | tee -a log-install.txt
+echo "   - Auto-Reboot             : [ON]"  | tee -a log-install.txt
+echo "   - IPv6                    : [OFF]"  | tee -a log-install.txt
+echo "   - Autoreboot On 05.00 GMT +8" | tee -a log-install.txt
+echo "   - Autobackup Data" | tee -a log-install.txt
+echo "   - Restore Data" | tee -a log-install.txt
+echo "   - Auto Delete Expired Account" | tee -a log-install.txt
+echo "   - Full Orders For Various Services" | tee -a log-install.txt
+echo "   - White Label" | tee -a log-install.txt
+echo "   - Installation Log --> /root/log-install.txt"  | tee -a log-install.txt
+echo -e "\e[1;32m══════════════════AUTOSCRIPT By NAKATAVPN══════════════════\e[0m" | tee -a log-install.txt
+sleep 7
 clear
 echo ""
-echo -e "${RB}      .-------------------------------------------.${NC}"
-echo -e "${RB}      |${NC}      ${CB}Installation Has Been Completed${NC}      ${RB}|${NC}"
-echo -e "${RB}      '-------------------------------------------'${NC}"
-echo -e "${BB}————————————————————————————————————————————————————————${NC}"
-echo -e "      ${WB}Multiport Websocket Autoscript By wunuit${NC}"
-echo -e "${BB}————————————————————————————————————————————————————————${NC}"
-echo -e "  ${WB}»»» Protocol Service «««  |  »»» Network Protocol «««${NC}  "
-echo -e "${BB}————————————————————————————————————————————————————————${NC}"
-echo -e "  ${RB}♦️${NC} ${YB}Vmess Websocket${NC}         ${WB}|${NC}  ${YB}- Websocket (CDN) TLS${NC}"
-echo -e "  ${RB}♦️${NC} ${YB}Vless Websocket${NC}         ${WB}|${NC}  ${YB}- Websocket (CDN) NTLS${NC}"
-echo -e "  ${RB}♦️${NC} ${YB}Trojan Websocket${NC}        ${WB}|${NC}  ${YB}- TCP XTLS${NC}"
-echo -e "  ${RB}♦️${NC} ${YB}Trojan TCP XTLS${NC}         ${WB}|${NC}  ${YB}- TCP TLS${NC}"
-echo -e "  ${RB}♦️${NC} ${YB}Trojan TCP${NC}              ${WB}|${NC}"
-echo -e "${BB}————————————————————————————————————————————————————————${NC}"
-echo -e "           ${WB}»»» YAML Service Information «««${NC}          "
-echo -e "${BB}————————————————————————————————————————————————————————${NC}"
-echo -e "  ${RB}♦️${NC} ${YB}YAML XRAY VMESS WS${NC}"
-echo -e "  ${RB}♦️${NC} ${YB}YAML XRAY VLESS WS${NC}"
-echo -e "  ${RB}♦️${NC} ${YB}YAML XRAY TROJAN WS${NC}"
-echo -e "  ${RB}♦️${NC} ${YB}YAML XRAY TROJAN XTLS${NC}"
-echo -e "  ${RB}♦️${NC} ${YB}YAML XRAY TROJAN TCP${NC}"
-echo -e "${BB}————————————————————————————————————————————————————————${NC}"
-echo -e "             ${WB}»»» Server Information «««${NC}                 "
-echo -e "${BB}————————————————————————————————————————————————————————${NC}"
-echo -e "  ${RB}♦️${NC} ${YB}Timezone                : Asia/Kuala_Lumpur (GMT +8)${NC}"
-echo -e "  ${RB}♦️${NC} ${YB}Fail2Ban                : [ON]${NC}"
-echo -e "  ${RB}♦️${NC} ${YB}Dflate                  : [ON]${NC}"
-echo -e "  ${RB}♦️${NC} ${YB}IPtables                : [ON]${NC}"
-echo -e "  ${RB}♦️${NC} ${YB}Auto-Reboot             : [ON]${NC}"
-echo -e "  ${RB}♦️${NC} ${YB}IPV6                    : [OFF]${NC}"
-echo -e ""
-echo -e "  ${RB}♦️${NC} ${YB}Autoreboot On 06.00 GMT +8${NC}"
-echo -e "  ${RB}♦️${NC} ${YB}Backup & Restore VPS Data${NC}"
-echo -e "  ${RB}♦️${NC} ${YB}Automatic Delete Expired Account${NC}"
-echo -e "  ${RB}♦️${NC} ${YB}Bandwith Monitor${NC}"
-echo -e "  ${RB}♦️${NC} ${YB}RAM & CPU Monitor${NC}"
-echo -e "  ${RB}♦️${NC} ${YB}Check Login User${NC}"
-echo -e "  ${RB}♦️${NC} ${YB}Check Created Config${NC}"
-echo -e "  ${RB}♦️${NC} ${YB}Automatic Clear Log${NC}"
-echo -e "  ${RB}♦️${NC} ${YB}Media Checker${NC}"
-echo -e "  ${RB}♦️${NC} ${YB}DNS Changer${NC}"
-echo -e "${BB}————————————————————————————————————————————————————————${NC}"
-echo -e "              ${WB}»»» Network Port Service «««${NC}             "
-echo -e "${BB}————————————————————————————————————————————————————————${NC}"
-echo -e "  ${RB}♦️${NC} ${YB}HTTP                    : 443${NC}"
-echo -e "  ${RB}♦️${NC} ${YB}HTTPS                   : 80, 8080, 8880${NC}"
-echo -e "${BB}————————————————————————————————————————————————————————${NC}"
+echo -e "    \e[1;32m.------------------------------------------.\e[0m"
+echo -e "    \e[1;32m|     SUCCESFULLY INSTALLED THE SCRIPT     |\e[0m"
+echo -e "    \e[1;32m|            PREMIUM BY NAKATAVPN              |\e[0m"
+echo -e "    \e[1;32m'------------------------------------------'\e[0m"
 echo ""
-secs_to_human "$(($(date +%s) - ${start}))"
-echo ""
+echo -e "   \e[1;32mYour VPS Will Be Automatical Reboot In 5 seconds\e[0m"
 rm -r setup.sh
-echo ""
-echo ""
-read -p "$( echo -e "Press ${orange}[ ${NC}${green}Enter${NC} ${CYAN}]${NC} For Reboot") "
+sleep 5
 reboot
