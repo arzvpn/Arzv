@@ -384,19 +384,19 @@ echo -e "$white\033[0;34m┌─────────────────�
 echo -e " \E[41;1;39m           ⇱ Install Source ⇲            \E[0m$NC"
 echo -e "$white\033[0;34m└─────────────────────────────────────────┘${NC}"
 sleep 1 
-wget -q https://raw.githubusercontent.com/arzvpn/Arzv2/tools/main/arzsource.sh && chmod +x arzsource.sh && ./jembot.sh
+wget -q https://raw.githubusercontent.com/arzvpn/Arzv2/main/tools/arzsource.sh && chmod +x arzsource.sh && ./jembot.sh
 #install ssh-vpn
 echo -e "$white\033[0;34m┌─────────────────────────────────────────┐${NC}"
 echo -e " \E[41;1;39m          ⇱ Install SSH / WS ⇲           \E[0m$NC"
 echo -e "$white\033[0;34m└─────────────────────────────────────────┘${NC}"
 sleep 1
-wget -q https://raw.githubusercontent.com/arzvpn/Arzv2/tools/main/ssh-vpn.sh && chmod +x ssh-vpn.sh && ./ssh-vpn.sh
+wget -q https://raw.githubusercontent.com/arzvpn/Arzv2/main/tools/ssh-vpn.sh && chmod +x ssh-vpn.sh && ./ssh-vpn.sh
 #install ins-xray
 echo -e "$white\033[0;34m┌─────────────────────────────────────────┐${NC}"
 echo -e " \E[41;1;39m            ⇱ Install Xray ⇲             \E[0m$NC"
 echo -e "$white\033[0;34m└─────────────────────────────────────────┘${NC}"
 sleep 1 
-wget -q https://raw.githubusercontent.com/arzvpn/Arzv2/tools/main/ins-xray.sh && chmod +x ins-xray.sh && ./ins-xray.sh
+wget -q https://raw.githubusercontent.com/arzvpn/Arzv2/main/tools/ins-xray.sh && chmod +x ins-xray.sh && ./ins-xray.sh
 
 # // Download Data
 echo -e "${GREEN}Download Data${NC}"
@@ -405,27 +405,27 @@ wget -q -O /usr/bin/add-ssws "https://raw.githubusercontent.com/arzvpn/Arzv2/mai
 #wget -q -O /usr/bin/add-socks "https://raw.githubusercontent.com/arzvpn/Arzv2/main/add-socks.sh"
 wget -q -O /usr/bin/add-vless "https://raw.githubusercontent.com/arzvpn/Arzv2/main/add-vless.sh"
 wget -q -O /usr/bin/add-tr "https://raw.githubusercontent.com/arzvpn/Arzv2/main/add-tr.sh"
-wget -q -O /usr/bin/autoreboot "https://raw.githubusercontent.com/arzvpn/Arzv2/options/main/autoreboot.sh"
-wget -q -O /usr/bin/restart "https://raw.githubusercontent.com/arzvpn/Arzv2/options/main/restart.sh"
-wget -q -O /usr/bin/tendang "https://raw.githubusercontent.com/arzvpn/Arzv2/options/main/tendang.sh"
-wget -q -O /usr/bin/clearlog "https://raw.githubusercontent.com/arzvpn/Arzv2/options/main/clearlog.sh"
-wget -q -O /usr/bin/running "https://raw.githubusercontent.com/arzvpn/Arzv2/options/main/running.sh"
-wget -q -O /usr/bin/cek-trafik "https://raw.githubusercontent.com/arzvpn/Arzv2/options/main/cek-trafik.sh"
-wget -q -O /usr/bin/cek-speed "https://raw.githubusercontent.com/arzvpn/Arzv2/options/main/speedtes_cli.py"
-wget -q -O /usr/bin/cek-bandwidth "https://raw.githubusercontent.com/arzvpn/Arzv2/options/main/cek-bandwidth.sh"
-wget -q -O /usr/bin/limitspeed "https://raw.githubusercontent.com/arzvpn/Arzv2/options/main/limitspeed.sh"
-wget -q -O /usr/bin/menu-vless "https://raw.githubusercontent.com/arzvpn/Arzv2/menu/main/menu-vless.sh"
-wget -q -O /usr/bin/menu-vmess "https://raw.githubusercontent.com/arzvpn/Arzv2/menu/main/menu-vmess.sh"
-wget -q -O /usr/bin/menu-ss "https://raw.githubusercontent.com/arzvpn/Arzv2/menu/main/menu-ss.sh"
-wget -q -O /usr/bin/menu-trojan "https://raw.githubusercontent.com/arzvpn/Arzv2/menu/main/menu-trojan.sh"
-wget -q -O /usr/bin/menu-ssh "https://raw.githubusercontent.com/arzvpn/Arzv2/menu/main/menu-ssh.sh"
+wget -q -O /usr/bin/autoreboot "https://raw.githubusercontent.com/arzvpn/Arzv2/main/options/autoreboot.sh"
+wget -q -O /usr/bin/restart "https://raw.githubusercontent.com/arzvpn/Arzv2/main/options/restart.sh"
+wget -q -O /usr/bin/tendang "https://raw.githubusercontent.com/arzvpn/Arzv2/main/options/tendang.sh"
+wget -q -O /usr/bin/clearlog "https://raw.githubusercontent.com/arzvpn/Arzv2/main/options/clearlog.sh"
+wget -q -O /usr/bin/running "https://raw.githubusercontent.com/arzvpn/Arzv2/main/options/running.sh"
+wget -q -O /usr/bin/cek-trafik "https://raw.githubusercontent.com/arzvpn/Arzv2/main/options/cek-trafik.sh"
+wget -q -O /usr/bin/cek-speed "https://raw.githubusercontent.com/arzvpn/Arzv2/main/options/speedtes_cli.py"
+wget -q -O /usr/bin/cek-bandwidth "https://raw.githubusercontent.com/arzvpn/Arzv2/main/options/cek-bandwidth.sh"
+wget -q -O /usr/bin/limitspeed "https://raw.githubusercontent.com/arzvpn/Arzv2/main/options/limitspeed.sh"
+wget -q -O /usr/bin/menu-vless "https://raw.githubusercontent.com/arzvpn/Arzv2/main/menu/menu-vless.sh"
+wget -q -O /usr/bin/menu-vmess "https://raw.githubusercontent.com/arzvpn/Arzv2/main/menu/menu-vmess.sh"
+wget -q -O /usr/bin/menu-ss "https://raw.githubusercontent.com/arzvpn/Arzv2/main/menu/menu-ss.sh"
+wget -q -O /usr/bin/menu-trojan "https://raw.githubusercontent.com/arzvpn/Arzv2/main/menu/menu-trojan.sh"
+wget -q -O /usr/bin/menu-ssh "https://raw.githubusercontent.com/arzvpn/Arzv2/main/menu/menu-ssh.sh"
 #wget -q -O /usr/bin/menu-bckp "https://raw.githubusercontent.com/kenDevXD/1/main/menu-bckp-telegram.sh"
-wget -q -O /usr/bin/menu-backup "https://raw.githubusercontent.com/arzvpn/Arzv2/menu/main/menu-backup.sh"
+wget -q -O /usr/bin/menu-backup "https://raw.githubusercontent.com/arzvpn/Arzv2main/menu/menu-backup.sh"
 wget -q -O /usr/bin/usernew "https://raw.githubusercontent.com/arzvpn/Arzv2/main/usernew.sh"
-wget -q -O /usr/bin/menu "https://raw.githubusercontent.com/arzvpn/Arzv2/menu/main/menu.sh"
-wget -q -O /usr/bin/webmin "https://raw.githubusercontent.com/arzvpn/Arzv2/options/main/webmin.sh"
-wget -q -O /usr/bin/xp "https://raw.githubusercontent.com/kenDevXD/1/main/xp.sh"
-#wget -q -O /usr/bin/update "https://raw.githubusercontent.com/arzvpn/Arzv2/options/main/update.sh"
+wget -q -O /usr/bin/menu "https://raw.githubusercontent.com/arzvpn/Arzv2/main/menu/menu.sh"
+wget -q -O /usr/bin/webmin "https://raw.githubusercontent.com/arzvpn/Arzv2/main/options/webmin.sh"
+wget -q -O /usr/bin/xp "https://raw.githubusercontent.com/arzvpn/Arzv2/main/xp.sh"
+#wget -q -O /usr/bin/update "https://raw.githubusercontent.com/arzvpn/Arzv2/main/options/update.sh"
 chmod +x /usr/bin/add-ws
 chmod +x /usr/bin/add-ssws
 chmod +x /usr/bin/add-vless
