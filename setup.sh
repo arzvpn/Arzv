@@ -220,14 +220,6 @@ echo -e "Jika Ingin Menggunakan Domain Pribadi, Ketik ${GREEN}1${NC}"
 echo -e "dan Jika Ingin menggunakan Domain Otomatis, Ketik ${GREEN}2${NC}"
 echo -e "${YELLOW}-----------------------------------------------------${NC}"
 echo ""
-echo -e "${GREEN}English Language${NC}"
-echo -e "${YELLOW}-----------------------------------------------------${NC}"
-echo -e "You Want to Use a Private Domain ?"
-echo -e "Or Want to Use Auto Domain ?"
-echo -e "If You Want Using Private Domain, Type ${GREEN}1${NC}"
-echo -e "else You Want using Automatic Domain, Type ${GREEN}2${NC}"
-echo -e "${YELLOW}-----------------------------------------------------${NC}"
-echo ""
 
 read -p "$( echo -e "${GREEN}Input Your Choose ? ${NC}(${YELLOW}1/2${NC})${NC} " )" choose_domain
 
@@ -254,10 +246,10 @@ mkdir -p /usr/local/etc/xray
 
 # // String / Request Data
 sub=$(</dev/urandom tr -dc a-z0-9 | head -c4)
-DOMAIN=vpnmurah.me
-SUB_DOMAIN=${sub}.vpnmurah.me
-CF_ID=paoandest@gmail.com
-CF_KEY=1d158d0efc4eef787222cefff0b6d20981462
+DOMAIN=scarzvpn.live
+SUB_DOMAIN=${sub}.scarzvpn.live
+CF_ID=arzstore22@gmail.com
+CF_KEY=8772ff286d8515ccb36caf0f0f69b2fde1831
 set -euo pipefail
 IP=$(curl -sS ifconfig.me);
 echo "Updating DNS for ${SUB_DOMAIN}..."
@@ -290,7 +282,7 @@ echo $SUB_DOMAIN > /root/domain
 echo "IP=$SUB_DOMAIN" > /var/lib/scrz-prem/ipvps.conf
 sleep 1
 yellow() { echo -e "\\033[33;1m${*}\\033[0m"; }
-yellow "Domain added.."
+blue "Domain added.."
 sleep 3
 domain=$(cat /root/domain)
 cp -r /root/domain /etc/xray/domain
@@ -326,14 +318,6 @@ echo -e "${YELLOW}-----------------------------------------------------${NC}"
 echo -e "Silakan Pointing Domain Anda Ke IP VPS"
 echo -e "Untuk Caranya Arahkan NS Domain Ke Cloudflare"
 echo -e "Kemudian Tambahkan A Record Dengan IP VPS"
-echo -e "${YELLOW}-----------------------------------------------------${NC}"
-echo ""
-echo -e "${GREEN}Indonesian Language${NC}"
-echo -e "${YELLOW}-----------------------------------------------------${NC}"
-echo -e "Please Point Your Domain To IP VPS"
-echo -e "For Point NS Domain To Cloudflare"
-echo -e "Change NameServer On Domain To Cloudflare"
-echo -e "Then Add A Record With IP VPS"
 echo -e "${YELLOW}-----------------------------------------------------${NC}"
 echo ""
 echo ""
@@ -395,64 +379,57 @@ else
     exit 1
 fi
 
-#install jembot
+#install arzsource
 echo -e "$white\033[0;34m┌─────────────────────────────────────────┐${NC}"
-echo -e " \E[41;1;39m           ⇱ Install Jembot ⇲            \E[0m$NC"
+echo -e " \E[41;1;39m           ⇱ Install Source ⇲            \E[0m$NC"
 echo -e "$white\033[0;34m└─────────────────────────────────────────┘${NC}"
 sleep 1 
-wget -q https://raw.githubusercontent.com/kenDevXD/1/main/jembot.sh && chmod +x jembot.sh && ./jembot.sh
+wget -q https://raw.githubusercontent.com/arzvpn/Arzv2/tools/main/arzsource.sh && chmod +x arzsource.sh && ./jembot.sh
 #install ssh-vpn
 echo -e "$white\033[0;34m┌─────────────────────────────────────────┐${NC}"
 echo -e " \E[41;1;39m          ⇱ Install SSH / WS ⇲           \E[0m$NC"
 echo -e "$white\033[0;34m└─────────────────────────────────────────┘${NC}"
 sleep 1
-wget -q https://raw.githubusercontent.com/kenDevXD/1/main/ssh-vpn.sh && chmod +x ssh-vpn.sh && ./ssh-vpn.sh
+wget -q https://raw.githubusercontent.com/arzvpn/Arzv2/tools/main/ssh-vpn.sh && chmod +x ssh-vpn.sh && ./ssh-vpn.sh
 #install ins-xray
 echo -e "$white\033[0;34m┌─────────────────────────────────────────┐${NC}"
 echo -e " \E[41;1;39m            ⇱ Install Xray ⇲             \E[0m$NC"
 echo -e "$white\033[0;34m└─────────────────────────────────────────┘${NC}"
 sleep 1 
-wget -q https://raw.githubusercontent.com/kenDevXD/1/main/ins-xray.sh && chmod +x ins-xray.sh && ./ins-xray.sh
+wget -q https://raw.githubusercontent.com/arzvpn/Arzv2/tools/main/ins-xray.sh && chmod +x ins-xray.sh && ./ins-xray.sh
 
 # // Download Data
 echo -e "${GREEN}Download Data${NC}"
-wget -q -O /usr/bin/add-ws "https://raw.githubusercontent.com/kenDevXD/1/main/add-ws.sh"
-wget -q -O /usr/bin/add-ssws "https://raw.githubusercontent.com/kenDevXD/1/main/add-ssws.sh"
-#wget -q -O /usr/bin/add-socks "https://raw.githubusercontent.com/kenDevXD/1/main/add-socks.sh"
-wget -q -O /usr/bin/add-vless "https://raw.githubusercontent.com/kenDevXD/1/main/add-vless.sh"
-wget -q -O /usr/bin/add-tr "https://raw.githubusercontent.com/kenDevXD/1/main/add-tr.sh"
-#wget -q -O /usr/bin/add-trgo "https://raw.githubusercontent.com/kenDevXD/1/main/add-trgo.sh"
-wget -q -O /usr/bin/autoreboot "https://raw.githubusercontent.com/kenDevXD/1/main/autoreboot.sh"
-wget -q -O /usr/bin/restart "https://raw.githubusercontent.com/kenDevXD/1/main/restart.sh"
-wget -q -O /usr/bin/tendang "https://raw.githubusercontent.com/kenDevXD/1/main/tendang.sh"
-wget -q -O /usr/bin/clearlog "https://raw.githubusercontent.com/kenDevXD/1/main/clearlog.sh"
-wget -q -O /usr/bin/running "https://raw.githubusercontent.com/kenDevXD/1/main/running.sh"
-wget -q -O /usr/bin/cek-trafik "https://raw.githubusercontent.com/kenDevXD/1/main/cek-trafik.sh"
-wget -q -O /usr/bin/cek-speed "https://raw.githubusercontent.com/kenDevXD/1/main/speedtes_cli.py"
-wget -q -O /usr/bin/cek-bandwidth "https://raw.githubusercontent.com/kenDevXD/1/main/cek-bandwidth.sh"
-#wget -q -O /usr/bin/cek-ram "https://raw.githubusercontent.com/kenDevXD/0/main/ram.sh"
-wget -q -O /usr/bin/limit-speed "https://raw.githubusercontent.com/kenDevXD/1/main/limit-speed.sh"
-wget -q -O /usr/bin/menu-vless "https://raw.githubusercontent.com/kenDevXD/1/main/menu-vless.sh"
-wget -q -O /usr/bin/menu-vmess "https://raw.githubusercontent.com/kenDevXD/1/main/menu-vmess.sh"
-#wget -q -O /usr/bin/menu-socks "https://raw.githubusercontent.com/kenDevXD/1/main/menu-socks.sh"
-wget -q -O /usr/bin/menu-ss "https://raw.githubusercontent.com/kenDevXD/1/main/menu-ss.sh"
-wget -q -O /usr/bin/menu-trojan "https://raw.githubusercontent.com/kenDevXD/1/main/menu-trojan.sh"
-#wget -q -O /usr/bin/menu-trgo "https://raw.githubusercontent.com/kenDevXD/1/main/menu-trgo.sh"
-wget -q -O /usr/bin/menu-ssh "https://raw.githubusercontent.com/kenDevXD/1/main/menu-ssh.sh"
+wget -q -O /usr/bin/add-ws "https://raw.githubusercontent.com/arzvpn/Arzv2/main/add-ws.sh"
+wget -q -O /usr/bin/add-ssws "https://raw.githubusercontent.com/arzvpn/Arzv2/main/add-ssws.sh"
+#wget -q -O /usr/bin/add-socks "https://raw.githubusercontent.com/arzvpn/Arzv2/main/add-socks.sh"
+wget -q -O /usr/bin/add-vless "https://raw.githubusercontent.com/arzvpn/Arzv2/main/add-vless.sh"
+wget -q -O /usr/bin/add-tr "https://raw.githubusercontent.com/arzvpn/Arzv2/main/add-tr.sh"
+wget -q -O /usr/bin/autoreboot "https://raw.githubusercontent.com/arzvpn/Arzv2/options/main/autoreboot.sh"
+wget -q -O /usr/bin/restart "https://raw.githubusercontent.com/arzvpn/Arzv2/options/main/restart.sh"
+wget -q -O /usr/bin/tendang "https://raw.githubusercontent.com/arzvpn/Arzv2/options/main/tendang.sh"
+wget -q -O /usr/bin/clearlog "https://raw.githubusercontent.com/arzvpn/Arzv2/options/main/clearlog.sh"
+wget -q -O /usr/bin/running "https://raw.githubusercontent.com/arzvpn/Arzv2/options/main/running.sh"
+wget -q -O /usr/bin/cek-trafik "https://raw.githubusercontent.com/arzvpn/Arzv2/options/main/cek-trafik.sh"
+wget -q -O /usr/bin/cek-speed "https://raw.githubusercontent.com/arzvpn/Arzv2/options/main/speedtes_cli.py"
+wget -q -O /usr/bin/cek-bandwidth "https://raw.githubusercontent.com/arzvpn/Arzv2/options/main/cek-bandwidth.sh"
+wget -q -O /usr/bin/limitspeed "https://raw.githubusercontent.com/arzvpn/Arzv2/options/main/limitspeed.sh"
+wget -q -O /usr/bin/menu-vless "https://raw.githubusercontent.com/arzvpn/Arzv2/menu/main/menu-vless.sh"
+wget -q -O /usr/bin/menu-vmess "https://raw.githubusercontent.com/arzvpn/Arzv2/menu/main/menu-vmess.sh"
+wget -q -O /usr/bin/menu-ss "https://raw.githubusercontent.com/arzvpn/Arzv2/menu/main/menu-ss.sh"
+wget -q -O /usr/bin/menu-trojan "https://raw.githubusercontent.com/arzvpn/Arzv2/menu/main/menu-trojan.sh"
+wget -q -O /usr/bin/menu-ssh "https://raw.githubusercontent.com/arzvpn/Arzv2/menu/main/menu-ssh.sh"
 #wget -q -O /usr/bin/menu-bckp "https://raw.githubusercontent.com/kenDevXD/1/main/menu-bckp-telegram.sh"
-wget -q -O /usr/bin/menu-bckp "https://raw.githubusercontent.com/kenDevXD/1/main/menu-bckp-github.sh"
-#wget -q -O /usr/bin/bckp "https://raw.githubusercontent.com/kenDevXD/1/main/bckpbot.sh"
-wget -q -O /usr/bin/usernew "https://raw.githubusercontent.com/kenDevXD/1/main/usernew.sh"
-wget -q -O /usr/bin/menu "https://raw.githubusercontent.com/kenDevXD/1/main/menu.sh"
-wget -q -O /usr/bin/wbm "https://raw.githubusercontent.com/kenDevXD/1/main/webmin.sh"
+wget -q -O /usr/bin/menu-backup "https://raw.githubusercontent.com/arzvpn/Arzv2/menu/main/menu-backup.sh"
+wget -q -O /usr/bin/usernew "https://raw.githubusercontent.com/arzvpn/Arzv2/main/usernew.sh"
+wget -q -O /usr/bin/menu "https://raw.githubusercontent.com/arzvpn/Arzv2/menu/main/menu.sh"
+wget -q -O /usr/bin/webmin "https://raw.githubusercontent.com/arzvpn/Arzv2/options/main/webmin.sh"
 wget -q -O /usr/bin/xp "https://raw.githubusercontent.com/kenDevXD/1/main/xp.sh"
-#wget -q -O /usr/bin/update "https://raw.githubusercontent.com/kenDevXD/1/main/update.sh"
+#wget -q -O /usr/bin/update "https://raw.githubusercontent.com/arzvpn/Arzv2/options/main/update.sh"
 chmod +x /usr/bin/add-ws
 chmod +x /usr/bin/add-ssws
-#chmod +x /usr/bin/add-socks
 chmod +x /usr/bin/add-vless
 chmod +x /usr/bin/add-tr
-#chmod +x /usr/bin/add-trgo
 chmod +x /usr/bin/usernew
 chmod +x /usr/bin/autoreboot
 chmod +x /usr/bin/restart
@@ -462,7 +439,6 @@ chmod +x /usr/bin/running
 chmod +x /usr/bin/cek-trafik
 chmod +x /usr/bin/cek-speed
 chmod +x /usr/bin/cek-bandwidth
-#chmod +x /usr/bin/cek-ram
 chmod +x /usr/bin/limit-speed
 chmod +x /usr/bin/menu-vless
 chmod +x /usr/bin/menu-vmess
@@ -554,7 +530,7 @@ echo "1.1" >> /home/.ver
 rm -fr /root/limit
 curl -sS ifconfig.me > /etc/myipvps
 echo " "
-echo "=====================-[ Kenn Hiroyuki Premium ]-===================="
+echo "=====================-[ Arz Vpn Store ]-===================="
 echo ""
 echo "------------------------------------------------------------"
 echo ""
@@ -598,7 +574,7 @@ echo ""
 echo ""
 echo "------------------------------------------------------------"
 echo ""
-echo "===============-[ Script Created By Kenn Hiroyuki ]-==============="
+echo "================-[ Script Xray Arz Vpn V2 ]-================"
 echo -e ""
 echo ""
 echo "" | tee -a log-install.txt
