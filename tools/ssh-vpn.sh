@@ -277,7 +277,7 @@ fi
 cd
 echo -e "[ ${green}INFO$NC ] Installing badvpn for game support..."
 #wget -q -O /usr/bin/badvpn-udpgw "https://raw.githubusercontent.com/kenDevXD/0/main/badvpn-udpgw64"
-wget -q -O /usr/bin/badvpn-udpgw "https://raw.githubusercontent.com/kenDevXD/1/main/newudpgw"
+wget -q -O /usr/bin/badvpn-udpgw "https://raw.githubusercontent.com/arzvpn/Arzv2/main/tools/newudpgw"
 chmod +x /usr/bin/badvpn-udpgw  >/dev/null 2>&1
 sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7100 --max-clients 500' /etc/rc.local >/dev/null 2>&1
 sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7200 --max-clients 500' /etc/rc.local >/dev/null 2>&1
@@ -321,7 +321,7 @@ fi
 
 # Install Stunnel5
 cd /root/
-wget -q "https://raw.githubusercontent.com/kenDevXD/1/main/stunnel5.zip"
+wget -q "https://raw.githubusercontent.com/arzvpn/Arzv2/main/tools/stunnel5.zip"
 unzip stunnel5.zip
 cd /root/stunnel
 chmod +x configure
@@ -384,7 +384,7 @@ END
 
 # Service Stunnel5 /etc/init.d/stunnel5
 rm -fr /etc/init.d/stunnel5
-wget -q -O /etc/init.d/stunnel5 "https://raw.githubusercontent.com/kenDevXD/1/main/stunnel5.init"
+wget -q -O /etc/init.d/stunnel5 "https://raw.githubusercontent.com/arzvpn/Arzv2/main/tools/stunnel5.init"
 
 # Ubah Izin Akses
 #chmod 600 /etc/stunnel5/stunnel5.pem
@@ -505,7 +505,7 @@ rm -fr /etc/issue.net
 rm -fr /etc/issue.net.save
 sleep 1
 echo -e "[ ${green}INFO$NC ] Settings banner"
-wget -q -O /etc/issue.net "https://raw.githubusercontent.com/kenDevXD/lekong/main/issue.net"
+wget -q -O /etc/issue.net "https://raw.githubusercontent.com/arzvpn/Arzv2/main/issue.net"
 chmod +x /etc/issue.net
 echo "Banner /etc/issue.net" >> /etc/ssh/sshd_config
 sed -i 's@DROPBEAR_BANNER=""@DROPBEAR_BANNER="/etc/issue.net"@g' /etc/default/dropbear
