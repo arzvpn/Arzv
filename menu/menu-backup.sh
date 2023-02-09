@@ -1,3 +1,4 @@
+#!/bin/bash
 # SCRIPT BY Arz
 
 red='\e[1;31m'
