@@ -1,35 +1,14 @@
 #!/bin/bash
 
-BIBlack='\033[1;90m'      # Black
-BIRed='\033[1;91m'        # Red
-BIGreen='\033[1;92m'      # Green
-BIYellow='\033[1;93m'     # Yellow
-BIBlue='\033[1;94m'       # Blue
-BIPurple='\033[1;95m'     # Purple
-BICyan='\033[1;96m'       # Cyan
-BIWhite='\033[1;97m'      # White
-UWhite='\033[4;37m'       # White
-On_IPurple='\033[0;105m'  #
-On_IRed='\033[0;101m'
-IBlack='\033[0;90m'       # Black
-IRed='\033[0;91m'         # Red
-IGreen='\033[0;92m'       # Green
-IYellow='\033[0;93m'      # Yellow
-IBlue='\033[0;94m'        # Blue
-IPurple='\033[0;95m'      # Purple
-ICyan='\033[0;96m'        # Cyan
-IWhite='\033[0;97m'       # White
-NC='\e[0m'
-
-# // Export Color & Information
-export RED='\033[0;31m'
-export GREEN='\033[0;32m'
-export YELLOW='\033[0;33m'
-export BLUE='\033[0;34m'
-export PURPLE='\033[0;35m'
-export CYAN='\033[0;36m'
-export LIGHT='\033[0;37m'
-export NC='\033[0m'
+dateFromServer=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
+biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
+###########- COLOR CODE -##############
+colornow=$(cat /etc/arzvpn/theme/color.conf)
+NC="\e[0m"
+RED="\033[0;31m" 
+COLOR1="$(cat /etc/arzvpn/theme/$colornow | grep -w "TEXT" | cut -d: -f2|sed 's/ //g')"
+COLBG1="$(cat /etc/arzvpn/theme/$colornow | grep -w "BG" | cut -d: -f2|sed 's/ //g')"                    
+###########- END COLOR CODE -##########
 
 # // Export Banner Status Information
 export EROR="[${RED} EROR ${NC}]"
@@ -45,8 +24,8 @@ export WARNING="${RED}\e[5m"
 export UNDERLINE="\e[4m"
 
 # // Exporting URL Host
-export Server_URL="raw.githubusercontent.com/kenDevXD/test/main"
-export Server1_URL="raw.githubusercontent.com/kenDevXD/limit/main"
+export Server_URL="raw.githubusercontent.com/arzvpn/proarzv2/main"
+export Server1_URL="raw.githubusercontent.com/arzvpn/lim2/main"
 export Server_Port="443"
 export Server_IP="underfined"
 export Script_Mode="Stable"
@@ -121,9 +100,9 @@ fi
 portsshws=`cat /root/log-install.txt | grep -w "SSH Websocket" | cut -d: -f2 | awk '{print $1}'`
 wsssl=`cat /root/log-install.txt | grep -w "SSH SSL Websocket" | cut -d: -f2 | awk '{print $1}'`
 
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "\E[0;41;36m            SSH Account            \E[0m"
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "\E[0;41;36m        Detail SSH Account            \E[0m"
+echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 read -p "Username : " Login
 read -p "Password : " Pass
 read -p "Expired (hari): " masaaktif
@@ -149,79 +128,45 @@ echo -e "$Pass\n$Pass\n"|passwd $Login &> /dev/null
 PID=`ps -ef |grep -v grep | grep sshws |awk '{print $2}'`
 
 if [[ ! -z "${PID}" ]]; then
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
-echo -e "\E[0;41;36m            SSH Account            \E[0m" | tee -a /etc/log-create-user.log
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
-echo -e "Username : $Login" | tee -a /etc/log-create-user.log
-echo -e "Password : $Pass" | tee -a /etc/log-create-user.log
-echo -e "Expired On : $exp" | tee -a /etc/log-create-user.log
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
-echo -e "IP Address : $IP" | tee -a /etc/log-create-user.log
-echo -e "Host : $domen" | tee -a /etc/log-create-user.log
-echo -e "OpenSSH : $opensh" | tee -a /etc/log-create-user.log
-echo -e "Dropbear : $db" | tee -a /etc/log-create-user.log
-echo -e "SSH-WS : $portsshws" | tee -a /etc/log-create-user.log
-echo -e "SSH-SSL-WS : $wsssl" | tee -a /etc/log-create-user.log
-echo -e "SSL/TLS : $ssl" | tee -a /etc/log-create-user.log
-echo -e "UDPGW : 7100-7300" | tee -a /etc/log-create-user.log
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
-#echo -e "OpenVPN Config : http://$IP:81/" | tee -a /etc/log-create-user.log
-#echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
-#echo -e "Payload WS" | tee -a /etc/log-create-user.log
-echo -e "
-GET / [protocol][crlf]Host: [host][crlf]Connection: Keep-Alive[crlf]Connection: Upgrade[crlf]Upgrade: websocket[crlf][crlf]
-" | tee -a /etc/log-create-user.log
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
-echo -e "
-GET wss://bug.com/ [protocol][crlf]Host: [host][crlf]Connection: Keep-Alive[crlf]Connection: Upgrade[crlf]Upgrade: websocket[crlf][crlf]
-" | tee -a /etc/log-create-user.log
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
-echo -e "
-GET / [protocol][crlf]Host: $domen[crlf]Connection: Keep-Alive[crlf]Connection: Upgrade[crlf]Upgrade: websocket[crlf][crlf]
-" | tee -a /etc/log-create-user.log
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
-echo -e "
-GET wss://bug.com/ [protocol][crlf]Host: $domen[crlf]Connection: Keep-Alive[crlf]Connection: Upgrade[crlf]Upgrade: websocket[crlf][crlf]
-" | tee -a /etc/log-create-user.log
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
+echo -e "$COLOR1═════════════SSH ACCOUNTS═══════════${NC}"
+echo -e "$COLOR1════════════════════════════════════${NC}"
+echo -e "Username   : $Login" 
+echo -e "Password   : $Pass"
+echo -e "Expired On : $exp" 
+echo -e "$COLOR1════════════════════════════════════${NC}"
+echo -e "IP         : $IP" 
+echo -e "Host       : $domen" 
+echo -e "OpenSSH    : $opensh"
+echo -e "Dropbear   : $db" 
+echo -e "SSH-WS     : $portsshws" 
+echo -e "SSH-SSL-WS : $wsssl" 
+echo -e "SSL/TLS    : $ssl" 
+echo -e "UDPGW      : 7100-7300" 
+echo -e "$COLOR1════════════════════════════════════${NC}"
+echo -e "GET / HTTP/1.1[crlf]Host: $domen[crlf]Connection: Keep-Alive[crlf]User-Agent: [ua][crlf]Upgrade: ws[crlf][crlf]"
+echo -e "$COLOR1════════════════════════════════════${NC}"
+echo -e "$COLOR1 Enjoy our Arz Auto Script Service${NC}" 
 
 else
 
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
-echo -e "\E[0;41;36m            SSH Account            \E[0m" | tee -a /etc/log-create-user.log
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
-echo -e "Username : $Login" | tee -a /etc/log-create-user.log
-echo -e "Password : $Pass" | tee -a /etc/log-create-user.log
-echo -e "Expired On : $exp" | tee -a /etc/log-create-user.log
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
-echo -e "IP Address : $IP" | tee -a /etc/log-create-user.log
-echo -e "Host : $domen" | tee -a /etc/log-create-user.log
-echo -e "OpenSSH : $opensh" | tee -a /etc/log-create-user.log
-echo -e "Dropbear : $db" | tee -a /etc/log-create-user.log
-echo -e "SSH-WS : $portsshws" | tee -a /etc/log-create-user.log
-echo -e "SSH-SSL-WS : $wsssl" | tee -a /etc/log-create-user.log
-echo -e "SSL/TLS : $ssl" | tee -a /etc/log-create-user.log
-echo -e "UDPGW : 7100-7300" | tee -a /etc/log-create-user.log
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
-#echo -e "OpenVPN Config : http://$IP:81/" | tee -a /etc/log-create-user.log
-#echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
-#echo -e "Payload WS" | tee -a /etc/log-create-user.log
-echo -e "
-GET / [protocol][crlf]Host: [host][crlf]Connection: Keep-Alive[crlf]Connection: Upgrade[crlf]Upgrade: websocket[crlf][crlf]
-" | tee -a /etc/log-create-user.log
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
-echo -e "
-GET wss://bug.com/ [protocol][crlf]Host: [host][crlf]Connection: Keep-Alive[crlf]Connection: Upgrade[crlf]Upgrade: websocket[crlf][crlf]
-" | tee -a /etc/log-create-user.log
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
-echo -e "
-GET / [protocol][crlf]Host: $domen[crlf]Connection: Keep-Alive[crlf]Connection: Upgrade[crlf]Upgrade: websocket[crlf][crlf]
-" | tee -a /etc/log-create-user.log
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
-echo -e "
-GET wss://bug.com/ [protocol][crlf]Host: $domen[crlf]Connection: Keep-Alive[crlf]Connection: Upgrade[crlf]Upgrade: websocket[crlf][crlf]
-" | tee -a /etc/log-create-user.log
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
+echo -e "$COLOR1═════════════SSH ACCOUNTS═══════════${NC}"
+echo -e "$COLOR1════════════════════════════════════${NC}"
+echo -e "Username   : $Login" 
+echo -e "Password   : $Pass"
+echo -e "Expired On : $exp" 
+echo -e "$COLOR1════════════════════════════════════${NC}"
+echo -e "IP         : $IP" 
+echo -e "Host       : $domen" 
+echo -e "OpenSSH    : $opensh"
+echo -e "Dropbear   : $db" 
+echo -e "SSH-WS     : $portsshws" 
+echo -e "SSH-SSL-WS : $wsssl" 
+echo -e "SSL/TLS    : $ssl" 
+echo -e "UDPGW      : 7100-7300" 
+echo -e "$COLOR1════════════════════════════════════${NC}"
+echo -e "GET / HTTP/1.1[crlf]Host: $domen[crlf]Connection: Keep-Alive[crlf]User-Agent: [ua][crlf]Upgrade: ws[crlf][crlf]"
+echo -e "$COLOR1════════════════════════════════════${NC}"
+echo -e "$COLOR1 Enjoy our Arz Auto Script Service${NC}" 
 fi
 echo "" | tee -a /etc/log-create-user.log
 read -n 1 -s -r -p "Press any key to back on menu"
