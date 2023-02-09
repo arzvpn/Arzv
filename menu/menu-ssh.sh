@@ -1,5 +1,13 @@
 #!/bin/bash
 
+###########- COLOR CODE -##############
+colornow=$(cat /etc/arzvpn/theme/color.conf)
+NC="\e[0m"
+RED="\033[0;31m" 
+COLOR1="$(cat /etc/arzvpn/theme/$colornow | grep -w "TEXT" | cut -d: -f2|sed 's/ //g')"
+COLBG1="$(cat /etc/arzvpn/theme/$colornow | grep -w "BG" | cut -d: -f2|sed 's/ //g')"                    
+###########- END COLOR CODE -##########
+
 BIBlack='\033[1;90m'      # Black
 BIRed='\033[1;91m'        # Red
 BIGreen='\033[1;92m'      # Green
@@ -47,8 +55,8 @@ export WARNING="${RED}\e[5m"
 export UNDERLINE="\e[4m"
 
 # // Exporting URL Host
-export Server_URL="raw.githubusercontent.com/kenDevXD/test/main"
-export Server1_URL="raw.githubusercontent.com/kenDevXD/limit/main"
+export Server_URL="raw.githubusercontent.com/arzvpn/proarz2/main"
+export Server1_URL="raw.githubusercontent.com/arzvpn/lim2/main"
 export Server_Port="443"
 export Server_IP="underfined"
 export Script_Mode="Stable"
@@ -113,11 +121,85 @@ else
     echo $sisa_hari > /etc/${Auther}/license-remaining-active-days.db
 fi
 clear
+function trialssh(){
+clear
+domen=`cat /etc/xray/domain`
+portsshws=`cat ~/log-install.txt | grep -w "SSH Websocket" | cut -d: -f2 | awk '{print $1}'`
+wsssl=`cat /root/log-install.txt | grep -w "SSH SSL Websocket" | cut -d: -f2 | awk '{print $1}'`
+clear
+IP=$(curl -sS ifconfig.me);
+ossl=`cat /root/log-install.txt | grep -w "OpenVPN" | cut -f2 -d: | awk '{print $6}'`
+opensh=`cat /root/log-install.txt | grep -w "OpenSSH" | cut -f2 -d: | awk '{print $1}'`
+db=`cat /root/log-install.txt | grep -w "Dropbear" | cut -f2 -d: | awk '{print $1,$2}'`
+ssl="$(cat ~/log-install.txt | grep -w "Stunnel5" | cut -d: -f2)"
+sqd="$(cat /root/log-install.txt | grep -w "Squid" | cut -d: -f2)"
+OhpSSH=`cat /root/log-install.txt | grep -w "OHP SSH" | cut -d: -f2 | awk '{print $1}'`
+
+
+Login=trial`</dev/urandom tr -dc X-Z0-9 | head -c4`
+hari="1"
+Pass=1
+echo Ping Host &> /dev/null
+echo Create Akun: $Login &> /dev/null
+sleep 0.5
+echo Setting Password: $Pass &> /dev/null
+sleep 0.5
+clear
+useradd -e `date -d "$masaaktif days" +"%Y-%m-%d"` -s /bin/false -M $Login
+exp="$(chage -l $Login | grep "Account expires" | awk -F": " '{print $2}')"
+echo -e "$Pass\n$Pass\n"|passwd $Login &> /dev/null
+PID=`ps -ef |grep -v grep | grep sshws |awk '{print $2}'`
+
+if [[ ! -z "${PID}" ]]; then
+echo -e "$COLOR1═════════════SSH ACCOUNTS═══════════${NC}"
+echo -e "$COLOR1════════════════════════════════════${NC}"
+echo -e "Username   : $Login" 
+echo -e "Password   : $Pass"
+echo -e "Expired On : $exp" 
+echo -e "$COLOR1════════════════════════════════════${NC}"
+echo -e "IP         : $IP" 
+echo -e "Host       : $domen" 
+echo -e "OpenSSH    : $opensh"
+echo -e "Dropbear   : $db" 
+echo -e "SSH-WS     : $portsshws" 
+echo -e "SSH-SSL-WS : $wsssl" 
+echo -e "SSL/TLS    : $ssl" 
+echo -e "UDPGW      : 7100-7300" 
+echo -e "$COLOR1════════════════════════════════════${NC}"
+echo -e "GET / HTTP/1.1[crlf]Host: $domen[crlf]Connection: Keep-Alive[crlf]User-Agent: [ua][crlf]Upgrade: ws[crlf][crlf]"
+echo -e "$COLOR1════════════════════════════════════${NC}"
+echo -e "$COLOR1 Enjoy our Arz Auto Script Service${NC}" 
+
+else
+clear
+echo -e "$COLOR1═════════════SSH ACCOUNTS═══════════${NC}"
+echo -e "$COLOR1════════════════════════════════════${NC}"
+echo -e "Username   : $Login" 
+echo -e "Password   : $Pass"
+echo -e "Expired On : $exp" 
+echo -e "$COLOR1════════════════════════════════════${NC}"
+echo -e "IP         : $IP" 
+echo -e "Host       : $domen" 
+echo -e "OpenSSH    : $opensh"
+echo -e "Dropbear   : $db" 
+echo -e "SSH-WS     : $portsshws" 
+echo -e "SSH-SSL-WS : $wsssl" 
+echo -e "SSL/TLS    : $ssl" 
+echo -e "UDPGW      : 7100-7300" 
+echo -e "$COLOR1════════════════════════════════════${NC}"
+echo -e "GET / HTTP/1.1[crlf]Host: $domen[crlf]Connection: Keep-Alive[crlf]User-Agent: [ua][crlf]Upgrade: ws[crlf][crlf]"
+echo -e "$COLOR1════════════════════════════════════${NC}"
+echo -e "$COLOR1 Enjoy our Arz Auto Script Service${NC}"
+fi
+echo ""
+read -n 1 -s -r -p "   Press any key to back on menu"
+menu-ssh
+}
 function del(){
 clear
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "\E[0;41;36m               DELETE USER                \E[0m"
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"  
+echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "$COLOR1               DELETE USER                \E[0m"
+echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"  
 echo ""
 read -p "Username SSH to Delete : " Pengguna
 
@@ -130,16 +212,16 @@ fi
 
 read -n 1 -s -r -p "Press any key to back on menu"
 
-menu
+menu-ssh
 }
 function autodel(){
 clear
                hariini=`date +%d-%m-%Y`
-               echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-               echo -e "\E[0;41;36m               AUTO DELETE                \E[0m"
-               echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"  
+               echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+               echo -e "$COLOR1               AUTO DELETE                \E[0m"
+               echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"  
                echo "Thank you for removing the EXPIRED USERS"
-               echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"  
+               echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"  
                cat /etc/shadow | cut -d: -f1,8 | sed /:$/d > /tmp/expirelist.txt
                totalaccounts=`cat /tmp/expirelist.txt | wc -l`
                for((i=1; i<=$totalaccounts; i++ ))
@@ -171,21 +253,21 @@ clear
                fi
                done
                echo " "
-               echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"  
+               echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"  
                
                read -n 1 -s -r -p "Press any key to back on menu"
-               menu
+               menu-ssh
         
 }
 function ceklim(){
 clear
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "\E[0;41;36m         CEK USER MULTI SSH        \E[0m"
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "$COLOR1         CEK USER MULTILOGIN       \E[0m"
+echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 if [ -e "/root/log-limit.txt" ]; then
 echo "User Who Violate The Maximum Limit";
 echo "Time - Username - Number of Multilogin"
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 cat /root/log-limit.txt
 else
 echo " No user has committed a violation"
@@ -195,7 +277,7 @@ echo " "
 echo " The user-limit script not been executed."
 fi
 echo " ";
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo " ";
 read -n 1 -s -r -p "Press any key to back on menu"
 menu
@@ -209,11 +291,11 @@ if [ -e "/var/log/secure" ]; then
 fi
                
 data=( `ps aux | grep -i dropbear | awk '{print $2}'`);
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "\E[0;41;36m         Dropbear User Login       \E[0m"
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "$COLOR1         Dropbear User Login       \E[0m"
+echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo "ID  |  Username  |  IP Address";
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 cat $LOG | grep -i dropbear | grep -i "Password auth succeeded" > /tmp/login-db.txt;
 for PID in "${data[@]}"
 do
@@ -224,15 +306,15 @@ do
         if [ $NUM -eq 1 ]; then
                 echo "$PID - $USER - $IP";
         fi
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 
 done
 echo " "
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "\E[0;41;36m          OpenSSH User Login       \E[0m"
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "$COLOR1          OpenSSH User Login       \E[0m"
+echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo "ID  |  Username  |  IP Address";
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 cat $LOG | grep -i sshd | grep -i "Accepted password for" > /tmp/login-db.txt
 data=( `ps aux | grep "\[priv\]" | sort -k 72 | awk '{print $2}'`);
 
@@ -245,32 +327,32 @@ do
         if [ $NUM -eq 1 ]; then
                 echo "$PID - $USER - $IP";
         fi
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 
 done
 if [ -f "/etc/openvpn/server/openvpn-tcp.log" ]; then
         echo " "
-        echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+        echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
         echo -e "\E[0;41;36m          OpenVPN TCP User Login         \E[0m"
-        echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+        echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
         echo "Username  |  IP Address  |  Connected Since";
-        echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+        echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
         cat /etc/openvpn/server/openvpn-tcp.log | grep -w "^CLIENT_LIST" | cut -d ',' -f 2,3,8 | sed -e 's/,/      /g' > /tmp/vpn-login-tcp.txt
         cat /tmp/vpn-login-tcp.txt
 fi
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 
 if [ -f "/etc/openvpn/server/openvpn-udp.log" ]; then
         echo " "
-        echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+        echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
         echo -e "\E[0;41;36m          OpenVPN UDP User Login         \E[0m"
-        echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+        echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
         echo "Username  |  IP Address  |  Connected Since";
-        echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+        echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
         cat /etc/openvpn/server/openvpn-udp.log | grep -w "^CLIENT_LIST" | cut -d ',' -f 2,3,8 | sed -e 's/,/      /g' > /tmp/vpn-login-udp.txt
         cat /tmp/vpn-login-udp.txt
 fi
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo "";
 
 rm -f /tmp/login-db-pid.txt
@@ -279,15 +361,15 @@ rm -f /tmp/vpn-login-tcp.txt
 rm -f /tmp/vpn-login-udp.txt
 read -n 1 -s -r -p "Press any key to back on menu"
 
-menu
+menu-ssh
 }
 function member(){
 clear
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "\E[0;41;36m                 MEMBER SSH               \E[0m"
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"      
+echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"      
 echo "USERNAME          EXP DATE          STATUS"
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 while read expired
 do
 AKUN="$(echo $expired | cut -d: -f1)"
@@ -303,18 +385,18 @@ fi
 fi
 done < /etc/passwd
 JUMLAH="$(awk -F: '$3 >= 1000 && $1 != "nobody" {print $1}' /etc/passwd | wc -l)"
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo "Account number: $JUMLAH user"
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 read -n 1 -s -r -p "Press any key to back on menu"
-menu
+menu-ssh
 }
 function renew(){
 clear
 clear
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "\E[0;41;36m               RENEW  USER                \E[0m"
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"  
+echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"  
 echo
 read -p "Username : " User
 egrep "^$User" /etc/passwd >/dev/null
@@ -330,27 +412,27 @@ usermod -e  $Expiration $User
 egrep "^$User" /etc/passwd >/dev/null
 echo -e "$Pass\n$Pass\n"|passwd $User &> /dev/null
 clear
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "\E[0;41;36m               RENEW  USER                \E[0m"
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"  
+echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"  
 echo -e ""
 echo -e " Username : $User"
 echo -e " Days Added : $Days Days"
 echo -e " Expires on :  $Expiration_Display"
 echo -e ""
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 else
 clear
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "\E[0;41;36m               RENEW  USER                \E[0m"
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"  
+echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"  
 echo -e ""
 echo -e "   Username Doesnt Exist      "
 echo -e ""
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 fi
 read -n 1 -s -r -p "Press any key to back on menu"
-menu
+menu-ssh
 }
 function autokill(){
 clear
@@ -364,9 +446,9 @@ else
 sts="${Error}"
 fi
 clear
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "\E[44;1;39m             AUTOKILL SSH          \E[0m"
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "Status Autokill : $sts        "
 echo -e ""
 echo -e "[1]  AutoKill After 5 Minutes"
@@ -375,7 +457,7 @@ echo -e "[3]  AutoKill After 15 Minutes"
 echo -e "[4]  Turn Off AutoKill/MultiLogin"
 echo -e "[x]  Menu"
 echo ""
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e ""
 read -p "Select From Options [1-4 or x] :  " AutoKill
 read -p "Multilogin Maximum Number Of Allowed: " max
@@ -455,35 +537,38 @@ case $AutoKill in
                 ;;
         esac
 read -n 1 -s -r -p "Press any key to back on menu"
-menu
+menu-ssh
 }
 clear
-echo -e "${BICyan} ┌─────────────────────────────────────────────────────┐${NC}"
+echo -e "$COLOR1 ┌─────────────────────────────────────────────────────┐${NC}"
 echo -e "       ${BIWhite}${UWhite}SSH ${NC}"
 echo -e ""
-echo -e "     ${BICyan}[${BIWhite}1${BICyan}] Add Account SSH      "
-echo -e "     ${BICyan}[${BIWhite}2${BICyan}] Delete Account SSH      "
-echo -e "     ${BICyan}[${BIWhite}3${BICyan}] Renew Account SSH      "
-echo -e "     ${BICyan}[${BIWhite}4${BICyan}] Cek User SSH     "
-echo -e "     ${BICyan}[${BIWhite}5${BICyan}] Mullog SSH     "
-echo -e "     ${BICyan}[${BIWhite}6${BICyan}] Auto Del user Exp     "
-echo -e "     ${BICyan}[${BIWhite}7${BICyan}] Auto Kill user SSH    "
-echo -e "     ${BICyan}[${BIWhite}8${BICyan}] Cek Member SSH"
-echo -e " ${BICyan}└─────────────────────────────────────────────────────┘${NC}"
+echo -e "     ${BICyan}[${$COLOR1}1${BICyan}] Create SSH Account     "
+echo -e "     ${BICyan}[${$COLOR1}2${BICyan}] Trial SSH Acoount      "
+echo -e "     ${BICyan}[${$COLOR1}3${BICyan}] Delete SSH Acoount      "
+echo -e "     ${BICyan}[${$COLOR1}4${BICyan}] Renew SSH Account      "
+echo -e "     ${BICyan}[${$COLOR1}5${BICyan}] Cek User SSH     "
+echo -e "     ${BICyan}[${$COLOR1}6${BICyan}] Mullog SSH     "
+echo -e "     ${BICyan}[${$COLOR1}7${BICyan}] Auto Del user Exp     "
+echo -e "     ${BICyan}[${BIWhite}8${BICyan}] Auto Kill user SSH    "
+echo -e "     ${BICyan}[${$COLOR1}9${BICyan}] Cek Member SSH"
+
+echo -e "     ${BICyan}[${$COLOR1}0${BICyan}] Back To Menu      "
+echo -e " $COLOR1└─────────────────────────────────────────────────────┘${NC}"
 echo -e "     ${BIYellow}Press x or [ Ctrl+C ] • To-${BIWhite}Exit${NC}"
 echo ""
 read -p " Select menu : " opt
 echo -e ""
 case $opt in
 1) clear ; usernew ;;
-2) clear ; del ;;
-3) clear ; renew;;
-4) clear ; cek ;;
-5) clear ; ceklim ;;
-6) clear ; autodel ;;
-7) clear ; autokill ;;
-8) clear ; member ;;
+2) clear ; trialssh ;;
+3) clear ; del ;;
+4) clear ; renew;;
+5) clear ; cek ;;
+6) clear ; ceklim ;;
+7) clear ; autodel ;;
+8) clear ; autokill ;;
+9) clear ; member ;;
 0) clear ; menu ;;
-x) exit ;;
 *) echo -e "" ; echo "Press any key to back on menu" ; sleep 1 ; menu ;;
 esac
