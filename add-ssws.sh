@@ -1,52 +1,17 @@
 #!/bin/bash
-
-BIBlack='\033[1;90m'      # Black
-BIRed='\033[1;91m'        # Red
-BIGreen='\033[1;92m'      # Green
-BIYellow='\033[1;93m'     # Yellow
-BIBlue='\033[1;94m'       # Blue
-BIPurple='\033[1;95m'     # Purple
-BICyan='\033[1;96m'       # Cyan
-BIWhite='\033[1;97m'      # White
-UWhite='\033[4;37m'       # White
-On_IPurple='\033[0;105m'  #
-On_IRed='\033[0;101m'
-IBlack='\033[0;90m'       # Black
-IRed='\033[0;91m'         # Red
-IGreen='\033[0;92m'       # Green
-IYellow='\033[0;93m'      # Yellow
-IBlue='\033[0;94m'        # Blue
-IPurple='\033[0;95m'      # Purple
-ICyan='\033[0;96m'        # Cyan
-IWhite='\033[0;97m'       # White
-NC='\e[0m'
-
-# // Export Color & Information
-export RED='\033[0;31m'
-export GREEN='\033[0;32m'
-export YELLOW='\033[0;33m'
-export BLUE='\033[0;34m'
-export PURPLE='\033[0;35m'
-export CYAN='\033[0;36m'
-export LIGHT='\033[0;37m'
-export NC='\033[0m'
-
-# // Export Banner Status Information
-export EROR="[${RED} EROR ${NC}]"
-export INFO="[${YELLOW} INFO ${NC}]"
-export OKEY="[${GREEN} OKEY ${NC}]"
-export PENDING="[${YELLOW} PENDING ${NC}]"
-export SEND="[${YELLOW} SEND ${NC}]"
-export RECEIVE="[${YELLOW} RECEIVE ${NC}]"
-
-# // Export Align
-export BOLD="\e[1m"
-export WARNING="${RED}\e[5m"
-export UNDERLINE="\e[4m"
+dateFromServer=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
+biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
+###########- COLOR CODE -##############
+colornow=$(cat /etc/arzvpn/theme/color.conf)
+NC="\e[0m"
+RED="\033[0;31m" 
+COLOR1="$(cat /etc/arzvpn/theme/$colornow | grep -w "TEXT" | cut -d: -f2|sed 's/ //g')"
+COLBG1="$(cat /etc/arzvpn/theme/$colornow | grep -w "BG" | cut -d: -f2|sed 's/ //g')"                    
+###########- END COLOR CODE -##########
 
 # // Exporting URL Host
-export Server_URL="raw.githubusercontent.com/kenDevXD/test/main"
-export Server1_URL="raw.githubusercontent.com/kenDevXD/limit/main"
+export Server_URL="raw.githubusercontent.com/arzvpn/proarz2/main"
+export Server1_URL="raw.githubusercontent.com/arzvpn/lim2/main"
 export Server_Port="443"
 export Server_IP="underfined"
 export Script_Mode="Stable"
@@ -123,7 +88,7 @@ fi
 tls="$(cat ~/log-install.txt | grep -w "Sodosok WS/GRPC" | cut -d: -f2|sed 's/ //g')"
 until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
 echo -e "\033[0;34mג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”\033[0m"
-echo -e "\\E[0;41;36m      Add Sodosok Ws/Grpc Account    \E[0m"
+echo -e "\\E[0;41;36m     Create Sodosok Ws/Grpc Account    \E[0m"
 echo -e "\033[0;34mג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”\033[0m"
 
 		read -rp "User: " -e user
@@ -132,7 +97,7 @@ echo -e "\033[0;34mג”ג”ג”ג”ג”ג”ג”ג”ג”
 		if [[ ${CLIENT_EXISTS} == '1' ]]; then
 clear
             echo -e "\033[0;34mג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”\033[0m"
-            echo -e "\\E[0;41;36m      Add Sodosok Ws/Grpc Account      \E[0m"
+            echo -e "\\E[0;41;36m     Create Sodosok Ws/Grpc Account      \E[0m"
             echo -e "\033[0;34mג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”\033[0m"
 			echo ""
 			echo "A client with the specified name was already created, please choose another name."
@@ -385,34 +350,27 @@ END
 systemctl restart xray > /dev/null 2>&1
 service cron restart > /dev/null 2>&1
 clear
-echo -e "\033[0;34mג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”\033[0m" | tee -a /etc/log-create-user.log
-echo -e "\\E[0;41;36m        Sodosok WS/GRPC Account    \E[0m" | tee -a /etc/log-create-user.log
-echo -e "\033[0;34mג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”\033[0m" | tee -a /etc/log-create-user.log
-echo -e "Remarks : ${user}" | tee -a /etc/log-create-user.log
-echo -e "Domain : ${domain}" | tee -a /etc/log-create-user.log
-echo -e "Port WS : ${tls}/80" | tee -a /etc/log-create-user.log
-echo -e "Port GRPC : ${tls}" | tee -a /etc/log-create-user.log
-echo -e "Password : ${uuid}" | tee -a /etc/log-create-user.log
-echo -e "Cipers : aes-128-gcm" | tee -a /etc/log-create-user.log
-echo -e "Network : ws/grpc" | tee -a /etc/log-create-user.log
-echo -e "Path : /ss-ws" | tee -a /etc/log-create-user.log
-echo -e "ServiceName : ss-grpc" | tee -a /etc/log-create-user.log
-echo -e "\033[0;34mג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”\033[0m" | tee -a /etc/log-create-user.log
-echo -e "Link WS TLS : ${sslinkws}" | tee -a /etc/log-create-user.log
-echo -e "\033[0;34mג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”\033[0m" | tee -a /etc/log-create-user.log
-echo -e "Link WS None TLS : ${nonsslinkws}" | tee -a /etc/log-create-user.log
-echo -e "\033[0;34mג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”\033[0m" | tee -a /etc/log-create-user.log
-echo -e "Link GRPC TLS : ${sslinkgrpc}" | tee -a /etc/log-create-user.log
-echo -e "\033[0;34mג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”\033[0m" | tee -a /etc/log-create-user.log
-echo -e "Link GRPC None TLS : ${nonsslinkgrpc}" | tee -a /etc/log-create-user.log
-echo -e "\033[0;34mג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”\033[0m" | tee -a /etc/log-create-user.log
-echo -e "Link JSON WS : http://${domain}:81/sodosokws-$user.txt" | tee -a /etc/log-create-user.log
-echo -e "\033[0;34mג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”\033[0m" | tee -a /etc/log-create-user.log
-echo -e "Link JSON gRPC : http://${domain}:81/sodosokgrpc-$user.txt" | tee -a /etc/log-create-user.log
-echo -e "\033[0;34mג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”\033[0m" | tee -a /etc/log-create-user.log
-echo -e "Expired On : $exp" | tee -a /etc/log-create-user.log
-echo -e "\033[0;34mג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”ג”\033[0m" | tee -a /etc/log-create-user.log
-echo "" | tee -a /etc/log-create-user.log
+echo -e "$COLOR1═════════════XRAY/SSWS══════════════${NC}"
+echo -e "$COLOR1════════════════════════════════════${NC}"
+echo -e "Remarks      : ${user}" 
+echo -e "Expired On   : $exp"  
+echo -e "Domain       : ${domain}"  
+echo -e "Port WS      : 443/80"  
+echo -e "Port  GRPC   : 443" 
+echo -e "Password     : ${uuid}"  
+echo -e "Cipers       : aes-128-gcm"  
+echo -e "Network      : ws/grpc"  
+echo -e "Path         : /ss-ws"  
+echo -e "ServiceName  : ss-grpc"  
+echo -e "$COLOR1════════════════════════════════════${NC}" 
+echo -e "Link TLS : "
+echo -e "${shadowsockslink}"  
+echo -e "$COLOR1════════════════════════════════════${NC} "
+echo -e "Link GRPC : "
+echo -e "${shadowsockslink1}"  
+echo -e "$COLOR1════════════════════════════════════${NC} "
+echo -e "$COLOR1 Enjoy our Arz Auto Script Service${NC}" 
+echo ""  
 read -n 1 -s -r -p "Press any key to back on menu"
 
 menu
