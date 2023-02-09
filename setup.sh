@@ -397,6 +397,12 @@ echo -e " \E[41;1;39m            >>> Install Xray <<<           \E[0m$NC"
 echo -e "$white\033[0;34m└─────────────────────────────────────────┘${NC}"
 sleep 1 
 wget -q https://raw.githubusercontent.com/arzvpn/Arzv2/main/tools/ins-xray.sh && chmod +x ins-xray.sh && ./ins-xray.sh
+#install ins-xray
+echo -e "$white\033[0;34m┌─────────────────────────────────────────┐${NC}"
+echo -e " \E[41;1;39m            >>> Install BR <<<           \E[0m$NC"
+echo -e "$white\033[0;34m└─────────────────────────────────────────┘${NC}"
+sleep 1 
+wget -q https://raw.githubusercontent.com/arzvpn/Arzv2/main/backup/set-br.sh && chmod +x set-br.sh && ./set-br.sh
 
 # // Download Data
 echo -e "${GREEN}Download Data${NC}"
@@ -443,11 +449,9 @@ chmod +x /usr/bin/menu-vmess
 chmod +x /usr/bin/menu-ss
 #chmod +x /usr/bin/menu-socks
 chmod +x /usr/bin/menu-trojan
-#chmod +x /usr/bin/menu-trgo
 chmod +x /usr/bin/menu-ssh
 chmod +x /usr/bin/menu-bckp
 chmod +x /usr/bin/menu
-#chmod +x /usr/bin/bckp
 chmod +x /usr/bin/wbm
 chmod +x /usr/bin/xp
 #chmod +x /usr/bin/update
@@ -510,7 +514,7 @@ else
 gg="AM"
 fi
 echo -e "[ ${green}Pleas Wait Update DB ${NC} ]"
-git clone https://github.com/kenDevXD/limit.git /root/limit/ &> /dev/null
+git clone https://github.com/arzvpn/lim2.git /root/limit/ &> /dev/null
 babu=$(cat /etc/.geovpn/license.key)
 echo -e "$babu $IP $Masa_Laku_License_Berlaku_Sampai" >> /root/limit/limit.txt
 cd /root/limit
