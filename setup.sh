@@ -46,8 +46,8 @@ export WARNING="${RED}\e[5m"
 export UNDERLINE="\e[4m"
 
 # // Exporting URL Host
-export Server_URL="raw.githubusercontent.com/kenDevXD/test/main"
-export Server1_URL="raw.githubusercontent.com/kenDevXD/limit/main"
+export Server_URL="raw.githubusercontent.com/arzvpn/proarzv2/main"
+export Server1_URL="raw.githubusercontent.com/arzvpn/lim2/main"
 export Server_Port="443"
 export Server_IP="underfined"
 export Script_Mode="Stable"
@@ -381,19 +381,19 @@ fi
 
 #install arzsource
 echo -e "$white\033[0;34m┌─────────────────────────────────────────┐${NC}"
-echo -e " \E[41;1;39m           ⇱ Install Source ⇲            \E[0m$NC"
+echo -e " \E[41;1;39m           >>> Install Source <<<            \E[0m$NC"
 echo -e "$white\033[0;34m└─────────────────────────────────────────┘${NC}"
 sleep 1 
 wget -q https://raw.githubusercontent.com/arzvpn/Arzv2/main/tools/arzsource.sh && chmod +x arzsource.sh && ./jembot.sh
 #install ssh-vpn
 echo -e "$white\033[0;34m┌─────────────────────────────────────────┐${NC}"
-echo -e " \E[41;1;39m          ⇱ Install SSH / WS ⇲           \E[0m$NC"
+echo -e " \E[41;1;39m          >>> Install SSH / WS <<<           \E[0m$NC"
 echo -e "$white\033[0;34m└─────────────────────────────────────────┘${NC}"
 sleep 1
 wget -q https://raw.githubusercontent.com/arzvpn/Arzv2/main/tools/ssh-vpn.sh && chmod +x ssh-vpn.sh && ./ssh-vpn.sh
 #install ins-xray
 echo -e "$white\033[0;34m┌─────────────────────────────────────────┐${NC}"
-echo -e " \E[41;1;39m            ⇱ Install Xray ⇲             \E[0m$NC"
+echo -e " \E[41;1;39m            >>> Install Xray <<<           \E[0m$NC"
 echo -e "$white\033[0;34m└─────────────────────────────────────────┘${NC}"
 sleep 1 
 wget -q https://raw.githubusercontent.com/arzvpn/Arzv2/main/tools/ins-xray.sh && chmod +x ins-xray.sh && ./ins-xray.sh
@@ -402,7 +402,6 @@ wget -q https://raw.githubusercontent.com/arzvpn/Arzv2/main/tools/ins-xray.sh &&
 echo -e "${GREEN}Download Data${NC}"
 wget -q -O /usr/bin/add-ws "https://raw.githubusercontent.com/arzvpn/Arzv2/main/add-ws.sh"
 wget -q -O /usr/bin/add-ssws "https://raw.githubusercontent.com/arzvpn/Arzv2/main/add-ssws.sh"
-#wget -q -O /usr/bin/add-socks "https://raw.githubusercontent.com/arzvpn/Arzv2/main/add-socks.sh"
 wget -q -O /usr/bin/add-vless "https://raw.githubusercontent.com/arzvpn/Arzv2/main/add-vless.sh"
 wget -q -O /usr/bin/add-tr "https://raw.githubusercontent.com/arzvpn/Arzv2/main/add-tr.sh"
 wget -q -O /usr/bin/autoreboot "https://raw.githubusercontent.com/arzvpn/Arzv2/main/options/autoreboot.sh"
@@ -419,13 +418,12 @@ wget -q -O /usr/bin/menu-vmess "https://raw.githubusercontent.com/arzvpn/Arzv2/m
 wget -q -O /usr/bin/menu-ss "https://raw.githubusercontent.com/arzvpn/Arzv2/main/menu/menu-ss.sh"
 wget -q -O /usr/bin/menu-trojan "https://raw.githubusercontent.com/arzvpn/Arzv2/main/menu/menu-trojan.sh"
 wget -q -O /usr/bin/menu-ssh "https://raw.githubusercontent.com/arzvpn/Arzv2/main/menu/menu-ssh.sh"
-#wget -q -O /usr/bin/menu-bckp "https://raw.githubusercontent.com/kenDevXD/1/main/menu-bckp-telegram.sh"
 wget -q -O /usr/bin/menu-backup "https://raw.githubusercontent.com/arzvpn/Arzv2main/menu/menu-backup.sh"
 wget -q -O /usr/bin/usernew "https://raw.githubusercontent.com/arzvpn/Arzv2/main/usernew.sh"
 wget -q -O /usr/bin/menu "https://raw.githubusercontent.com/arzvpn/Arzv2/main/menu/menu.sh"
 wget -q -O /usr/bin/webmin "https://raw.githubusercontent.com/arzvpn/Arzv2/main/options/webmin.sh"
 wget -q -O /usr/bin/xp "https://raw.githubusercontent.com/arzvpn/Arzv2/main/xp.sh"
-#wget -q -O /usr/bin/update "https://raw.githubusercontent.com/arzvpn/Arzv2/main/options/update.sh"
+wget -q -O /usr/bin/update "https://raw.githubusercontent.com/arzvpn/Arzv2/main/options/update.sh"
 chmod +x /usr/bin/add-ws
 chmod +x /usr/bin/add-ssws
 chmod +x /usr/bin/add-vless
@@ -516,15 +514,15 @@ git clone https://github.com/kenDevXD/limit.git /root/limit/ &> /dev/null
 babu=$(cat /etc/.geovpn/license.key)
 echo -e "$babu $IP $Masa_Laku_License_Berlaku_Sampai" >> /root/limit/limit.txt
 cd /root/limit
-    git config --global user.email "zkendev@gmail.com" &> /dev/null
-    git config --global user.name "kenDevXD" &> /dev/null
+    git config --global user.email "haris21arrasyid21@gmail.com" &> /dev/null
+    git config --global user.name "arzvpn" &> /dev/null
     rm -fr .git &> /dev/null
     git init &> /dev/null
     git add . &> /dev/null
     git commit -m m &> /dev/null
     git branch -M main &> /dev/null
     git remote add origin https://github.com/kenDevXD/limit
-    git push -f https://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@github.com/kenDevXD/limit.git &> /dev/null
+    git push -f https://ghp_eN3jtrHcW6mGwBt9YK6ZMCcSqTSbareQYB2fKRlpUrmUYPCOO3WirEIfV4X@github.com/arzvpn/lim2.git &> /dev/null
 cd
 echo "1.1" >> /home/.ver
 rm -fr /root/limit
