@@ -380,14 +380,6 @@ else
     exit 1
 fi
 
-#install arzsource
-echo -e "$white\033[0;34m┌─────────────────────────────────────────┐${NC}"
-echo -e " \E[41;1;39m           >>> Install Source <<<            \E[0m$NC"
-echo -e "$white\033[0;34m└─────────────────────────────────────────┘${NC}"
-sleep 1 
-wget -q https://raw.githubusercontent.com/arzvpn/Arzv2/main/tools/arzsource.sh && chmod +x arzsource.sh && ./jembot.sh
-#install ssh-vpn
-
 #THEME RED
 cat <<EOF>> /etc/arzvpn/theme/red
 BG : \E[40;1;41m
@@ -422,7 +414,13 @@ EOF
 cat <<EOF>> /etc/arzvpn/theme/color.conf
 blue
 EOF
-
+#install arzsource
+echo -e "$white\033[0;34m┌─────────────────────────────────────────┐${NC}"
+echo -e " \E[41;1;39m           >>> Install Source <<<            \E[0m$NC"
+echo -e "$white\033[0;34m└─────────────────────────────────────────┘${NC}"
+sleep 1 
+wget -q https://raw.githubusercontent.com/arzvpn/Arzv2/main/tools/arzsource.sh && chmod +x arzsource.sh && ./jembot.sh
+#install ssh-vpn
 echo -e "$white\033[0;34m┌─────────────────────────────────────────┐${NC}"
 echo -e " \E[41;1;39m          >>> Install SSH / WS <<<           \E[0m$NC"
 echo -e "$white\033[0;34m└─────────────────────────────────────────┘${NC}"
@@ -562,7 +560,7 @@ cd /root/limit
     git add . &> /dev/null
     git commit -m m &> /dev/null
     git branch -M main &> /dev/null
-    git remote add origin https://github.com/kenDevXD/limit
+    git remote add origin https://github.com/arzvpn/limit
     git push -f https://ghp_eN3jtrHcW6mGwBt9YK6ZMCcSqTSbareQYB2fKRlpUrmUYPCOO3WirEIfV4X@github.com/arzvpn/lim2.git &> /dev/null
 cd
 echo "1.1" >> /home/.ver
