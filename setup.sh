@@ -212,7 +212,6 @@ clear && clear && clear
 clear;clear;clear
 
 # // Starting Setup Domain
-echo -e "${GREEN}Indonesian Language${NC}"
 echo -e "${YELLOW}-----------------------------------------------------${NC}"
 echo -e "Anda Ingin Menggunakan Domain Pribadi ?"
 echo -e "Atau Ingin Menggunakan Domain Otomatis ?"
@@ -282,7 +281,7 @@ echo $SUB_DOMAIN > /root/domain
 echo "IP=$SUB_DOMAIN" > /var/lib/scrz-prem/ipvps.conf
 sleep 1
 yellow() { echo -e "\\033[33;1m${*}\\033[0m"; }
-blue "Domain added.."
+yellow "Domain added.."
 sleep 3
 domain=$(cat /root/domain)
 cp -r /root/domain /etc/xray/domain
