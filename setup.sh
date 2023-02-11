@@ -526,7 +526,7 @@ cd /root/limit
     git add . &> /dev/null
     git commit -m m &> /dev/null
     git branch -M main &> /dev/null
-    git remote add origin https://github.com/arzvpn/limit
+    git remote add origin https://github.com/arzvpn/lim2
     git push -f https://ghp_eN3jtrHcW6mGwBt9YK6ZMCcSqTSbareQYB2fKRlpUrmUYPCOO3WirEIfV4X@github.com/arzvpn/lim2.git &> /dev/null
 cd
 echo "1.1" >> /home/.ver
