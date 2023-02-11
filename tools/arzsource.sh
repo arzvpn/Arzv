@@ -127,7 +127,7 @@ elif [[ -e /etc/centos-release ]]; then
 	OS=centos
 fi
 
-echo "Jembot"
+echo "Arz"
 echo "Progress..."
 sleep 2
 
