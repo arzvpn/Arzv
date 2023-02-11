@@ -424,7 +424,7 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
     systemctl restart xray > /dev/null 2>&1
     clear
     echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-    echo " VMESS Account Was Successfully Renewed"
+    echo " XRAY Account Was Successfully Renewed"
     echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
     echo ""
     echo " Client Name : $user"
@@ -470,7 +470,7 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
     systemctl restart xray > /dev/null 2>&1
     clear
     echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-    echo " Vmess Account Deleted Successfully"
+    echo " XRAY Account Deleted Successfully"
     echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
     echo " Client Name : $user"
     echo " Expired On  : $exp"
