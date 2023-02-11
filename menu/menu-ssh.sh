@@ -540,9 +540,10 @@ read -n 1 -s -r -p "Press any key to back on menu"
 menu-ssh
 }
 clear
-echo -e "$COLOR1 ┌─────────────────────────────────────────────────────┐${NC}"
-echo -e "       ${BIWhite}${UWhite}SSH ${NC}"
-echo -e ""
+echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
+echo -e "$COLOR1│${NC} ${COLBG1}               • SSH PANEL MENU •              ${NC} $COLOR1│$NC"
+echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
+echo -e " $COLOR1┌───────────────────────────────────────────────┐${NC}
 echo -e "     ${BICyan}[${$COLOR1}1${BICyan}] Create SSH Account     "
 echo -e "     ${BICyan}[${$COLOR1}2${BICyan}] Trial SSH Acoount      "
 echo -e "     ${BICyan}[${$COLOR1}3${BICyan}] Delete SSH Acoount      "
@@ -554,7 +555,7 @@ echo -e "     ${BICyan}[${$COLOR1}8${BICyan}] Auto Kill user SSH    "
 echo -e "     ${BICyan}[${$COLOR1}9${BICyan}] Cek Member SSH"
 
 echo -e "     ${BICyan}[${$COLOR1}0${BICyan}] Back To Menu      "
-echo -e " $COLOR1└─────────────────────────────────────────────────────┘${NC}"
+echo -e " $COLOR1└───────────────────────────────────────────────┘${NC}"
 echo ""
 read -p " Select menu : " opt
 echo -e ""
