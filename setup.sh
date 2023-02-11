@@ -380,46 +380,12 @@ else
     exit 1
 fi
 
-#THEME RED
-cat <<EOF>> /etc/arzvpn/theme/red
-BG : \E[40;1;41m
-TEXT : \033[0;31m
-EOF
-#THEME BLUE
-cat <<EOF>> /etc/arzvpn/theme/blue
-BG : \E[40;1;44m
-TEXT : \033[0;34m
-EOF
-#THEME GREEN
-cat <<EOF>> /etc/arzvpn/theme/green
-BG : \E[40;1;42m
-TEXT : \033[0;32m
-EOF
-#THEME YELLOW
-cat <<EOF>> /etc/arzvpn/theme/yellow
-BG : \E[40;1;43m
-TEXT : \033[0;33m
-EOF
-#THEME MAGENTA
-cat <<EOF>> /etc/arzvpn/theme/magenta
-BG : \E[40;1;43m
-TEXT : \033[0;33m
-EOF
-#THEME CYAN
-cat <<EOF>> /etc/arzvpn/theme/cyan
-BG : \E[40;1;46m
-TEXT : \033[0;36m
-EOF
-#THEME CONFIG
-cat <<EOF>> /etc/arzvpn/theme/color.conf
-blue
-EOF
 #install arzsource
 echo -e "$white\033[0;34m┌─────────────────────────────────────────┐${NC}"
 echo -e " \E[41;1;39m           >>> Install Source <<<            \E[0m$NC"
 echo -e "$white\033[0;34m└─────────────────────────────────────────┘${NC}"
 sleep 1 
-wget -q https://raw.githubusercontent.com/arzvpn/Arzv2/main/tools/arzsource.sh && chmod +x arzsource.sh && ./jembot.sh
+wget -q https://raw.githubusercontent.com/arzvpn/Arzv2/main/tools/arzsource.sh && chmod +x arzsource.sh && ./arzsource.sh
 #install ssh-vpn
 echo -e "$white\033[0;34m┌─────────────────────────────────────────┐${NC}"
 echo -e " \E[41;1;39m          >>> Install SSH / WS <<<           \E[0m$NC"
