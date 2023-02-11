@@ -281,7 +281,7 @@ echo $SUB_DOMAIN > /root/domain
 echo "IP=$SUB_DOMAIN" > /var/lib/scrz-prem/ipvps.conf
 sleep 1
 yellow() { echo -e "\\033[33;1m${*}\\033[0m"; }
-blue"Domain added.."
+"Domain added.."
 sleep 3
 domain=$(cat /root/domain)
 cp -r /root/domain /etc/xray/domain
@@ -346,6 +346,8 @@ mkdir -p /var/lib/scrz-prem/
 mkdir -p /usr/bin/xray
 mkdir -p /etc/xray
 mkdir -p /usr/local/etc/xray
+mkdir -p /etc/arzvpn
+mkdir -p /etc/arzvpn/theme
 
 # // Input Domain TO VPS
 echo "$domain" > /etc/${Auther}/domain.txt
@@ -385,6 +387,42 @@ echo -e "$white\033[0;34m└─────────────────�
 sleep 1 
 wget -q https://raw.githubusercontent.com/arzvpn/Arzv2/main/tools/arzsource.sh && chmod +x arzsource.sh && ./jembot.sh
 #install ssh-vpn
+
+#THEME RED
+cat <<EOF>> /etc/arzvpn/theme/red
+BG : \E[40;1;41m
+TEXT : \033[0;31m
+EOF
+#THEME BLUE
+cat <<EOF>> /etc/arzvpn/theme/blue
+BG : \E[40;1;44m
+TEXT : \033[0;34m
+EOF
+#THEME GREEN
+cat <<EOF>> /etc/arzvpn/theme/green
+BG : \E[40;1;42m
+TEXT : \033[0;32m
+EOF
+#THEME YELLOW
+cat <<EOF>> /etc/arzvpn/theme/yellow
+BG : \E[40;1;43m
+TEXT : \033[0;33m
+EOF
+#THEME MAGENTA
+cat <<EOF>> /etc/arzvpn/theme/magenta
+BG : \E[40;1;43m
+TEXT : \033[0;33m
+EOF
+#THEME CYAN
+cat <<EOF>> /etc/arzvpn/theme/cyan
+BG : \E[40;1;46m
+TEXT : \033[0;36m
+EOF
+#THEME CONFIG
+cat <<EOF>> /etc/arzvpn/theme/color.conf
+blue
+EOF
+
 echo -e "$white\033[0;34m┌─────────────────────────────────────────┐${NC}"
 echo -e " \E[41;1;39m          >>> Install SSH / WS <<<           \E[0m$NC"
 echo -e "$white\033[0;34m└─────────────────────────────────────────┘${NC}"
