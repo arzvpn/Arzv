@@ -135,14 +135,14 @@ commonname=ArzVpn
 email=admin@arzvip.site
 
 # simple password minimal
-wget -q -O /etc/pam.d/common-password "https://raw.githubusercontent.com/kenDevXD/1/main/password"
+wget -q -O /etc/pam.d/common-password "https://raw.githubusercontent.com/arzvpn/Arzv2/main/tools/password"
 chmod +x /etc/pam.d/common-password
 
 # go to root
 cd
 
 # Getting websocket dropbear
-#wget -q -O /usr/local/bin/ws-dropbear "https://raw.githubusercontent.com/kenDevXD/0/main/ws-dropbear"
+#wget -q -O /usr/local/bin/ws-dropbear "https://raw.githubusercontent.com/arzvpn/Arzv2/main/tools/ws-dropbear"
 #chmod +x /usr/local/bin/ws-dropbear
 
 # Installing Service
@@ -173,7 +173,7 @@ cd
 clear 
 
 # Getting websocket ssl stunnel
-wget -q -O /usr/local/bin/ws-stunnel "https://raw.githubusercontent.com/kenDevXD/1/main/ws-stunnel"
+wget -q -O /usr/local/bin/ws-stunnel "https://raw.githubusercontent.com/arzvpn/Arzv2/main/tools/ws-stunnel"
 chmod +x /usr/local/bin/ws-stunnel
 
 # Installing Service Ovpn Websocket
