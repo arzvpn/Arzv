@@ -417,7 +417,7 @@ wget -q -O /usr/bin/tendang "https://raw.githubusercontent.com/arzvpn/Arzv2/main
 wget -q -O /usr/bin/clearlog "https://raw.githubusercontent.com/arzvpn/Arzv2/main/options/clearlog.sh"
 wget -q -O /usr/bin/running "https://raw.githubusercontent.com/arzvpn/Arzv2/main/options/running.sh"
 wget -q -O /usr/bin/cek-trafik "https://raw.githubusercontent.com/arzvpn/Arzv2/main/options/cek-trafik.sh"
-wget -q -O /usr/bin/cek-speed "https://raw.githubusercontent.com/arzvpn/Arzv2/main/options/speedtes_cli.py"
+wget -q -O /usr/bin/speedtest "https://raw.githubusercontent.com/arzvpn/Arzv2/main/options/speedtest_cli.py"
 wget -q -O /usr/bin/cek-bandwidth "https://raw.githubusercontent.com/arzvpn/Arzv2/main/options/cek-bandwidth.sh"
 wget -q -O /usr/bin/limitspeed "https://raw.githubusercontent.com/arzvpn/Arzv2/main/options/limitspeed.sh"
 wget -q -O /usr/bin/menu-vless "https://raw.githubusercontent.com/arzvpn/Arzv2/main/menu/menu-vless.sh"
@@ -443,7 +443,7 @@ chmod +x /usr/bin/tendang
 chmod +x /usr/bin/clearlog
 chmod +x /usr/bin/running
 chmod +x /usr/bin/cek-trafik
-chmod +x /usr/bin/cek-speed
+chmod +x /usr/bin/speedtest
 chmod +x /usr/bin/cek-bandwidth
 chmod +x /usr/bin/limit-speed
 chmod +x /usr/bin/menu-vless
