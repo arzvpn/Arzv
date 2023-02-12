@@ -354,23 +354,29 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
     fi
 }
 clear
-echo -e "${BICyan} ┌─────────────────────────────────────────────────────┐${NC}"
-echo -e "       ${BIWhite}${UWhite}Trojan ${NC}"
-echo -e ""
-echo -e "     ${BICyan}[${BIWhite}1${BICyan}] Add Account Trojan      "
-echo -e "     ${BICyan}[${BIWhite}2${BICyan}] Delete Account Trojan      "
-echo -e "     ${BICyan}[${BIWhite}3${BICyan}] Renew Account Trojan      "
-echo -e "     ${BICyan}[${BIWhite}4${BICyan}] Cek User XRAY     "
-echo -e " ${BICyan}└─────────────────────────────────────────────────────┘${NC}"
-echo -e "     ${BIYellow}Press x or [ Ctrl+C ] • To-${BIWhite}Exit${NC}"
+echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
+echo -e "$COLOR1│${NC} ${COLBG1}                 •TROJAN MENU•                ${NC} $COLOR1│$NC"
+echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
+echo -e " $COLOR1┌───────────────────────────────────────────────┐${NC}"
+echo -e "     ${BICyan}[${BIWhite}1${BICyan}] Create Trojan Account      "
+echo -e "     ${BICyan}[${BIWhite}2${BICyan}] Trial Trojan Account      "
+echo -e "     ${BICyan}[${BIWhite}3${BICyan}] Delete Account Trojan      "
+echo -e "     ${BICyan}[${BIWhite}4${BICyan}] Renew Account Trojan      "
+echo -e "     ${BICyan}[${BIWhite}5${BICyan}] Cek User Active XRAY     "
+echo -e "     ${BICyan}[${BIWhite}6${BICyan}] Cek Detail Trojan      "
+
+
+echo -e " ${BICyan}└──────────────────────────────────────────────┘${NC}"
 echo ""
 read -p " Select menu : " opt
 echo -e ""
 case $opt in
 1) clear ; add-tr ;;
-2) clear ; delws ;;
-3) clear ; renewws;;
-4) clear ; cekws ;;
+2) clear ; trialtrojan ;;
+3) clear ; delws ;;
+4) clear ; renewws;;
+5) clear ; cekws ;;
+6) clear ; detailtrojan ;;
 0) clear ; menu ;;
 x) exit ;;
 *) echo -e "" ; echo "Press any key to back on menu" ; sleep 1 ; menu ;;
