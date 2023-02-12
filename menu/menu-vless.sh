@@ -310,10 +310,11 @@ clear
 echo -e "${BICyan} ┌─────────────────────────────────────────────────────┐${NC}"
 echo -e "       ${BIWhite}${UWhite}Vless${NC}"
 echo -e ""
-echo -e "     ${BICyan}[${BIWhite}1${BICyan}] Add Account Vless     "
-echo -e "     ${BICyan}[${BIWhite}2${BICyan}] Delete Account Vless     "
-echo -e "     ${BICyan}[${BIWhite}3${BICyan}] Renew Account Vless     "
-echo -e "     ${BICyan}[${BIWhite}4${BICyan}] Cek User XRAY     "
+echo -e "     ${BICyan}[${BIWhite}1${BICyan}] Create Vless Account     "
+echo -e "     ${BICyan}[${BIWhite}2${BICyan}] Trial Vless Acoount     "
+echo -e "     ${BICyan}[${BIWhite}3${BICyan}] Delete Account Vless     "
+echo -e "     ${BICyan}[${BIWhite}4${BICyan}] Renew Account Vless     "
+echo -e "     ${BICyan}[${BIWhite}5${BICyan}] Cek User XRAY     "
 echo -e " ${BICyan}└─────────────────────────────────────────────────────┘${NC}"
 echo -e "     ${BIYellow}Press x or [ Ctrl+C ] • To-${BIWhite}Exit${NC}"
 echo ""
@@ -321,9 +322,10 @@ read -p " Select menu : " opt
 echo -e ""
 case $opt in
 1) clear ; add-vless ;;
-2) clear ; delws ;;
-3) clear ; renewws;;
-4) clear ; cekws ;;
+2) clear ; trialvless ;;
+3) clear ; delws;;
+4) clear ; renewws ;;
+5) clear ; cekws;;
 0) clear ; menu ;;
 x) exit ;;
 *) echo -e "" ; echo "Press any key to back on menu" ; sleep 1 ; menu ;;
