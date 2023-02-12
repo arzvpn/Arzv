@@ -125,7 +125,6 @@ echo -e "[ ${green}INFO${NC} ] Downloading files... "
 wget -q -O /usr/bin/backup "https://raw.githubusercontent.com/arzvpn/Arzv2/main/backup/backup.sh" && chmod +x /usr/bin/backup
 #wget -q -O /usr/bin/autobackup "https://raw.githubusercontent.com/arzvpn/arzxray/main/autobackup/autobackup.sh" && chmod +x /usr/bin/autobackup
 wget -q -O /usr/bin/restore "https://raw.githubusercontent.com/arzvpn/Arzv2/main/backup/restore.sh" && chmod +x /usr/bin/restore
-fi
 
 service cron restart > /dev/null 2>&1
 
