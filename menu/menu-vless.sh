@@ -375,16 +375,19 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
     fi
 }
 clear
-echo -e "${BICyan} ┌─────────────────────────────────────────────────────┐${NC}"
-echo -e "       ${BIWhite}${UWhite}Vless${NC}"
-echo -e ""
+echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
+echo -e "$COLOR1│${NC} ${COLBG1}                 • VLESS MENU •                ${NC} $COLOR1│$NC"
+echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
+echo -e " $COLOR1┌───────────────────────────────────────────────┐${NC}"
 echo -e "     ${BICyan}[${BIWhite}1${BICyan}] Create Vless Account     "
 echo -e "     ${BICyan}[${BIWhite}2${BICyan}] Trial Vless Acoount     "
 echo -e "     ${BICyan}[${BIWhite}3${BICyan}] Delete Account Vless     "
 echo -e "     ${BICyan}[${BIWhite}4${BICyan}] Renew Account Vless     "
-echo -e "     ${BICyan}[${BIWhite}5${BICyan}] Cek User XRAY     "
-echo -e " ${BICyan}└─────────────────────────────────────────────────────┘${NC}"
-echo -e "     ${BIYellow}Press x or [ Ctrl+C ] • To-${BIWhite}Exit${NC}"
+echo -e "     ${BICyan}[${BIWhite}5${BICyan}] Cek User Active XRAY     "
+echo -e "     ${BICyan}[${BIWhite}6${BICyan}] Detail Account Vless     "
+
+echo -e "     ${BICyan}[${BIWhite}0${BICyan}] Back To Menu     "
+echo -e " $COLOR1└──────────────────────────────────────────────┘${NC}"
 echo ""
 read -p " Select menu : " opt
 echo -e ""
@@ -394,6 +397,7 @@ case $opt in
 3) clear ; delws;;
 4) clear ; renewws ;;
 5) clear ; cekws;;
+6) clear ; detailvless;;
 0) clear ; menu ;;
 x) exit ;;
 *) echo -e "" ; echo "Press any key to back on menu" ; sleep 1 ; menu ;;
