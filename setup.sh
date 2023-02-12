@@ -431,6 +431,7 @@ wget -q -O /usr/bin/menu "https://raw.githubusercontent.com/arzvpn/Arzv2/main/me
 wget -q -O /usr/bin/webmin "https://raw.githubusercontent.com/arzvpn/Arzv2/main/options/webmin.sh"
 wget -q -O /usr/bin/xp "https://raw.githubusercontent.com/arzvpn/Arzv2/main/xp.sh"
 wget -q -O /usr/bin/update "https://raw.githubusercontent.com/arzvpn/Arzv2/main/options/update.sh"
+wget -q -O /usr/bin/menu-theme "https://raw.githubusercontent.com/arzvpn/Arzv2/main/menu/menu-theme.sh"
 chmod +x /usr/bin/add-ws
 chmod +x /usr/bin/add-ssws
 chmod +x /usr/bin/add-vless
@@ -448,14 +449,14 @@ chmod +x /usr/bin/limit-speed
 chmod +x /usr/bin/menu-vless
 chmod +x /usr/bin/menu-vmess
 chmod +x /usr/bin/menu-ss
-#chmod +x /usr/bin/menu-socks
 chmod +x /usr/bin/menu-trojan
 chmod +x /usr/bin/menu-ssh
-chmod +x /usr/bin/menu-bckp
+chmod +x /usr/bin/menu-backup
 chmod +x /usr/bin/menu
 chmod +x /usr/bin/wbm
 chmod +x /usr/bin/xp
-#chmod +x /usr/bin/update
+chmod +x /usr/bin/update
+chmod +x /usr/bin/menu-theme
 
 #cat > /etc/cron.d/re_otm <<-END
 #SHELL=/bin/sh
