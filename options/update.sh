@@ -145,7 +145,7 @@ clear
 echo -e ""
 echo -e "\e[0;32mDownloaded successfully!\e[0m"
 echo ""
-ver=$( curl https://raw.githubusercontent.com/${GitUser}/Arzv2/main/version.conf )
+ver=$( curl https://raw.githubusercontent.com/${GitUser}/Arzv2/main/version )
 sleep 1
 echo -e "\e[0;32mPatching New Update, Please Wait...\e[0m"
 echo ""
