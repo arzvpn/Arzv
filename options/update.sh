@@ -28,7 +28,7 @@ Info1="${Green_font_prefix}($version)${Font_color_suffix}"
 Info2="${Green_font_prefix}(LATEST VERSION)${Font_color_suffix}"
 Error="Version ${Green_font_prefix}[$ver]${Font_color_suffix} available${Red_font_prefix}[Please Update]${Font_color_suffix}"
 version=$(cat /home/ver)
-new_version=$( curl https://raw.githubusercontent.com/${GitUser}/permission/main/version | grep $version )
+new_version=$( curl https://raw.githubusercontent.com/${GitUser}/Arzv2/main/newversion | grep $version )
 #Status Version
 if [ $version = $new_version ]; then
 sts="${Info2}"
@@ -55,7 +55,7 @@ read -p "PPlease Choose 1 or x : " option2
 case $option2 in
 1)
 version=$(cat /home/ver)
-new_version=$( curl https://raw.githubusercontent.com/${GitUser}/Arzv2/main/version | grep $version )
+new_version=$( curl https://raw.githubusercontent.com/${GitUser}/Arzv2/main/newversion | grep $version )
 if [ $version = $new_version ]; then
 clear
 echo ""
@@ -145,7 +145,7 @@ clear
 echo -e ""
 echo -e "\e[0;32mDownloaded successfully!\e[0m"
 echo ""
-ver=$( curl https://raw.githubusercontent.com/${GitUser}/version/main/version.conf )
+ver=$( curl https://raw.githubusercontent.com/${GitUser}/Arzv2/main/version.conf )
 sleep 1
 echo -e "\e[0;32mPatching New Update, Please Wait...\e[0m"
 echo ""
