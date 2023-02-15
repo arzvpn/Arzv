@@ -145,16 +145,6 @@ touch /home/limit
 echo "" > /root/log-limit.txt
 echo "" > /root/log-reboot.txt
 
-# Install Wondershaper
-cd /root/
-apt install wondershaper -y
-git clone https://github.com/magnific0/wondershaper.git >/dev/null 2>&1
-cd wondershaper
-make install
-cd
-rm -fr /root/wondershaper
-echo > /home/limit
-
 # nginx for debian & ubuntu
 install_ssl(){
     if [ -f "/usr/bin/apt-get" ];then
