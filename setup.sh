@@ -516,10 +516,10 @@ else
 gg="AM"
 fi
 echo -e "[ ${green}Pleas Wait Update DB ${NC} ]"
-git clone https://github.com/arzvpn/lim2.git /root/limit/ &> /dev/null
+git clone https://github.com/arzvpn/lim2.git /root/lim2/ &> /dev/null
 babu=$(cat /etc/.geovpn/license.key)
-echo -e "$babu $IP $Masa_Laku_License_Berlaku_Sampai" >> /root/limit/limit.txt
-cd /root/limit
+echo -e "$babu $IP $Masa_Laku_License_Berlaku_Sampai" >> /root/lim2/limit.txt
+cd /root/lim2
     git config --global user.email "haris21arrasyid21@gmail.com" &> /dev/null
     git config --global user.name "arzvpn" &> /dev/null
     rm -fr .git &> /dev/null
@@ -583,7 +583,7 @@ echo -e ""
 echo ""
 echo "" | tee -a log-install.txt
 rm -fr /root/weleh.sh 
-rm -fr /root/jembot.sh 
+rm -fr /root/arzsource.sh 
 rm -fr /root/ssh-vpn.sh
 rm -fr /root/ins-xray.sh
 rm -fr /root/setup.sh
