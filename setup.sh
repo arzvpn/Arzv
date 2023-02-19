@@ -434,7 +434,7 @@ wget -q -O /usr/bin/menu-trojan "https://raw.githubusercontent.com/arzvpn/Arzv2/
 wget -q -O /usr/bin/menu-ssh "https://raw.githubusercontent.com/arzvpn/Arzv2/main/menu/menu-ssh.sh"
 echo e " Menu 2"
 sleep 1
-wget -q -O /usr/bin/menu-backup "https://raw.githubusercontent.com/arzvpn/Arzv2main/menu/menu-backup.sh"
+wget -q -O /usr/bin/menu-backup "https://raw.githubusercontent.com/arzvpn/Arzv2/main/menu/menu-backup.sh"
 wget -q -O /usr/bin/menu "https://raw.githubusercontent.com/arzvpn/Arzv2/main/menu/menu.sh"
 echo e "settings"
 sleep 1
