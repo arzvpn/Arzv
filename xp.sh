@@ -44,7 +44,7 @@ export WARNING="${RED}\e[5m"
 export UNDERLINE="\e[4m"
 
 # // Exporting URL Host
-export Server_URL="raw.githubusercontent.com/arzvpn/proarz2/main"
+export Server_URL="raw.githubusercontent.com/arzvpn/proarzv2/main"
 export Server1_URL="raw.githubusercontent.com/arzvpn/lim2/main"
 export Server_Port="443"
 export Server_IP="underfined"
