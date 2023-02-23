@@ -346,8 +346,6 @@ mkdir -p /var/lib/scrz-prem/
 mkdir -p /usr/bin/xray
 mkdir -p /etc/xray
 mkdir -p /usr/local/etc/xray
-mkdir -p /etc/arzvpn
-mkdir -p /etc/arzvpn/theme
 
 # // Input Domain TO VPS
 echo "$domain" > /etc/${Auther}/domain.txt
@@ -380,41 +378,6 @@ else
     exit 1
 fi
 
-#THEME RED
-cat <<EOF>> /etc/arzvpn/theme/red
-BG : \E[40;1;41m
-TEXT : \033[0;31m
-EOF
-#THEME BLUE
-cat <<EOF>> /etc/arzvpn/theme/blue
-BG : \E[40;1;44m
-TEXT : \033[0;34m
-EOF
-#THEME GREEN
-cat <<EOF>> /etc/arzvpn/theme/green
-BG : \E[40;1;42m
-TEXT : \033[0;32m
-EOF
-#THEME YELLOW
-cat <<EOF>> /etc/arzvpn/theme/yellow
-BG : \E[40;1;43m
-TEXT : \033[0;33m
-EOF
-#THEME MAGENTA
-cat <<EOF>> /etc/arzvpn/theme/magenta
-BG : \E[40;1;43m
-TEXT : \033[0;33m
-EOF
-#THEME CYAN
-cat <<EOF>> /etc/arzvpn/theme/cyan
-BG : \E[40;1;46m
-TEXT : \033[0;36m
-EOF
-#THEME CONFIG
-cat <<EOF>> /etc/arzvpn/theme/color.conf
-blue
-EOF
-
 #install arzsource
 echo -e "┌─────────────────────────────────────────┐"
 echo -e " \E[41;1;39m           >>> Install Source <<<            \E[0m$NC"
@@ -442,15 +405,11 @@ wget -q https://raw.githubusercontent.com/arzvpn/Arzv2/main/backup/set-br.sh && 
 
 # // Download Data
 echo -e "${GREEN}Download Data${NC}"
-echo -e "ADD"
-sleep 1
 wget -q -O /usr/bin/usernew "https://raw.githubusercontent.com/arzvpn/Arzv2/main/usernew.sh"
 wget -q -O /usr/bin/add-ws "https://raw.githubusercontent.com/arzvpn/Arzv2/main/add-ws.sh"
 wget -q -O /usr/bin/add-ssws "https://raw.githubusercontent.com/arzvpn/Arzv2/main/add-ssws.sh"
 wget -q -O /usr/bin/add-vless "https://raw.githubusercontent.com/arzvpn/Arzv2/main/add-vless.sh"
 wget -q -O /usr/bin/add-tr "https://raw.githubusercontent.com/arzvpn/Arzv2/main/add-tr.sh"
-echo -e "options"
-sleep 1
 wget -q -O /usr/bin/autoreboot "https://raw.githubusercontent.com/arzvpn/Arzv2/main/options/autoreboot.sh"
 wget -q -O /usr/bin/restart "https://raw.githubusercontent.com/arzvpn/Arzv2/main/options/restart.sh"
 wget -q -O /usr/bin/tendang "https://raw.githubusercontent.com/arzvpn/Arzv2/main/options/tendang.sh"
@@ -460,23 +419,16 @@ wget -q -O /usr/bin/cek-trafik "https://raw.githubusercontent.com/arzvpn/Arzv2/m
 wget -q -O /usr/bin/speedtest "https://raw.githubusercontent.com/arzvpn/Arzv2/main/tools/speedtest_cli.py"
 wget -q -O /usr/bin/cek-bandwidth "https://raw.githubusercontent.com/arzvpn/Arzv2/main/options/cek-bandwidth.sh"
 wget -q -O /usr/bin/limitspeed "https://raw.githubusercontent.com/arzvpn/Arzv2/main/options/limitspeed.sh"
-echo -e "Menu"
-sleep 1
 wget -q -O /usr/bin/menu-vless "https://raw.githubusercontent.com/arzvpn/Arzv2/main/menu/menu-vless.sh"
 wget -q -O /usr/bin/menu-vmess "https://raw.githubusercontent.com/arzvpn/Arzv2/main/menu/menu-vmess.sh"
 wget -q -O /usr/bin/menu-ss "https://raw.githubusercontent.com/arzvpn/Arzv2/main/menu/menu-ss.sh"
 wget -q -O /usr/bin/menu-trojan "https://raw.githubusercontent.com/arzvpn/Arzv2/main/menu/menu-trojan.sh"
 wget -q -O /usr/bin/menu-ssh "https://raw.githubusercontent.com/arzvpn/Arzv2/main/menu/menu-ssh.sh"
-echo e " Menu 2"
-sleep 1
 wget -q -O /usr/bin/menu-backup "https://raw.githubusercontent.com/arzvpn/Arzv2/main/menu/menu-backup.sh"
 wget -q -O /usr/bin/menu "https://raw.githubusercontent.com/arzvpn/Arzv2/main/menu/menu.sh"
-echo e "settings"
-sleep 1
 wget -q -O /usr/bin/webmin "https://raw.githubusercontent.com/arzvpn/Arzv2/main/options/webmin.sh"
 wget -q -O /usr/bin/xp "https://raw.githubusercontent.com/arzvpn/Arzv2/main/xp.sh"
 wget -q -O /usr/bin/update "https://raw.githubusercontent.com/arzvpn/Arzv2/main/options/update.sh"
-wget -q -O /usr/bin/menu-theme "https://raw.githubusercontent.com/arzvpn/Arzv2/main/menu/menu-theme.sh"
 chmod +x /usr/bin/usernew
 chmod +x /usr/bin/add-ws
 chmod +x /usr/bin/add-ssws
@@ -501,7 +453,6 @@ chmod +x /usr/bin/menu
 chmod +x /usr/bin/webmin
 chmod +x /usr/bin/xp
 chmod +x /usr/bin/update
-chmod +x /usr/bin/menu-theme
 
 #cat > /etc/cron.d/re_otm <<-END
 #SHELL=/bin/sh
