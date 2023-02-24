@@ -1,13 +1,29 @@
 #!/bin/bash
-ateFromServer=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
-biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
-###########- COLOR CODE -##############
-colornow=$(cat /etc/arzvpn/theme/color.conf)
-NC="\e[0m"
-RED="\033[0;31m" 
-COLOR1="$(cat /etc/arzvpn/theme/$colornow | grep -w "TEXT" | cut -d: -f2|sed 's/ //g')"
-COLBG1="$(cat /etc/arzvpn/theme/$colornow | grep -w "BG" | cut -d: -f2|sed 's/ //g')"                    
-###########- END COLOR CODE -##########
+#Script By Arz
+
+BIBlack='\033[1;90m'      # Black
+BIRed='\033[1;91m'        # Red
+BIGreen='\033[1;92m'      # Green
+BIYellow='\033[1;93m'     # Yellow
+BIBlue='\033[1;94m'       # Blue
+BIPurple='\033[1;95m'     # Purple
+BICyan='\033[1;96m'       # Cyan
+BIWhite='\033[1;97m'      # White
+UWhite='\033[4;37m'       # White
+On_IPurple='\033[0;105m'  #
+On_IRed='\033[0;101m'
+IBlack='\033[0;90m'       # Black
+IRed='\033[0;91m'         # Red
+IGreen='\033[0;92m'       # Green
+IYellow='\033[0;93m'      # Yellow
+IBlue='\033[0;94m'        # Blue
+IPurple='\033[0;95m'      # Purple
+ICyan='\033[0;96m'        # Cyan
+IWhite='\033[0;97m'       # White
+NC='\e[0m'
+green() { echo -e "\\033[32;1m${*}\\033[0m"; }
+red() { echo -e "\\033[31;1m${*}\\033[0m"; }
+
 
 # // Export Banner Status Information
 export EROR="[${RED} EROR ${NC}]"
@@ -97,22 +113,22 @@ domain=$IP
 fi
 tr="$(cat ~/log-install.txt | grep -w "Trojan WS " | cut -d: -f2|sed 's/ //g')"
 until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${user_EXISTS} == '0' ]]; do
-echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e "\E[0;41;36m       CREATE TROJAN ACCOUNT          \E[0m"
-echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+echo -e "\033[0;34m┌─────────────────────────────────────────────────┐\033[0m"
+echo -e "\E[0;41;36m               CREATE TROJAN ACCOUNT               \E[0m"
+echo -e "\033[0;34m└─────────────────────────────────────────────────┘\033[0m"
 
 		read -rp "User: " -e user
 		user_EXISTS=$(grep -w $user /etc/xray/config.json | wc -l)
 		
 		if [[ ${user_EXISTS} == '1' ]]; then
 clear
-		echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-		echo -e "\E[0;41;36m       CREATE TROJAN ACCOUNT          \E[0m"
-		echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+		echo -e "\033[0;34m┌─────────────────────────────────────────────────┐\033[0m"
+		echo -e "\E[0;41;36m               CREATE TROJAN ACCOUNT               \E[0m"
+		echo -e "\033[0;34m└─────────────────────────────────────────────────┘\033[0m"
 			echo ""
 			echo "A client with the specified name was already created, please choose another name."
 			echo ""
-			echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+			echo -e "${BIBlue}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
 			read -n 1 -s -r -p "Press any key to back on menu"
 			trojan-menu
 		fi
@@ -130,8 +146,7 @@ systemctl restart xray
 trojanlink="trojan://${uuid}@${domain}:${tr}?path=%2Ftrojan-ws&security=tls&host=bug.com&type=ws&sni=bug.com#${user}"
 trojanlink1="trojan://${uuid}@${domain}:${tr}?mode=gun&security=tls&type=grpc&serviceName=trojan-grpc&sni=bug.com#${user}"
 clear
-echo -e "$COLOR1════════════XRAY/TROJANWS════════════${NC}"
-echo -e "\033[0;34m════════════════════════════════════\033[0m"
+echo -e "${BIBlue}════════════XRAY/TROJANWS════════════${NC}"
 echo -e "Remarks     : ${user}" 
 echo -e "Expired On  : $exp" 
 echo -e "Host/IP     : ${domain}" 
@@ -140,14 +155,14 @@ echo -e "Key         : ${uuid}"
 echo -e "Path        : /trojan-ws"
 echo -e "Path WSS    : wss://yourbug/trojan-ws" 
 echo -e "ServiceName : trojan-grpc" 
-echo -e "$COLOR1════════════════════════════════════${NC}"
+echo -e "${BIBlue}════════════════════════════════════${NC}"
 echo -e "Link WS : "
 echo -e "${trojanlink}" 
-echo -e "$COLOR1════════════════════════════════════${NC} "
+echo -e "${BIBlue}════════════════════════════════════${NC} "
 echo -e "Link GRPC : "
 echo -e "${trojanlink1}"
-echo -e "$COLOR1════════════════════════════════════${NC}" 
-echo -e "$COLOR1 Enjoy our Arz Auto Script Service${NC}" 
+echo -e "${BIBlue}════════════════════════════════════${NC}" 
+echo -e "${BICyan} Enjoy our Arz Auto Script Service${NC}" 
 echo "" 
 read -n 1 -s -r -p "Press any key to back on menu"
 
