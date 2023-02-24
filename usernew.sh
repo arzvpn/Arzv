@@ -1,15 +1,5 @@
 #!/bin/bash
 
-dateFromServer=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
-biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
-###########- COLOR CODE -##############
-colornow=$(cat /etc/arzvpn/theme/color.conf)
-NC="\e[0m"
-RED="\033[0;31m" 
-COLOR1="$(cat /etc/arzvpn/theme/$colornow | grep -w "TEXT" | cut -d: -f2|sed 's/ //g')"
-COLBG1="$(cat /etc/arzvpn/theme/$colornow | grep -w "BG" | cut -d: -f2|sed 's/ //g')"                    
-###########- END COLOR CODE -##########
-
 # // Export Banner Status Information
 export EROR="[${RED} EROR ${NC}]"
 export INFO="[${YELLOW} INFO ${NC}]"
@@ -128,33 +118,33 @@ echo -e "$Pass\n$Pass\n"|passwd $Login &> /dev/null
 PID=`ps -ef |grep -v grep | grep sshws |awk '{print $2}'`
 
 if [[ ! -z "${PID}" ]]; then
-echo -e "$COLOR1═════════════SSH ACCOUNTS═══════════${NC}"
-echo -e "$COLOR1════════════════════════════════════${NC}"
+echo -e "${BIBlue}═════════════SSH ACCOUNTS═══════════${NC}"
+echo -e "${BIBlue}════════════════════════════════════${NC}"
 echo -e "Username   : $Login" 
 echo -e "Password   : $Pass"
 echo -e "Expired On : $exp" 
-echo -e "$COLOR1════════════════════════════════════${NC}"
+echo -e "${BIBlue}════════════════════════════════════${NC}"
 echo -e "IP         : $IP" 
 echo -e "Host       : $domen" 
 echo -e "OpenSSH    : $opensh"
 echo -e "Dropbear   : $db" 
 echo -e "SSH-WS     : $portsshws" 
-echo -e "SSH-SSL-WS : $wsssl" 
+echo -e "SSH WS SSL : $wsssl" 
 echo -e "SSL/TLS    : $ssl" 
 echo -e "UDPGW      : 7100-7300" 
-echo -e "$COLOR1════════════════════════════════════${NC}"
+echo -e "${BIBlue}════════════════════════════════════${NC}"
 echo -e "GET / HTTP/1.1[crlf]Host: $domen[crlf]Connection: Keep-Alive[crlf]User-Agent: [ua][crlf]Upgrade: ws[crlf][crlf]"
-echo -e "$COLOR1════════════════════════════════════${NC}"
-echo -e "$COLOR1 Enjoy our Arz Auto Script Service${NC}" 
+echo -e "${BIBlue}════════════════════════════════════${NC}"
+echo -e "${BICyan} Enjoy our Arz Auto Script Service${NC}" 
 
 else
 
-echo -e "$COLOR1═════════════SSH ACCOUNTS═══════════${NC}"
-echo -e "$COLOR1════════════════════════════════════${NC}"
+echo -e "${BIBlue}═════════════SSH ACCOUNTS═══════════${NC}"
+echo -e "${BIBlue}════════════════════════════════════${NC}"
 echo -e "Username   : $Login" 
 echo -e "Password   : $Pass"
 echo -e "Expired On : $exp" 
-echo -e "$COLOR1════════════════════════════════════${NC}"
+echo -e "${BIBlue}════════════════════════════════════${NC}"
 echo -e "IP         : $IP" 
 echo -e "Host       : $domen" 
 echo -e "OpenSSH    : $opensh"
@@ -163,10 +153,10 @@ echo -e "SSH-WS     : $portsshws"
 echo -e "SSH-SSL-WS : $wsssl" 
 echo -e "SSL/TLS    : $ssl" 
 echo -e "UDPGW      : 7100-7300" 
-echo -e "$COLOR1════════════════════════════════════${NC}"
+echo -e "${BIBlue}════════════════════════════════════${NC}"
 echo -e "GET / HTTP/1.1[crlf]Host: $domen[crlf]Connection: Keep-Alive[crlf]User-Agent: [ua][crlf]Upgrade: ws[crlf][crlf]"
-echo -e "$COLOR1════════════════════════════════════${NC}"
-echo -e "$COLOR1 Enjoy our Arz Auto Script Service${NC}" 
+echo -e "${BIBlue}════════════════════════════════════${NC}"
+echo -e "${BICyan} Enjoy our Arz Auto Script Service${NC}" 
 fi
 echo "" | tee -a /etc/log-create-user.log
 read -n 1 -s -r -p "Press any key to back on menu"
