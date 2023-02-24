@@ -35,4 +35,4 @@ echo > /var/log/syslog
 echo > /var/log/btmp
 echo > /var/log/messages
 echo > /var/log/debug
-echo -e "DONE DOSA SUDAH DI HAPUS"
+echo -e "LOG BERHASIL DI HAPUS"
