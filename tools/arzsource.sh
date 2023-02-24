@@ -146,6 +146,6 @@ rm -f /root/vnstat-2.6.tar.gz >/dev/null 2>&1
 rm -rf /root/vnstat-2.6 >/dev/null 2>&1
 
 yellow() { echo -e "\\033[33;1m${*}\\033[0m"; }
-yellow "ArzSource successfully installed..."
+yellow "Source successfully installed..."
 sleep 3
 clear
