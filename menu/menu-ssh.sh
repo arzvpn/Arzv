@@ -191,7 +191,7 @@ menu-ssh
 function del(){
 clear
 echo -e "${BIBlue}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e "\E[0;41;36m                DELETE USER                ${NC}"
+echo -e "\E[0;41;36m                DELETE USER                \E[0m"
 echo -e "${BIBlue}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"  
 echo ""
 read -p "Username SSH to Delete : " Pengguna
@@ -211,7 +211,7 @@ function autodel(){
 clear
                hariini=`date +%d-%m-%Y`
                echo -e "${BIBlue}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-               echo -e "\E[0;41;36m                AUTO DELETE                ${NC}"
+               echo -e "\E[0;41;36m                AUTO DELETE                \E[0m"
                echo -e "${BIBlue}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"  
                echo "Thank you for removing the EXPIRED USERS"
                echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"  
