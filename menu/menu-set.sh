@@ -111,50 +111,46 @@ else
     echo $sisa_hari > /etc/${Auther}/license-remaining-active-days.db
 fi
 
-# // Clear
 clear
-clear && clear && clear
-clear;clear;clear
-cek=$(service ssh status | grep active | cut -d ' ' -f5)
-if [ "$cek" = "active" ]; then
-stat=-f5
-else
-stat=-f7
-fi
-ssh=$(service ssh status | grep active | cut -d ' ' $stat)
-if [ "$ssh" = "active" ]; then
-ressh="${green}ON${NC}"
-else
-ressh="${red}OFF${NC}"
-fi
-sshstunel=$(service stunnel5 status | grep active | cut -d ' ' $stat)
-if [ "$sshstunel" = "active" ]; then
-resst="${green}ON${NC}"
-else
-resst="${red}OFF${NC}"
-fi
-sshws=$(service ws-stunnel status | grep active | cut -d ' ' $stat)
-if [ "$sshws" = "active" ]; then
-ressshws="${green}ON${NC}"
-else
-ressshws="${red}OFF${NC}"
-fi
-ngx=$(service nginx status | grep active | cut -d ' ' $stat)
-if [ "$ngx" = "active" ]; then
-resngx="${green}ON${NC}"
-else
-resngx="${red}OFF${NC}"
-fi
-dbr=$(service dropbear status | grep active | cut -d ' ' $stat)
-if [ "$dbr" = "active" ]; then
-resdbr="${green}ON${NC}"
-else
-resdbr="${red}OFF${NC}"
-fi
-v2r=$(service xray status | grep active | cut -d ' ' $stat)
-if [ "$v2r" = "active" ]; then
-resv2r="${green}ON${NC}"
-else
-resv2r="${red}OFF${NC}"
-fi
+echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
+echo -e "$COLOR1│ $NC$COLBG1                 MENU SETTINGS                 $COLOR1 │$NC"
+echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
+echo -e " $COLOR1┌───────────────────────────────────────────────┐${NC}"
+echo -e " $COLOR1│$NC   ${COLOR1}[1]${NC}  • RUNNING(${COLOR1}running${NC})"
+echo -e " $COLOR1│$NC   ${COLOR1}[2]${NC}  • SET BANNER"
+echo -e " $COLOR1│$NC   ${COLOR1}[3]${NC}  • BANDWITH USAGE(${COLOR1}mbandwidth${NC})"
+echo -e " $COLOR1│$NC   ${COLOR1}[4]${NC}  • ANTI TORRENT $sts "
+echo -e " $COLOR1│$NC   ${COLOR1}[5]${NC}  • INSTALL TCP BBR(${COLOR1}menu-tcp${NC})"
+echo -e " $COLOR1│$NC   ${COLOR1}[6]${NC}  • RESTART(${COLOR1}restart${NC}) "
+echo -e " $COLOR1│$NC   ${COLOR1}[7]${NC}  • AUTO REBOOT(${COLOR1}autoboot${NC})"
+echo -e " $COLOR1│$NC   ${COLOR1}[8]${NC}  • REBOOT(${COLOR1}reboot${NC})"
+echo -e " $COLOR1│$NC   ${COLOR1}[9]${NC}  • SPEEDTEST(${COLOR1}speedtest${NC})"
+echo -e " $COLOR1│$NC   ${COLOR1}[10]${NC} • LIMIT SPEED(${COLOR1}limitspeed${NC})"
+echo -e " $COLOR1│$NC   ${COLOR1}[11]${NC} • WEBMIN(${COLOR1}webmin${NC})"
+echo -e " $COLOR1│$NC   ${COLOR1}[12]${NC} • UPDATE SCRIPT(${COLOR1}runupdate${NC})"
+echo -e " $COLOR1│$NC   ${COLOR1}[13]${NC} • CHANGE PORT(${COLOR1}change-port${NC})"
+echo -e " $COLOR1│$NC   ${COLOR1}[14]${NC} • ABOUT(${COLOR1}about${NC})"
+echo -e " $COLOR1│$NC   ${COLOR1}[0]${NC}  • BACK TO MENU"
+echo -e " $COLOR1└───────────────────────────────────────────────┘${NC}"
+echo -e ""
+read -p "  Select menu :  "  opt
+echo -e   ""
+case $opt in
+01 | 1) clear ; running ;;
+02 | 2) clear ; nano /etc/issue.net ;;
+03 | 3) clear ; mbandwith ;;
+04 | 4) clear ; enabletorrent ;;
+05 | 5) clear ; menu-tcp ;;
+06 | 6) clear ; restart ;;
+07 | 7) clear ; autoboot ;;
+08 | 8) clear ; reboot ;;
+09 | 9) clear ; mspeed ;;
+10 | 10) clear ; limitspeed ;;
+11 | 11) clear ; mwebmin ;;
+12 | 12) clear ; runupdate ;;
+13 | 13) clear ; change-port ;;
+14 | 14) clear ; about ;;
+00 | 0) clear ; menu ;;
+*) clear ; menu-set ;;
+esac
 
