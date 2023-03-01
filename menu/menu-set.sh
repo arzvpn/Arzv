@@ -112,15 +112,15 @@ else
 fi
 
 clear
-echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
+echo -e "$COLOR1 ┌─────────────────────────────────────────────────┐${NC}"
 echo -e "$COLOR1│ $NC$COLBG1                 MENU SETTINGS                 $COLOR1 │$NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
 echo -e " $COLOR1┌───────────────────────────────────────────────┐${NC}"
-echo -e " $COLOR1│$NC   ${COLOR1}[1]${NC}  • RUNNING(${COLOR1}running${NC})"
-echo -e " $COLOR1│$NC   ${COLOR1}[2]${NC}  • SET BANNER"
-echo -e " $COLOR1│$NC   ${COLOR1}[3]${NC}  • BANDWITH USAGE(${COLOR1}mbandwidth${NC})"
-echo -e " $COLOR1│$NC   ${COLOR1}[4]${NC}  • ANTI TORRENT $sts "
-echo -e " $COLOR1│$NC   ${COLOR1}[5]${NC}  • INSTALL TCP BBR(${COLOR1}menu-tcp${NC})"
+echo -e " $COLOR1│$NC   ${COLOR1}[1]${NC}  • ADD HOST/DOMAIN(${COLOR1}addhost${NC})"
+echo -e " $COLOR1│$NC   ${COLOR1}[2]${NC}  • GEN/RENEW CERTXRAY(${cyan}certxray${NC})"
+echo -e " $COLOR1│$NC   ${COLOR1}[3]${NC}  • CHECK RUNNING(${cyan}running${NC})"
+echo -e " $COLOR1│$NC   ${COLOR1}[4]${NC}  • CHANGE BANNER SSH "
+echo -e " $COLOR1│$NC   ${COLOR1}[5]${NC}  • BANDWIDTH(${COLOR1}mbandwidth${NC})"
 echo -e " $COLOR1│$NC   ${COLOR1}[6]${NC}  • RESTART(${COLOR1}restart${NC}) "
 echo -e " $COLOR1│$NC   ${COLOR1}[7]${NC}  • AUTO REBOOT(${COLOR1}autoboot${NC})"
 echo -e " $COLOR1│$NC   ${COLOR1}[8]${NC}  • REBOOT(${COLOR1}reboot${NC})"
@@ -136,11 +136,11 @@ echo -e ""
 read -p "  Select menu :  "  opt
 echo -e   ""
 case $opt in
-01 | 1) clear ; running ;;
-02 | 2) clear ; nano /etc/issue.net ;;
-03 | 3) clear ; mbandwith ;;
-04 | 4) clear ; enabletorrent ;;
-05 | 5) clear ; menu-tcp ;;
+01 | 1) clear ; addhost ;;
+02 | 2) clear ; certxray ;;
+03 | 3) clear ; running ;;
+04 | 4) clear ; nano /etc/issue.net ;;
+05 | 5) clear ; mbandwith ;;
 06 | 6) clear ; restart ;;
 07 | 7) clear ; autoboot ;;
 08 | 8) clear ; reboot ;;
