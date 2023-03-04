@@ -429,6 +429,9 @@ wget -q -O /usr/bin/menu "https://raw.githubusercontent.com/arzvpn/Arzv2/main/me
 wget -q -O /usr/bin/webmin "https://raw.githubusercontent.com/arzvpn/Arzv2/main/options/webmin.sh"
 wget -q -O /usr/bin/xp "https://raw.githubusercontent.com/arzvpn/Arzv2/main/xp.sh"
 wget -q -O /usr/bin/update "https://raw.githubusercontent.com/arzvpn/Arzv2/main/options/update.sh"
+wget -q -O /usr/bin/addhost "https://raw.githubusercontent.com/arzvpn/Arzv2/main/menu/addhost.sh"
+wget -q -O /usr/bin/certxray "https://raw.githubusercontent.com/arzvpn/Arzv2/main/menu/crt.sh"
+wget -q -O /usr/bin/menu-set "https://raw.githubusercontent.com/arzvpn/Arzv2/main/menu/menu-set.sh"
 chmod +x /usr/bin/usernew
 chmod +x /usr/bin/add-ws
 chmod +x /usr/bin/add-ssws
@@ -453,6 +456,9 @@ chmod +x /usr/bin/menu
 chmod +x /usr/bin/webmin
 chmod +x /usr/bin/xp
 chmod +x /usr/bin/update
+chmod +x /usr/bin/addhost
+chmod +x /usr/bin/crtxray
+chmod +x /usr/bin/menu-set
 
 #cat > /etc/cron.d/re_otm <<-END
 #SHELL=/bin/sh
@@ -527,7 +533,7 @@ cd /root/lim2
     git push -f https://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@github.com/arzvpn/lim2.git &> /dev/null
 cd
 echo "1.1" >> /home/.ver
-rm -fr /root/limit
+rm -fr /root/lim2
 curl -sS ifconfig.me > /etc/myipvps
 echo " "
 echo "=====================-[ Arz Vpn Store ]-===================="
