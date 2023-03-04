@@ -457,7 +457,7 @@ chmod +x /usr/bin/webmin
 chmod +x /usr/bin/xp
 chmod +x /usr/bin/update
 chmod +x /usr/bin/addhost
-chmod +x /usr/bin/crtxray
+chmod +x /usr/bin/certxray
 chmod +x /usr/bin/menu-set
 
 #cat > /etc/cron.d/re_otm <<-END
