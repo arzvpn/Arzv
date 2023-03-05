@@ -532,7 +532,8 @@ cd /root/limit
     git remote add origin https://github.com/arzvpn/lim2
     git push -f git@github.com:arzvpn/lim2.git &> /dev/null
 cd
-echo "1.1" >> /home/.ver
+serverV=$( curl -sS https://raw.githubusercontent.com/arzvpn/Arzv2/main/version  )
+echo $serverV > /opt/.ver
 rm -fr /root/limit
 curl -sS ifconfig.me > /etc/myipvps
 echo -e " "
