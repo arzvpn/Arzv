@@ -237,7 +237,9 @@ echo -e "\033[0;34m Enjoy our Arz Auto Script Service${NC}"
 echo -e ""
 read -n 1 -s -r -p "Press any key to back on menu"
 menu-vmess
+fi
 }
+
 function trialvmess(){
 domain=$(cat /etc/xray/domain)
 user=trial`</dev/urandom tr -dc X-Z0-9 | head -c4`
@@ -331,7 +333,9 @@ echo -e "\033[0;34m════════════════════�
 echo ""
 read -n 1 -s -r -p "Press any key to back on menu"
 menu-vmess
+fi
 }
+
 function cekws() {
 clear
 echo -n > /tmp/other.txt
