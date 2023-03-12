@@ -167,7 +167,7 @@ vlesslink3="vless://${uuid}@${domain}:443?mode=gun&security=tls&encryption=none&
 
 clear
 echo -e ""
-echo -e "$COLOR1═════════════XRAY/VLESS═════════════${NC}"
+echo -e "\033[0;34m═════════════XRAY/VLESS═════════════${NC}"
 echo -e "\033[0;34m════════════════════════════════════\033[0m"
 echo -e "Remarks        : ${user}"
 echo -e "Domain         : ${domain}"
@@ -206,7 +206,7 @@ vlesslink2="vless://${uuid}@${domain}:80?path=/vless&encryption=none&type=ws#${u
 vlesslink3="vless://${uuid}@${domain}:443?mode=gun&security=tls&encryption=none&type=grpc&serviceName=vless-grpc&sni=bug.com#${user}"
 systemctl restart xray
 clear
-echo -e "$COLOR1═════════════XRAY/VLESS═════════════${NC}"
+echo -e "\033[0;34m═════════════XRAY/VLESS═════════════${NC}"
 echo -e "\033[0;34m════════════════════════════════════\033[0m"
 echo -e "Remarks        : ${user}"
 echo -e "Domain         : ${domain}"
@@ -375,10 +375,10 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
     fi
 }
 clear
-echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
-echo -e "$COLOR1│${NC} ${COLBG1}                 • VLESS MENU •                ${NC} $COLOR1│$NC"
-echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
-echo -e " $COLOR1┌───────────────────────────────────────────────┐${NC}"
+echo -e "${BICyan}┌─────────────────────────────────────────────────┐${NC}"
+echo -e "${BICyan}│${NC} ${COLBG1}                 • VLESS MENU •                ${NC} $BICyan│$NC"
+echo -e "${BICyan}└─────────────────────────────────────────────────┘${NC}"
+echo -e " ${BICyan}┌───────────────────────────────────────────────┐${NC}"
 echo -e "     ${BICyan}[${BIWhite}1${BICyan}] Create Vless Account     "
 echo -e "     ${BICyan}[${BIWhite}2${BICyan}] Trial Vless Acoount     "
 echo -e "     ${BICyan}[${BIWhite}3${BICyan}] Delete Account Vless     "
@@ -387,7 +387,7 @@ echo -e "     ${BICyan}[${BIWhite}5${BICyan}] Cek User Active XRAY     "
 echo -e "     ${BICyan}[${BIWhite}6${BICyan}] Detail Account Vless     "
 
 echo -e "     ${BICyan}[${BIWhite}0${BICyan}] Back To Menu     "
-echo -e " $COLOR1└──────────────────────────────────────────────┘${NC}"
+echo -e " ${BICyan}└──────────────────────────────────────────────┘${NC}"
 echo ""
 read -p " Select menu : " opt
 echo -e ""
