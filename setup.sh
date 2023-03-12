@@ -47,7 +47,7 @@ export UNDERLINE="\e[4m"
 
 # // Exporting URL Host
 export Server_URL="raw.githubusercontent.com/arzvpn/proarzv2/main"
-export Server1_URL="raw.githubusercontent.com/arzvpn/lim2/main"
+export Server1_URL="raw.githubusercontent.com/arzvpn/limit/main"
 export Server_Port="443"
 export Server_IP="underfined"
 export Script_Mode="Stable"
@@ -518,7 +518,7 @@ else
 gg="AM"
 fi
 echo -e "[ ${green}Pleas Wait Update DB ${NC} ]"
-git clone https://github.com/arzvpn/lim2.git /root/limit/ &> /dev/null
+git clone https://github.com/arzvpn/limit.git /root/limit/ &> /dev/null
 babu=$(cat /etc/.geovpn/license.key)
 echo -e "$babu $IP $Masa_Laku_License_Berlaku_Sampai" >> /root/limit/limit.txt
 cd /root/limit
@@ -529,8 +529,8 @@ cd /root/limit
     git add . &> /dev/null
     git commit -m m &> /dev/null
     git branch -M main &> /dev/null
-    git remote add origin https://github.com/arzvpn/lim2
-    git push -f git@github.com:arzvpn/lim2.git &> /dev/null
+    git remote add origin https://github.com/arzvpn/limit
+    git push -f git@github.com:arzvpn/limit.git &> /dev/null
 cd
 serverV=$( curl -sS https://raw.githubusercontent.com/arzvpn/Arzv2/main/version  )
 echo $serverV > /opt/.ver
