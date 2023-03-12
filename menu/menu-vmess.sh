@@ -237,7 +237,6 @@ echo -e "\033[0;34m Enjoy our Arz Auto Script Service${NC}"
 echo -e ""
 read -n 1 -s -r -p "Press any key to back on menu"
 menu-vmess
-fi
 }
 
 function trialvmess(){
@@ -333,7 +332,6 @@ echo -e "\033[0;34m════════════════════�
 echo ""
 read -n 1 -s -r -p "Press any key to back on menu"
 menu-vmess
-fi
 }
 
 function cekws() {
