@@ -112,24 +112,23 @@ else
 fi
 
 clear
-echo -e "$COLOR1 ┌─────────────────────────────────────────────────┐${NC}"
+echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
 echo -e "$COLOR1│ $NC$COLBG1                 MENU SETTINGS                 $COLOR1 │$NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
 echo -e " $COLOR1┌───────────────────────────────────────────────┐${NC}"
-echo -e " $COLOR1│$NC   ${COLOR1}[1]${NC}  • ADD HOST/DOMAIN(${COLOR1}addhost${NC})"
-echo -e " $COLOR1│$NC   ${COLOR1}[2]${NC}  • GEN/RENEW CERTXRAY(${cyan}certxray${NC})"
-echo -e " $COLOR1│$NC   ${COLOR1}[3]${NC}  • CHECK RUNNING(${cyan}running${NC})"
+echo -e " $COLOR1│$NC   ${COLOR1}[1]${NC}  • ADD HOST/DOMAIN"
+echo -e " $COLOR1│$NC   ${COLOR1}[2]${NC}  • RENEW CERTXRAY"
+echo -e " $COLOR1│$NC   ${COLOR1}[3]${NC}  • CHECK RUNNING"
 echo -e " $COLOR1│$NC   ${COLOR1}[4]${NC}  • CHANGE BANNER SSH "
-echo -e " $COLOR1│$NC   ${COLOR1}[5]${NC}  • BANDWIDTH(${COLOR1}mbandwidth${NC})"
-echo -e " $COLOR1│$NC   ${COLOR1}[6]${NC}  • RESTART(${COLOR1}restart${NC}) "
-echo -e " $COLOR1│$NC   ${COLOR1}[7]${NC}  • AUTO REBOOT(${COLOR1}autoboot${NC})"
-echo -e " $COLOR1│$NC   ${COLOR1}[8]${NC}  • REBOOT(${COLOR1}reboot${NC})"
-echo -e " $COLOR1│$NC   ${COLOR1}[9]${NC}  • SPEEDTEST(${COLOR1}speedtest${NC})"
-echo -e " $COLOR1│$NC   ${COLOR1}[10]${NC} • LIMIT SPEED(${COLOR1}limitspeed${NC})"
-echo -e " $COLOR1│$NC   ${COLOR1}[11]${NC} • WEBMIN(${COLOR1}webmin${NC})"
-echo -e " $COLOR1│$NC   ${COLOR1}[12]${NC} • UPDATE SCRIPT(${COLOR1}runupdate${NC})"
-echo -e " $COLOR1│$NC   ${COLOR1}[13]${NC} • CHANGE PORT(${COLOR1}change-port${NC})"
-echo -e " $COLOR1│$NC   ${COLOR1}[14]${NC} • ABOUT(${COLOR1}about${NC})"
+echo -e " $COLOR1│$NC   ${COLOR1}[5]${NC}  • BANDWIDTH"
+echo -e " $COLOR1│$NC   ${COLOR1}[6]${NC}  • RESTART "
+echo -e " $COLOR1│$NC   ${COLOR1}[7]${NC}  • AUTO REBOOT"
+echo -e " $COLOR1│$NC   ${COLOR1}[8]${NC}  • REBOOT"
+echo -e " $COLOR1│$NC   ${COLOR1}[9]${NC}  • SPEEDTEST"
+echo -e " $COLOR1│$NC   ${COLOR1}[10]${NC} • LIMIT SPEED"
+echo -e " $COLOR1│$NC   ${COLOR1}[11]${NC} • WEBMIN"
+echo -e " $COLOR1│$NC   ${COLOR1}[12]${NC} • UPDATE SCRIPT"
+echo -e " $COLOR1│$NC   ${COLOR1}[13]${NC} • CHANGE PORT"
 echo -e " $COLOR1│$NC   ${COLOR1}[0]${NC}  • BACK TO MENU"
 echo -e " $COLOR1└───────────────────────────────────────────────┘${NC}"
 echo -e ""
@@ -140,16 +139,15 @@ case $opt in
 02 | 2) clear ; certxray ;;
 03 | 3) clear ; running ;;
 04 | 4) clear ; nano /etc/issue.net ;;
-05 | 5) clear ; mbandwith ;;
+05 | 5) clear ; cek-bandwith ;;
 06 | 6) clear ; restart ;;
-07 | 7) clear ; autoboot ;;
+07 | 7) clear ; autoreboot ;;
 08 | 8) clear ; reboot ;;
-09 | 9) clear ; mspeed ;;
+09 | 9) clear ; speedtest ;;
 10 | 10) clear ; limitspeed ;;
-11 | 11) clear ; mwebmin ;;
-12 | 12) clear ; runupdate ;;
+11 | 11) clear ; webmin ;;
+12 | 12) clear ; update ;;
 13 | 13) clear ; change-port ;;
-14 | 14) clear ; about ;;
 00 | 0) clear ; menu ;;
 *) clear ; menu-set ;;
 esac
