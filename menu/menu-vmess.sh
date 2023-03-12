@@ -1,13 +1,6 @@
 #!/bin/bash
 dateFromServer=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
 biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
-###########- COLOR CODE -##############
-colornow=$(cat /etc/arzvpn/theme/color.conf)
-NC="\e[0m"
-RED="\033[0;31m" 
-COLOR1="$(cat /etc/arzvpn/theme/$colornow | grep -w "TEXT" | cut -d: -f2|sed 's/ //g')"
-COLBG1="$(cat /etc/arzvpn/theme/$colornow | grep -w "BG" | cut -d: -f2|sed 's/ //g')"                    
-###########- END COLOR CODE -##########
 
 BIBlack='\033[1;90m'      # Black
 BIRed='\033[1;91m'        # Red
@@ -213,8 +206,8 @@ vmesslink2="vmess://$(echo $ask | base64 -w 0)"
 vmesslink3="vmess://$(echo $grpc | base64 -w 0)"
 clear
 echo -e ""
-echo -e "$COLOR1═════════════XRAY/VMESS═════════════${NC}"
-echo -e "$COLOR1════════════════════════════════════${NC}"
+echo -e "\033[0;34m═════════════XRAY/VMESS═════════════${NC}"
+echo -e "\033[0;34m════════════════════════════════════${NC}"
 echo -e "Remarks       : ${user}"
 echo -e "Expired On    : $exp" 
 echo -e "Domain        : ${domain}" 
@@ -230,17 +223,17 @@ echo -e "Path          : /worryfree"
 echo -e "Path          : http://bug/worryfree" 
 echo -e "Path          : /kuota-habis" 
 echo -e "ServiceName   : vmess-grpc" 
-echo -e "$COLOR1════════════════════════════════════${NC}"
+echo -e "\033[0;34m════════════════════════════════════${NC}"
 echo -e "Link TLS : "
 echo -e "${vmesslink1}" 
-echo -e "$COLOR1════════════════════════════════════${NC} "
+echo -e "\033[0;34m════════════════════════════════════${NC} "
 echo -e "Link none TLS : "
 echo -e "${vmesslink2}" 
-echo -e "$COLOR1════════════════════════════════════${NC} "
+echo -e "\033[0;34m════════════════════════════════════${NC} "
 echo -e "Link GRPC : "
 echo -e "${vmesslink3}"
-echo -e "$COLOR1════════════════════════════════════${NC}" 
-echo -e "$COLOR1 Enjoy our Arz Auto Script Service${NC}"  
+echo -e "\033[0;34m════════════════════════════════════${NC}" 
+echo -e "\033[0;34m Enjoy our Arz Auto Script Service${NC}"  
 echo -e ""
 read -n 1 -s -r -p "Press any key to back on menu"
 menu-vmess
@@ -310,7 +303,7 @@ vmesslink3="vmess://$(echo $grpc | base64 -w 0)"
 systemctl restart xray > /dev/null 2>&1
 service cron restart > /dev/null 2>&1
 clear
-echo -e "$COLOR1═════════════XRAY/VMESS═════════════${NC}"
+echo -e "\033[0;34m═════════════XRAY/VMESS═════════════\033[0m"
 echo -e "\033[0;34m════════════════════════════════════\033[0m"
 echo -e "Remarks        : ${user}"
 echo -e "Domain         : ${domain}"
@@ -482,10 +475,10 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
     fi
 }
 clear
-echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
-echo -e "$COLOR1│${NC} ${COLBG1}                • VMESS MENU •                 ${NC} $COLOR1│$NC"
-echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
-echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
+echo -e "${BICyan}┌─────────────────────────────────────────────────┐${NC}"
+echo -e "${BICyan}│${NC} ${COLBG1}                • VMESS MENU •                 ${NC} $BICyan│$NC"
+echo -e "${BICyan}└─────────────────────────────────────────────────┘${NC}"
+echo -e "${BICyan}┌─────────────────────────────────────────────────┐${NC}"
 echo -e "     ${BICyan}[${COLOR1}1${BICyan}] Create Vmess Account     "
 echo -e "     ${BICyan}[${COLOR1}2${BICyan}] Trial Vmess Account     "
 echo -e "     ${BICyan}[${COLOR1}3${BICyan}] Delete Account Vmess     "
@@ -494,7 +487,7 @@ echo -e "     ${BICyan}[${COLOR1}5${BICyan}] Cek User XRAY     "
 echo -e "     ${BICyan}[${COLOR1}6${BICyan}] Detail Vmess Account     "
 echo -e ""
 echo -e "     ${BICyan}[${COLOR1}0${BICyan}] Back To Menu     "
-echo -e "$COLOR1└──────────────────────────────────────────────────┘${NC}"
+echo -e "${BICyan}└──────────────────────────────────────────────────┘${NC}"
 echo ""
 read -p " Select menu : " opt
 echo -e ""
