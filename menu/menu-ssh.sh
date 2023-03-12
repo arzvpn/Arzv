@@ -536,7 +536,7 @@ clear
 echo -e "${BIBlue}┌─────────────────────────────────────────────────┐${NC}"
 echo -e "${BIBlue}│${NC} ${COLBG1}               • SSH PANEL MENU •              ${NC} ${BIBlue}│$NC"
 echo -e "${BIBlue}└─────────────────────────────────────────────────┘${NC}"
-echo -e "${BIBlue}┌───────────────────────────────────────────────┐${NC}
+echo -e "${BIBlue}┌───────────────────────────────────────────────┐${NC}"
 echo -e "     ${BIBlue}[${$COLOR1}1${BIBlue}] Create SSH Account     "
 echo -e "     ${BIBlue}[${$COLOR1}2${BIBlue}] Trial SSH Acoount      "
 echo -e "     ${BIBlue}[${$COLOR1}3${BIBlue}] Delete SSH Acoount      "
