@@ -47,71 +47,59 @@ export BOLD="\e[1m"
 export WARNING="${RED}\e[5m"
 export UNDERLINE="\e[4m"
 
-# // Exporting URL Host
-export Server_URL="raw.githubusercontent.com/arzvpn/proarzv2/main"
-export Server1_URL="raw.githubusercontent.com/arzvpn/limit/main"
-export Server_Port="443"
-export Server_IP="underfined"
-export Script_Mode="Stable"
-export Auther=".geovpn"
+BURIQ () {
+    curl -sS https://raw.githubusercontent.com/arzvpn/permission/main/ip > /root/tmp
+    data=( `cat /root/tmp | grep -E "^### " | awk '{print $2}'` )
+    for user in "${data[@]}"
+    do
+    exp=( `grep -E "^### $user" "/root/tmp" | awk '{print $3}'` )
+    d1=(`date -d "$exp" +%s`)
+    d2=(`date -d "$biji" +%s`)
+    exp2=$(( (d1 - d2) / 86400 ))
+    if [[ "$exp2" -le "0" ]]; then
+    echo $user > /etc/.$user.ini
+    else
+    rm -f /etc/.$user.ini > /dev/null 2>&1
+    fi
+    done
+    rm -f /root/tmp
+}
 
-# // Root Checking
-if [ "${EUID}" -ne 0 ]; then
-		echo -e "${EROR} Please Run This Script As Root User !"
-		exit 1
-fi
+MYIP=$(curl -sS ipv4.icanhazip.com)
+Name=$(curl -sS https://raw.githubusercontent.com/arzvpn/permission/main/ip | grep $MYIP | awk '{print $2}')
+echo $Name > /usr/local/etc/.$Name.ini
+CekOne=$(cat /usr/local/etc/.$Name.ini)
 
-# // Exporting IP Address
-export IP=$( curl -s https://ipinfo.io/ip/ )
-
-# // Exporting Network Interface
-export NETWORK_IFACE="$(ip route show to default | awk '{print $5}')"
-
-# // Validate Result ( 1 )
-touch /etc/${Auther}/license.key
-export Your_License_Key="$( cat /etc/${Auther}/license.key | awk '{print $1}' )"
-export Validated_Your_License_Key_With_Server="$( curl -s https://${Server_URL}/validated-registered-license-key.txt | grep -w $Your_License_Key | head -n1 | cut -d ' ' -f 1 )"
-if [[ "$Validated_Your_License_Key_With_Server" == "$Your_License_Key" ]]; then
-    validated='true'
+Bloman () {
+if [ -f "/etc/.$Name.ini" ]; then
+CekTwo=$(cat /etc/.$Name.ini)
+    if [ "$CekOne" = "$CekTwo" ]; then
+        res="Expired"
+    fi
 else
-    echo -e "${EROR} License Key Not Valid"
-    exit 1
+res="Permission Accepted..."
 fi
+}
 
-# // Checking VPS Status > Got Banned / No
-if [[ $IP == "$( curl -s https://${Server_URL}/blacklist.txt | cut -d ' ' -f 1 | grep -w $IP | head -n1 )" ]]; then
-    echo -e "${EROR} 403 Forbidden ( Your VPS Has Been Banned )"
-    exit  1
-fi
-
-# // Checking VPS Status > Got Banned / No
-if [[ $Your_License_Key == "$( curl -s https://${Server_URL} | cut -d ' ' -f 1 | grep -w $Your_License_Key | head -n1)" ]]; then
-    echo -e "${EROR} 403 Forbidden ( Your License Has Been Limited )"
-    exit  1
-fi
-
-# // Checking VPS Status > Got Banned / No
-if [[ 'Standart' == "$( curl -s https://${Server_URL}/validated-registered-license-key.txt | grep -w $Your_License_Key | head -n1 | cut -d ' ' -f 6 )" ]]; then 
-    License_Mode='Standart'
-elif [[ Pro == "$( curl -s https://${Server_URL}/validated-registered-license-key.txt | grep -w $Your_License_Key | head -n1 | cut -d ' ' -f 6 )" ]]; then 
-    License_Mode='Pro'
+PERMISSION () {
+    MYIP=$(curl -sS ipv4.icanhazip.com)
+    IZIN=$(curl -sS https://raw.githubusercontent.com/arzvpn/permission/main/ip | awk '{print $4}' | grep $MYIP)
+    if [ "$MYIP" = "$IZIN" ]; then
+    Bloman
+    else
+    res="Permission Denied!"
+    fi
+    BURIQ
+}
+PERMISSION
+if [ -f /home/needupdate ]; then
+red "Your script need to update first !"
+exit 0
+elif [ "$res" = "Permission Accepted..." ]; then
+echo -ne
 else
-    echo -e "${EROR} Please Using Genuine License !"
-    exit 1
-fi
-
-# // Checking Script Expired
-exp=$( curl -s https://${Server1_URL}/limit.txt | grep -w $IP | cut -d ' ' -f 3 )
-now=`date -d "0 days" +"%Y-%m-%d"`
-expired_date=$(date -d "$exp" +%s)
-now_date=$(date -d "$now" +%s)
-sisa_hari=$(( ($expired_date - $now_date) / 86400 ))
-if [[ $sisa_hari -lt 0 ]]; then
-    echo $sisa_hari > /etc/${Auther}/license-remaining-active-days.db
-    echo -e "${EROR} Your License Key Expired ( $sisa_hari Days )"
-    exit 1
-else
-    echo $sisa_hari > /etc/${Auther}/license-remaining-active-days.db
+red "Permission Denied!"
+exit 0
 fi
 clear
 function trialssh(){
@@ -214,7 +202,7 @@ clear
                echo -e "\E[0;41;36m                AUTO DELETE                \E[0m"
                echo -e "${BIBlue}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"  
                echo "Thank you for removing the EXPIRED USERS"
-               echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"  
+               echo -e "$BIBlue━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"  
                cat /etc/shadow | cut -d: -f1,8 | sed /:$/d > /tmp/expirelist.txt
                totalaccounts=`cat /tmp/expirelist.txt | wc -l`
                for((i=1; i<=$totalaccounts; i++ ))
@@ -246,7 +234,7 @@ clear
                fi
                done
                echo " "
-               echo -e "$COLOR1━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"  
+               echo -e "$BIBlue━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"  
                
                read -n 1 -s -r -p "Press any key to back on menu"
                menu-ssh
@@ -534,20 +522,20 @@ menu-ssh
 }
 clear
 echo -e "${BIBlue}┌─────────────────────────────────────────────────┐${NC}"
-echo -e "${BIBlue}│${NC} ${COLBG1}               • SSH PANEL MENU •              ${NC} ${BIBlue}│$NC"
+echo -e "${BIBlue}│                      SSH MENU                   │$NC"
 echo -e "${BIBlue}└─────────────────────────────────────────────────┘${NC}"
 echo -e "${BIBlue}┌───────────────────────────────────────────────┐${NC}"
-echo -e "     ${BIBlue}[${$COLOR1}1${BIBlue}] Create SSH Account     "
-echo -e "     ${BIBlue}[${$COLOR1}2${BIBlue}] Trial SSH Acoount      "
-echo -e "     ${BIBlue}[${$COLOR1}3${BIBlue}] Delete SSH Acoount      "
-echo -e "     ${BIBlue}[${$COLOR1}4${BIBlue}] Renew SSH Account      "
-echo -e "     ${BIBlue}[${$COLOR1}5${BIBlue}] Cek User SSH     "
-echo -e "     ${BIBlue}[${$COLOR1}6${BIBlue}] Mullog SSH     "
-echo -e "     ${BIBlue}[${$COLOR1}7${BIBlue}] Auto Del user Exp     "
-echo -e "     ${BIBlue}[${$COLOR1}8${BIBlue}] Auto Kill user SSH    "
-echo -e "     ${BIBlue}[${$COLOR1}9${BIBlue}] Cek Member SSH"
+echo -e "     ${BICyan}[1]${NC} Create SSH Account     "
+echo -e "     ${BICyan}[2]${NC} Trial SSH Acoount      "
+echo -e "     ${BICyan}[3]${NC} Delete SSH Acoount      "
+echo -e "     ${BICyan}[4]${NC} Renew SSH Account      "
+echo -e "     ${BICyan}[5]${NC} Cek User SSH     "
+echo -e "     ${BICyan}[6]${NC} Mullog SSH     "
+echo -e "     ${BICyan}[7]${NC} Auto Del user Exp     "
+echo -e "     ${BICyan}[8]${NC} Auto Kill user SSH    "
+echo -e "     ${BICyan}[9]${NC} Cek Member SSH"
 
-echo -e "     ${BIBlue}[${$COLOR1}0${BIBlue}] Back To Menu      "
+echo -e "     ${BICyan}[0]${NC} Back To Menu      "
 echo -e "${BIBlue}└───────────────────────────────────────────────┘${NC}"
 echo ""
 read -p " Select menu : " opt
