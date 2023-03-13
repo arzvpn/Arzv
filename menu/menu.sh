@@ -161,25 +161,25 @@ echo -e " ${BICyan}└───────────────────�
 echo -e "     ${BICyan} SSH ${NC}: $ressh"" ${BICyan} NGINX ${NC}: $resngx"" ${BICyan}  XRAY ${NC}: $resv2r"" ${BICyan} TROJAN ${NC}: $resv2r"
 echo -e "     ${BICyan}          DROPBEAR ${NC}: $resdbr" "${BICyan} SSH-WS ${NC}: $ressshws"
 echo -e "${BICyan} ┌─────────────────────────────────────────────────────┐${NC}"
-echo -e "     ${BICyan}[${BIGreen}1${BICyan}]${BIGreen} SSH ${NC}" 
-echo -e "     ${BICyan}[${BiGreen}2${BICyan}]${BIGreen} VMESS ${NC}"    
-echo -e "     ${BICyan}[${BIGreen}3${BICyan}]${BIGreen} VLESS ${NC}"    
-echo -e "     ${BICyan}[${BIGreen}4${BICyan}]${BIGreen} TROJAN ${NC}" 
-echo -e "     ${BICyan}[${BIGreen}5${BICyan}]${BIGreen} SHADOWSOCKS ${NC}"    
-echo -e "     ${BICyan}[${BIGreen}6${BICyan}]${BIGreen} BACKUP/RESTORE ${NC}"    
-echo -e "     ${BICyan}[${BIGreen}7${BICyan}]${BIGreen} SETTINGS ${NC}"    
-echo -e "     ${BICyan}[${BIGreen}8${BICyan}]${BIGreen} INFO SCRIPT ${NC}"     
-echo -e "     ${BICyan}[${BIGreen}x${BICyan}]${BIGreen} EXIT ${NC}"  
+echo -e "     ${BICyan}[${BIGreen}1${BICyan}]${Green} SSH ${NC}" 
+echo -e "     ${BICyan}[${BiGreen}2${BICyan}]${Green} VMESS ${NC}"    
+echo -e "     ${BICyan}[${BIGreen}3${BICyan}]${Green} VLESS ${NC}"    
+echo -e "     ${BICyan}[${BIGreen}4${BICyan}]${Green} TROJAN ${NC}" 
+echo -e "     ${BICyan}[${BIGreen}5${BICyan}]${Green} SHADOWSOCKS ${NC}"    
+echo -e "     ${BICyan}[${BIGreen}6${BICyan}]${Green} BACKUP/RESTORE ${NC}"    
+echo -e "     ${BICyan}[${BIGreen}7${BICyan}]${Green} SETTINGS ${NC}"    
+echo -e "     ${BICyan}[${BIGreen}8${BICyan}]${Green} INFO SCRIPT ${NC}"     
+echo -e "     ${BICyan}[${BIGreen}x${BICyan}]${Green} EXIT ${NC}"  
 echo -e "${BICyan} └─────────────────────────────────────────────────────┘${NC}"
 DATE=$(date +'%d %B %Y')
 datediff() {
     d1=$(date -d "$1" +%s)
     d2=$(date -d "$2" +%s)
-    echo -e "   $BICyan│$NC  Expiry In    : $(( (d1 - d2) / 86400 )) Days"
+    echo -e "  ${BICyan}│$NC  Expiry In    : $(( (d1 - d2) / 86400 )) Days"
 }
 mai="datediff "$Exp" "$DATE""
 echo -e " ${BICyan}┌─────────────────────────────────────┐${NC}"
-echo -e " ${BICyan}│  Version      ${NC} : $(cat /opt/.ver) Last Update"
+echo -e " ${BICyan}│  Version       : $(cat /opt/.ver) Last Update ${NC}"
 echo -e " ${BICyan}│  User          :\033[1;36m $Name \e[0m"
 if [ $exp \< 1000 ];
 then
