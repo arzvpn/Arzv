@@ -45,113 +45,94 @@ export BOLD="\e[1m"
 export WARNING="${RED}\e[5m"
 export UNDERLINE="\e[4m"
 
-# // Exporting URL Host
-export Server_URL="raw.githubusercontent.com/arzvpn/proarzv2/main"
-export Server1_URL="raw.githubusercontent.com/arzvpn/limit/main"
-export Server_Port="443"
-export Server_IP="underfined"
-export Script_Mode="Stable"
-export Auther=".geovpn"
-
-# // Exporting Script Version
-export VERSION="1.1"
- 
-# // Exporint IP AddressInformation
-export IP=$( curl -s https://ipinfo.io/ip/ )
-
-# // License Validating
-echo ""
-read -p "Input Your License Key : " Input_License_Key
-
-# // Checking Input Blank
-if [[ $Input_License_Key ==  "" ]]; then
-    echo -e "${EROR} Please Input License Key !${NC}"
-    exit 1
-fi
-
-# // Checking License Validate
-Key="$Input_License_Key"
-
-# // Set Time To Jakarta / GMT +7
-ln -fs /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
-
-# // Algoritma Key
-algoritmakeys="1920192019209129403940293013912" 
-hashsuccess="$(echo -n "$Key" | sha256sum | cut -d ' ' -f 1)" 
-Sha256Successs="$(echo -n "$hashsuccess$algoritmakeys" | sha256sum | cut -d ' ' -f 1)" 
-License_Key=$Sha256Successs
-echo ""
-echo -e "${OKEY} Successfull Connected To Server"
-sleep 1
-
-# // Validate Result
-Getting_Data_On_Server=$( curl -s https://${Server_URL}/validated-registered-license-key.txt | grep $License_Key | cut -d ' ' -f 1 )
-if [[ "$Getting_Data_On_Server" == "$License_Key" ]]; then
-    mkdir -p /etc/${Auther}/
-    echo "$License_Key" > /etc/${Auther}/license.key
-    echo -e "${OKEY} License Validated !"
-    sleep 1
-else
-    echo -e "${EROR} Your License Key Not Valid !"
-    exit 1
-fi
-# // Checking Your VPS Blocked Or No
-if [[ $IP == "" ]]; then
-    echo -e "${EROR} Your IP Address Not Detected !"
-    exit 1
-else
-    # // Checking Data
-    export Check_Blacklist_Atau_Tidak=$( curl -s https://${Server_URL}/blacklist.txt | grep -w $License_Key | awk '{print $1}' | tr -d '\r' | tr -d '\r\n' | head -n1 )
-    if [[ $Check_Blacklist_Atau_Tidak == $IP ]]; then
-        echo -e "${EROR} 403 Forbidden ( Your VPS Has Been Blocked ) !"
-        exit 1
+BURIQ () {
+    curl -sS https://raw.githubusercontent.com/arzvpn/permission/main/ip > /root/tmp
+    data=( `cat /root/tmp | grep -E "^### " | awk '{print $2}'` )
+    for user in "${data[@]}"
+    do
+    exp=( `grep -E "^### $user" "/root/tmp" | awk '{print $3}'` )
+    d1=(`date -d "$exp" +%s`)
+    d2=(`date -d "$biji" +%s`)
+    exp2=$(( (d1 - d2) / 86400 ))
+    if [[ "$exp2" -le "0" ]]; then
+    echo $user > /etc/.$user.ini
     else
-        Skip='true'
+    rm -f  /etc/.$user.ini > /dev/null 2>&1
     fi
-fi
-# // cek limit
-export limit=$( curl -s https://${Server1_URL}/limit.txt | grep $License_Key | wc -l )
-export Install_Limited=$( curl -s https://${Server_URL}/validated-registered-license-key.txt | grep -w $License_Key | cut -d ' ' -f 2)
-if [[ $limit == $Install_Limited ]]; then
-        echo -e "${EROR} 403 Forbidden ( Your License Max Limit Install ) !"
-        exit 1
-    else
-        Skip='true'
-fi
-# // License Key Detail
-export Tanggal_Pembelian_License=`date +"%Y-%m-%d" -d "$dateFromServer"`
-export Nama_Issued_License=$( curl -s https://${Server_URL}/validated-registered-license-key.txt | grep -w $License_Key | cut -d ' ' -f 7| tr -d '\r' | tr -d '\r\n')
-export mekmek=$( curl -s https://${Server_URL}/validated-registered-license-key.txt | grep -w $License_Key | cut -d ' ' -f 3 | tr -d '\r' | tr -d '\r\n')
-export Masa_Laku_License_Berlaku_Sampai=`date -d "$mekmek days" +"%Y-%m-%d"`
-export Install_Limit=$( curl -s https://${Server_URL}/validated-registered-license-key.txt | grep -w $License_Key | cut -d ' ' -f 2 | tr -d '\r' | tr -d '\r\n')
-export Tipe_License=$( curl -s https://${Server_URL}/validated-registered-license-key.txt | grep -w $License_Key | cut -d ' ' -f 8 | tr -d '\r' | tr -d '\r\n')
+    done
+    rm -f  /root/tmp
+}
+# https://raw.githubusercontent.com/arzvpn/permission/main/ip 
+MYIP=$(curl -sS ipv4.icanhazip.com)
+Name=$(curl -sS https://raw.githubusercontent.com/arzvpn/permission/main/ip | grep $MYIP | awk '{print $2}')
+echo $Name > /usr/local/etc/.$Name.ini
+CekOne=$(cat /usr/local/etc/.$Name.ini)
 
-# // Ouputing Information
-echo -e "${OKEY} License Type / Edition ( ${GREEN}$Tipe_License Edition${NC} )" # > // Output Tipe License Dari Exporting
-echo -e "${OKEY} This License Issued to (${GREEN} $Nama_Issued_License ${NC})"
-echo -e "${OKEY} Subscription Started On (${GREEN} $Tanggal_Pembelian_License${NC} )"
-echo -e "${OKEY} Subscription Ended On ( ${GREEN}${Masa_Laku_License_Berlaku_Sampai}${NC} )"
-echo -e "${OKEY} Installation Limit ( ${GREEN}$Install_Limit VPS${NC} )"
-echo -e "${OKEY} Installation Usage ( ${GREEN}$limit VPS${NC} )"
-
-# // Exporting Expired Date
-export Tanggal_Sekarang=`date -d "0 days" +"%Y-%m-%d"`
-export Masa_Aktif_Dalam_Satuan_Detik=$(date -d "$Masa_Laku_License_Berlaku_Sampai" +%s)
-export Tanggal_Sekarang_Dalam_Satuan_Detik=$(date -d "$Tanggal_Sekarang" +%s)
-export Hasil_Pengurangan_Dari_Masa_Aktif_Dan_Hari_Ini_Dalam_Satuan_Detik=$(( (Masa_Aktif_Dalam_Satuan_Detik - Tanggal_Sekarang_Dalam_Satuan_Detik) / 86400 ))
-if [[ $Hasil_Pengurangan_Dari_Masa_Aktif_Dan_Hari_Ini_Dalam_Satuan_Detik -lt 0 ]]; then
-    echo -e "${EROR} Your License Expired On ( ${RED}$Masa_Laku_License_Berlaku_Sampai${NC} )"
-    exit 1
+Bloman () {
+if [ -f "/etc/.$Name.ini" ]; then
+CekTwo=$(cat /etc/.$Name.ini)
+    if [ "$CekOne" = "$CekTwo" ]; then
+        res="Expired"
+    fi
 else
-    echo -e "${OKEY} Your License Key = $(if [[ ${Hasil_Pengurangan_Dari_Masa_Aktif_Dan_Hari_Ini_Dalam_Satuan_Detik} -lt 5 ]]; then
-    echo -e "${RED}${Hasil_Pengurangan_Dari_Masa_Aktif_Dan_Hari_Ini_Dalam_Satuan_Detik}${NC} Days Left"; else
-    echo -e "${GREEN}${Hasil_Pengurangan_Dari_Masa_Aktif_Dan_Hari_Ini_Dalam_Satuan_Detik}${NC} Days Left"; fi )"
+res="Permission Accepted..."
+fi
+}
+
+PERMISSION () {
+    MYIP=$(curl -sS ipv4.icanhazip.com)
+    IZIN=$(curl -sS https://raw.githubusercontent.com/arzvpn/permission/main/ip | awk '{print $4}' | grep $MYIP)
+    if [ "$MYIP" = "$IZIN" ]; then
+    Bloman
+    else
+    res="Permission Denied!"
+    fi
+    BURIQ
+}
+
+clear
+#System version number
+if [ "${EUID}" -ne 0 ]; then
+		echo "You need to run this script as root"
+		exit 1
+fi
+if [ "$(systemd-detect-virt)" == "openvz" ]; then
+		echo "OpenVZ is not supported"
+		exit 1
 fi
 
-# // Validate Successfull
-echo ""
-read -p "$( echo -e "Press ${CYAN}[ ${NC}${GREEN}Enter${NC} ${CYAN}]${NC} For Starting Installation") "
-echo ""
+localip=$(hostname -I | cut -d\  -f1)
+hst=( `hostname` )
+dart=$(cat /etc/hosts | grep -w `hostname` | awk '{print $2}')
+if [[ "$hst" != "$dart" ]]; then
+echo "$localip $(hostname)" >> /etc/hosts
+fi
+mkdir -p /etc/xray
+
+echo -e "[ ${tyblue}NOTES${NC} ] Welcome To Arz AutoScript...... "
+sleep 2
+echo -e "[ ${green}INFO${NC} ] Preparing the install file"
+apt install git curl -y >/dev/null 2>&1
+echo -e "[ ${green}INFO${NC} ] installation file is ready"
+sleep 2
+echo -ne "[ ${green}INFO${NC} ] Check your permission : "
+
+PERMISSION
+if [ -f /home/needupdate ]; then
+red "Your script need to update first !"
+exit 0
+elif [ "$res" = "Permission Accepted..." ]; then
+green "Permission Accepted!"
+else
+red "Permission Denied!
+Please Buy AutoScript Premium
+WA: 083117634078
+Telegram: t.me/Store_Arz"
+rm setup.sh > /dev/null 2>&1
+sleep 10
+exit 0
+fi
+sleep 3
 
 # // cek old script
 if [[ -r /etc/xray/domain ]]; then
@@ -380,58 +361,58 @@ fi
 
 #install arzsource
 echo -e "┌─────────────────────────────────────────┐"
-echo -e " \E[41;1;39m           >>> Install Source <<<            \E[0m$NC"
+echo -e " \E[41;1;39m           >>> Install Source <<<          \E[0m$NC"
 echo -e "└─────────────────────────────────────────┘"
 sleep 1 
-wget -q https://raw.githubusercontent.com/arzvpn/Arzv2/main/tools/arzsource.sh && chmod +x arzsource.sh && ./arzsource.sh
+wget -q https://raw.githubusercontent.com/arzvpn/Arzv/main/tools/arzsource.sh && chmod +x arzsource.sh && ./arzsource.sh
 #install ssh-vpn
 echo -e "┌─────────────────────────────────────────┐"
-echo -e " \E[41;1;39m          >>> Install SSH / WS <<<           \E[0m$NC"
+echo -e " \E[41;1;39m          >>> Install SSH / WS <<<        \E[0m$NC"
 echo -e "└─────────────────────────────────────────┘"
 sleep 1
-wget -q https://raw.githubusercontent.com/arzvpn/Arzv2/main/tools/ssh-vpn.sh && chmod +x ssh-vpn.sh && ./ssh-vpn.sh
+wget -q https://raw.githubusercontent.com/arzvpn/Arzv/main/tools/ssh-vpn.sh && chmod +x ssh-vpn.sh && ./ssh-vpn.sh
 #install ins-xray
 echo -e "┌─────────────────────────────────────────┐"
-echo -e " \E[41;1;39m            >>> Install Xray <<<           \E[0m$NC"
+echo -e " \E[41;1;39m            >>> Install Xray <<<         \E[0m$NC"
 echo -e "└─────────────────────────────────────────┘"
 sleep 1 
-wget -q https://raw.githubusercontent.com/arzvpn/Arzv2/main/tools/ins-xray.sh && chmod +x ins-xray.sh && ./ins-xray.sh
+wget -q https://raw.githubusercontent.com/arzvpn/Arzv/main/tools/ins-xray.sh && chmod +x ins-xray.sh && ./ins-xray.sh
 #install ins-xray
 echo -e "┌─────────────────────────────────────────┐"
 echo -e " \E[41;1;39m            >>> Install BR <<<           \E[0m$NC"
 echo -e "└─────────────────────────────────────────┘"
 sleep 1 
-wget -q https://raw.githubusercontent.com/arzvpn/Arzv2/main/backup/set-br.sh && chmod +x set-br.sh && ./set-br.sh
+wget -q https://raw.githubusercontent.com/arzvpn/Arzv/main/backup/set-br.sh && chmod +x set-br.sh && ./set-br.sh
 
 # // Download Data
 echo -e "${GREEN}Download Data${NC}"
-wget -q -O /usr/bin/usernew "https://raw.githubusercontent.com/arzvpn/Arzv2/main/usernew.sh"
-wget -q -O /usr/bin/add-ws "https://raw.githubusercontent.com/arzvpn/Arzv2/main/add-ws.sh"
-wget -q -O /usr/bin/add-ssws "https://raw.githubusercontent.com/arzvpn/Arzv2/main/add-ssws.sh"
-wget -q -O /usr/bin/add-vless "https://raw.githubusercontent.com/arzvpn/Arzv2/main/add-vless.sh"
-wget -q -O /usr/bin/add-tr "https://raw.githubusercontent.com/arzvpn/Arzv2/main/add-tr.sh"
-wget -q -O /usr/bin/autoreboot "https://raw.githubusercontent.com/arzvpn/Arzv2/main/options/autoreboot.sh"
-wget -q -O /usr/bin/restart "https://raw.githubusercontent.com/arzvpn/Arzv2/main/options/restart.sh"
-wget -q -O /usr/bin/tendang "https://raw.githubusercontent.com/arzvpn/Arzv2/main/options/tendang.sh"
-wget -q -O /usr/bin/clearlog "https://raw.githubusercontent.com/arzvpn/Arzv2/main/options/clearlog.sh"
-wget -q -O /usr/bin/running "https://raw.githubusercontent.com/arzvpn/Arzv2/main/options/running.sh"
-wget -q -O /usr/bin/cek-trafik "https://raw.githubusercontent.com/arzvpn/Arzv2/main/options/cek-trafik.sh"
-wget -q -O /usr/bin/speedtest "https://raw.githubusercontent.com/arzvpn/Arzv2/main/tools/speedtest_cli.py"
-wget -q -O /usr/bin/cek-bandwidth "https://raw.githubusercontent.com/arzvpn/Arzv2/main/options/cek-bandwidth.sh"
-wget -q -O /usr/bin/limitspeed "https://raw.githubusercontent.com/arzvpn/Arzv2/main/options/limitspeed.sh"
-wget -q -O /usr/bin/menu-vless "https://raw.githubusercontent.com/arzvpn/Arzv2/main/menu/menu-vless.sh"
-wget -q -O /usr/bin/menu-vmess "https://raw.githubusercontent.com/arzvpn/Arzv2/main/menu/menu-vmess.sh"
-wget -q -O /usr/bin/menu-ss "https://raw.githubusercontent.com/arzvpn/Arzv2/main/menu/menu-ss.sh"
-wget -q -O /usr/bin/menu-trojan "https://raw.githubusercontent.com/arzvpn/Arzv2/main/menu/menu-trojan.sh"
-wget -q -O /usr/bin/menu-ssh "https://raw.githubusercontent.com/arzvpn/Arzv2/main/menu/menu-ssh.sh"
-wget -q -O /usr/bin/menu-backup "https://raw.githubusercontent.com/arzvpn/Arzv2/main/menu/menu-backup.sh"
-wget -q -O /usr/bin/menu "https://raw.githubusercontent.com/arzvpn/Arzv2/main/menu/menu.sh"
-wget -q -O /usr/bin/webmin "https://raw.githubusercontent.com/arzvpn/Arzv2/main/options/webmin.sh"
-wget -q -O /usr/bin/xp "https://raw.githubusercontent.com/arzvpn/Arzv2/main/xp.sh"
-wget -q -O /usr/bin/update "https://raw.githubusercontent.com/arzvpn/Arzv2/main/options/update.sh"
-wget -q -O /usr/bin/addhost "https://raw.githubusercontent.com/arzvpn/Arzv2/main/menu/addhost.sh"
-wget -q -O /usr/bin/certxray "https://raw.githubusercontent.com/arzvpn/Arzv2/main/menu/crt.sh"
-wget -q -O /usr/bin/menu-set "https://raw.githubusercontent.com/arzvpn/Arzv2/main/menu/menu-set.sh"
+wget -q -O /usr/bin/usernew "https://raw.githubusercontent.com/arzvpn/Arzv/main/usernew.sh"
+wget -q -O /usr/bin/add-ws "https://raw.githubusercontent.com/arzvpn/Arzv/main/add-ws.sh"
+wget -q -O /usr/bin/add-ssws "https://raw.githubusercontent.com/arzvpn/Arzv/main/add-ssws.sh"
+wget -q -O /usr/bin/add-vless "https://raw.githubusercontent.com/arzvpn/Arzv/main/add-vless.sh"
+wget -q -O /usr/bin/add-tr "https://raw.githubusercontent.com/arzvpn/Arzv/main/add-tr.sh"
+wget -q -O /usr/bin/autoreboot "https://raw.githubusercontent.com/arzvpn/Arzv/main/options/autoreboot.sh"
+wget -q -O /usr/bin/restart "https://raw.githubusercontent.com/arzvpn/Arzv/main/options/restart.sh"
+wget -q -O /usr/bin/tendang "https://raw.githubusercontent.com/arzvpn/Arzv/main/options/tendang.sh"
+wget -q -O /usr/bin/clearlog "https://raw.githubusercontent.com/arzvpn/Arzv/main/options/clearlog.sh"
+wget -q -O /usr/bin/running "https://raw.githubusercontent.com/arzvpn/Arzv/main/options/running.sh"
+wget -q -O /usr/bin/cek-trafik "https://raw.githubusercontent.com/arzvpn/Arzv/main/options/cek-trafik.sh"
+wget -q -O /usr/bin/speedtest "https://raw.githubusercontent.com/arzvpn/Arzv/main/tools/speedtest_cli.py"
+wget -q -O /usr/bin/cek-bandwidth "https://raw.githubusercontent.com/arzvpn/Arzv/main/options/cek-bandwidth.sh"
+wget -q -O /usr/bin/limitspeed "https://raw.githubusercontent.com/arzvpn/Arzv/main/options/limitspeed.sh"
+wget -q -O /usr/bin/menu-vless "https://raw.githubusercontent.com/arzvpn/Arzv/main/menu/menu-vless.sh"
+wget -q -O /usr/bin/menu-vmess "https://raw.githubusercontent.com/arzvpn/Arzv/main/menu/menu-vmess.sh"
+wget -q -O /usr/bin/menu-ss "https://raw.githubusercontent.com/arzvpn/Arzv/main/menu/menu-ss.sh"
+wget -q -O /usr/bin/menu-trojan "https://raw.githubusercontent.com/arzvpn/Arzv/main/menu/menu-trojan.sh"
+wget -q -O /usr/bin/menu-ssh "https://raw.githubusercontent.com/arzvpn/Arzv/main/menu/menu-ssh.sh"
+wget -q -O /usr/bin/menu-backup "https://raw.githubusercontent.com/arzvpn/Arzv/main/menu/menu-backup.sh"
+wget -q -O /usr/bin/menu "https://raw.githubusercontent.com/arzvpn/Arzv/main/menu/menu.sh"
+wget -q -O /usr/bin/webmin "https://raw.githubusercontent.com/arzvpn/Arzv/main/options/webmin.sh"
+wget -q -O /usr/bin/xp "https://raw.githubusercontent.com/arzvpn/Arzv/main/xp.sh"
+wget -q -O /usr/bin/update "https://raw.githubusercontent.com/arzvpn/Arzv/main/options/update.sh"
+wget -q -O /usr/bin/addhost "https://raw.githubusercontent.com/arzvpn/Arzv/main/menu/addhost.sh"
+wget -q -O /usr/bin/certxray "https://raw.githubusercontent.com/arzvpn/Arzv/main/menu/crt.sh"
+wget -q -O /usr/bin/menu-set "https://raw.githubusercontent.com/arzvpn/Arzv/main/menu/menu-set.sh"
 chmod +x /usr/bin/usernew
 chmod +x /usr/bin/add-ws
 chmod +x /usr/bin/add-ssws
@@ -509,6 +490,8 @@ if [ ! -f "/etc/log-create-user.log" ]; then
 echo "Log All Account " > /etc/log-create-user.log
 fi
 history -c
+serverV=$( curl -sS https://raw.githubusercontent.com/arzvpn/Arzv2/main/version  )
+echo $serverV > /opt/.ver
 aureb=$(cat /home/re_otm)
 b=11
 if [ $aureb -gt $b ]
@@ -517,23 +500,6 @@ gg="PM"
 else
 gg="AM"
 fi
-echo -e "[ ${green}Pleas Wait Update DB ${NC} ]"
-git clone git@github.com:arzvpn/limit.git /root/limit/ &> /dev/null
-babu=$(cat /etc/.geovpn/license.key)
-echo -e "$babu $IP $Masa_Laku_License_Berlaku_Sampai" >> /root/limit/limit.txt
-cd /root/limit
-    git config --global user.email "haris21arrasyid21@gmail.com" &> /dev/null
-    git config --global user.name "arzvpn" &> /dev/null
-    rm -fr .git &> /dev/null
-    git init &> /dev/null
-    git add . &> /dev/null
-    git commit -m main &> /dev/null
-    git branch -M main &> /dev/null
-    git remote add origin git@github.com:arzvpn/limit
-    git push -f git@github.com:arzvpn/limit.git &> /dev/null
-cd
-serverV=$( curl -sS https://raw.githubusercontent.com/arzvpn/Arzv2/main/version  )
-echo $serverV > /opt/.ver
 curl -sS ifconfig.me > /etc/myipvps
 echo -e " "
 echo "=====================-[ Arz Vpn Store ]-===================="
