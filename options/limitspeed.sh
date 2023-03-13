@@ -43,31 +43,60 @@ export RECEIVE="[${YELLOW} RECEIVE ${NC}]"
 export BOLD="\e[1m"
 export WARNING="${RED}\e[5m"
 export UNDERLINE="\e[4m"
+BURIQ () {
+    curl -sS https://raw.githubusercontent.com/arzvpn/permission/main/ip > /root/tmp
+    data=( `cat /root/tmp | grep -E "^### " | awk '{print $2}'` )
+    for user in "${data[@]}"
+    do
+    exp=( `grep -E "^### $user" "/root/tmp" | awk '{print $3}'` )
+    d1=(`date -d "$exp" +%s`)
+    d2=(`date -d "$biji" +%s`)
+    exp2=$(( (d1 - d2) / 86400 ))
+    if [[ "$exp2" -le "0" ]]; then
+    echo $user > /etc/.$user.ini
+    else
+    rm -f /etc/.$user.ini > /dev/null 2>&1
+    fi
+    done
+    rm -f /root/tmp
+}
 
-echo -e "$COLOR1┌──────────────────────────────────────────┐${NC}"
-echo -e "$COLOR1│${NC} ${COLBG1}          SERVER PORT INFORMATION       ${NC} $COLOR1│$NC"       
-echo -e "$COLOR1└──────────────────────────────────────────┘${NC}"
-echo -e "\033[1;93m  >Port SSH Websocket       :80\e[0m"
-echo -e "\033[1;93m  >Port SSH Websocket SSL   :443\e[0m"
-echo -e "\033[1;93m  >Port SSH SSL             :222,777\e[0m"
-echo -e "\033[1;93m  >Port OpenSSH             :22\e[0m"
-echo -e "\033[1;93m  >Port SSH Dropbear        :109,143\e[0m"
-echo -e "\033[1;93m  >Port Xray None TLS       :80\e[0m"
-echo -e "\033[1;93m  >Port Xray TLS            :443\e[0m"
-echo -e "\033[1;93m  >Port Vmess None TLS      :80\e[0m"
-echo -e "\033[1;93m  >Port Vmess TLS           :443\e[0m"
-echo -e "\033[1;93m  >Port Vmess GRPC          :443\e[0m"
-echo -e "\033[1;93m  >Port Vless None TLS      :80\e[0m"
-echo -e "\033[1;93m  >Port Vless TLS           :443\e[0m"
-echo -e "\033[1;93m  >Port Vless GRPC          :443\e[0m"
-echo -e "\033[1;93m  >Port Trojan WS           :443\e[0m"
-echo -e "\033[1;93m  >Port Trojan GRPC         :443\e[0m"
-echo -e "\033[1;93m  >Port ShadowSocks WS      :443\e[0m"
-echo -e "\033[1;93m  >Port ShadowSocks GRPC    :443\e[0m"
-echo -e "\033[1;94m >>>>Service Support Change Port<<<< \e[0m"
-echo -e ""
-echo -e "\033[1;97mOrder AutoScript Lifetime wa.me/6283117634078\e[0m"
-echo -e ""
+MYIP=$(curl -sS ipv4.icanhazip.com)
+Name=$(curl -sS https://raw.githubusercontent.com/arzvpn/permission/main/ip | grep $MYIP | awk '{print $2}')
+echo $Name > /usr/local/etc/.$Name.ini
+CekOne=$(cat /usr/local/etc/.$Name.ini)
+
+Bloman () {
+if [ -f "/etc/.$Name.ini" ]; then
+CekTwo=$(cat /etc/.$Name.ini)
+    if [ "$CekOne" = "$CekTwo" ]; then
+        res="Expired"
+    fi
+else
+res="Permission Accepted..."
+fi
+}
+
+PERMISSION () {
+    MYIP=$(curl -sS ipv4.icanhazip.com)
+    IZIN=$(curl -sS https://raw.githubusercontent.com/arzvpn/permission/main/ip | awk '{print $4}' | grep $MYIP)
+    if [ "$MYIP" = "$IZIN" ]; then
+    Bloman
+    else
+    res="Permission Denied!"
+    fi
+    BURIQ
+}
+PERMISSION
+if [ -f /home/needupdate ]; then
+red "Your script need to update first !"
+exit 0
+elif [ "$res" = "Permission Accepted..." ]; then
+echo -ne
+else
+red "Permission Denied!"
+exit 0
+fi
 clear
 Green_font_prefix="\033[32m" && Red_font_prefix="\033[31m" && Green_background_prefix="\033[42;37m" && Red_background_prefix="\033[41;37m" && Font_color_suffix="\033[0m"
 Info="${Green_font_prefix}[ON]${Font_color_suffix}"
