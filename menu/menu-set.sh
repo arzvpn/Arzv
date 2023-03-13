@@ -44,93 +44,79 @@ export BOLD="\e[1m"
 export WARNING="${RED}\e[5m"
 export UNDERLINE="\e[4m"
 
-# // Exporting URL Host
-export Server_URL="raw.githubusercontent.com/arzvpn/proarzv2/main"
-export Server1_URL="raw.githubusercontent.com/arzvpn/limit/main"
-export Server_Port="443"
-export Server_IP="underfined"
-export Script_Mode="Stable"
-export Auther=".geovpn"
+BURIQ () {
+    curl -sS https://raw.githubusercontent.com/arzvpn/permission/main/ip > /root/tmp
+    data=( `cat /root/tmp | grep -E "^### " | awk '{print $2}'` )
+    for user in "${data[@]}"
+    do
+    exp=( `grep -E "^### $user" "/root/tmp" | awk '{print $3}'` )
+    d1=(`date -d "$exp" +%s`)
+    d2=(`date -d "$biji" +%s`)
+    exp2=$(( (d1 - d2) / 86400 ))
+    if [[ "$exp2" -le "0" ]]; then
+    echo $user > /etc/.$user.ini
+    else
+    rm -f /etc/.$user.ini > /dev/null 2>&1
+    fi
+    done
+    rm -f /root/tmp
+}
 
-# // Root Checking
-if [ "${EUID}" -ne 0 ]; then
-		echo -e "${EROR} Please Run This Script As Root User !"
-		exit 1
-fi
+MYIP=$(curl -sS ipv4.icanhazip.com)
+Name=$(curl -sS https://raw.githubusercontent.com/arzvpn/permission/main/ip | grep $MYIP | awk '{print $2}')
+echo $Name > /usr/local/etc/.$Name.ini
+CekOne=$(cat /usr/local/etc/.$Name.ini)
 
-# // Exporting IP Address
-export IP=$( curl -s https://ipinfo.io/ip/ )
-
-# // Exporting Network Interface
-export NETWORK_IFACE="$(ip route show to default | awk '{print $5}')"
-
-# // Validate Result ( 1 )
-touch /etc/${Auther}/license.key
-export Your_License_Key="$( cat /etc/${Auther}/license.key | awk '{print $1}' )"
-export Validated_Your_License_Key_With_Server="$( curl -s https://${Server_URL}/validated-registered-license-key.txt | grep -w $Your_License_Key | head -n1 | cut -d ' ' -f 1 )"
-if [[ "$Validated_Your_License_Key_With_Server" == "$Your_License_Key" ]]; then
-    validated='true'
+Bloman () {
+if [ -f "/etc/.$Name.ini" ]; then
+CekTwo=$(cat /etc/.$Name.ini)
+    if [ "$CekOne" = "$CekTwo" ]; then
+        res="Expired"
+    fi
 else
-    echo -e "${EROR} License Key Not Valid"
-    exit 1
+res="Permission Accepted..."
 fi
+}
 
-# // Checking VPS Status > Got Banned / No
-if [[ $IP == "$( curl -s https://${Server_URL}/blacklist.txt | cut -d ' ' -f 1 | grep -w $IP | head -n1 )" ]]; then
-    echo -e "${EROR} 403 Forbidden ( Your VPS Has Been Banned )"
-    exit  1
-fi
-
-# // Checking VPS Status > Got Banned / No
-if [[ $Your_License_Key == "$( curl -s https://${Server_URL} | cut -d ' ' -f 1 | grep -w $Your_License_Key | head -n1)" ]]; then
-    echo -e "${EROR} 403 Forbidden ( Your License Has Been Limited )"
-    exit  1
-fi
-
-# // Checking VPS Status > Got Banned / No
-if [[ 'Standart' == "$( curl -s https://${Server_URL}/validated-registered-license-key.txt | grep -w $Your_License_Key | head -n1 | cut -d ' ' -f 6 )" ]]; then 
-    License_Mode='Standart'
-elif [[ Pro == "$( curl -s https://${Server_URL}/validated-registered-license-key.txt | grep -w $Your_License_Key | head -n1 | cut -d ' ' -f 6 )" ]]; then 
-    License_Mode='Pro'
+PERMISSION () {
+    MYIP=$(curl -sS ipv4.icanhazip.com)
+    IZIN=$(curl -sS https://raw.githubusercontent.com/arzvpn/permission/main/ip | awk '{print $4}' | grep $MYIP)
+    if [ "$MYIP" = "$IZIN" ]; then
+    Bloman
+    else
+    res="Permission Denied!"
+    fi
+    BURIQ
+}
+PERMISSION
+if [ -f /home/needupdate ]; then
+red "Your script need to update first !"
+exit 0
+elif [ "$res" = "Permission Accepted..." ]; then
+echo -ne
 else
-    echo -e "${EROR} Please Using Genuine License !"
-    exit 1
+red "Permission Denied!"
+exit 0
 fi
-
-# // Checking Script Expired
-exp=$( curl -s https://${Server1_URL}/limit.txt | grep -w $IP | cut -d ' ' -f 3 )
-now=`date -d "0 days" +"%Y-%m-%d"`
-expired_date=$(date -d "$exp" +%s)
-now_date=$(date -d "$now" +%s)
-sisa_hari=$(( ($expired_date - $now_date) / 86400 ))
-if [[ $sisa_hari -lt 0 ]]; then
-    echo $sisa_hari > /etc/${Auther}/license-remaining-active-days.db
-    echo -e "${EROR} Your License Key Expired ( $sisa_hari Days )"
-    exit 1
-else
-    echo $sisa_hari > /etc/${Auther}/license-remaining-active-days.db
-fi
-
 clear
-echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
-echo -e "$COLOR1│ $NC$COLBG1                 MENU SETTINGS                 $COLOR1 │$NC"
-echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
-echo -e " $COLOR1┌───────────────────────────────────────────────┐${NC}"
-echo -e " $COLOR1│$NC   ${COLOR1}[1]${NC}  • ADD HOST/DOMAIN"
-echo -e " $COLOR1│$NC   ${COLOR1}[2]${NC}  • RENEW CERTXRAY"
-echo -e " $COLOR1│$NC   ${COLOR1}[3]${NC}  • CHECK RUNNING"
-echo -e " $COLOR1│$NC   ${COLOR1}[4]${NC}  • CHANGE BANNER SSH "
-echo -e " $COLOR1│$NC   ${COLOR1}[5]${NC}  • BANDWIDTH"
-echo -e " $COLOR1│$NC   ${COLOR1}[6]${NC}  • RESTART "
-echo -e " $COLOR1│$NC   ${COLOR1}[7]${NC}  • AUTO REBOOT"
-echo -e " $COLOR1│$NC   ${COLOR1}[8]${NC}  • REBOOT"
-echo -e " $COLOR1│$NC   ${COLOR1}[9]${NC}  • SPEEDTEST"
-echo -e " $COLOR1│$NC   ${COLOR1}[10]${NC} • LIMIT SPEED"
-echo -e " $COLOR1│$NC   ${COLOR1}[11]${NC} • WEBMIN"
-echo -e " $COLOR1│$NC   ${COLOR1}[12]${NC} • UPDATE SCRIPT"
-echo -e " $COLOR1│$NC   ${COLOR1}[13]${NC} • CHANGE PORT"
-echo -e " $COLOR1│$NC   ${COLOR1}[0]${NC}  • BACK TO MENU"
-echo -e " $COLOR1└───────────────────────────────────────────────┘${NC}"
+echo -e "$BICyan┌─────────────────────────────────────────────────┐${NC}"
+echo -e "$BICyan│                  MENU SETTINGS                  │$NC"
+echo -e "$BICyan└─────────────────────────────────────────────────┘${NC}"
+echo -e " $BICyan┌───────────────────────────────────────────────┐${NC}"
+echo -e " $BICyan│$NC   ${BICyan}[1]${NC}  • ADD Host/Domain"
+echo -e " $BICyan│$NC   ${BICyan}[2]${NC}  • Renew CertXRAY"
+echo -e " $BICyan│$NC   ${BICyan}[3]${NC}  • Check Running"
+echo -e " $BICyan│$NC   ${BICyan}[4]${NC}  • Change Banner SSH "
+echo -e " $BICyan│$NC   ${BICyan}[5]${NC}  • Info Bandwidth"
+echo -e " $BICyan│$NC   ${BICyan}[6]${NC}  • Restart "
+echo -e " $BICyan│$NC   ${BICyan}[7]${NC}  • Auto Reboot"
+echo -e " $BICyan│$NC   ${BICyan}[8]${NC}  • Reboot"
+echo -e " $BICyan│$NC   ${BICyan}[9]${NC}  • Speedtest"
+echo -e " $BICyan│$NC   ${BICyan}[10]${NC} • Limit Speed"
+echo -e " $BICyan│$NC   ${BICyan}[11]${NC} • Webmin"
+echo -e " $BICyan│$NC   ${BICyan}[12]${NC} • UPDATE SCRIPT"
+echo -e " $BICyan│$NC   ${BICyan}[0]${NC}  • BACK TO MENU"
+echo -e " $BICyan└───────────────────────────────────────────────┘${NC}"
 echo -e ""
 read -p "  Select menu :  "  opt
 echo -e   ""
@@ -147,7 +133,6 @@ case $opt in
 10 | 10) clear ; limitspeed ;;
 11 | 11) clear ; webmin ;;
 12 | 12) clear ; update ;;
-13 | 13) clear ; change-port ;;
 00 | 0) clear ; menu ;;
 *) clear ; menu-set ;;
 esac
