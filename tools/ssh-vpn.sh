@@ -401,7 +401,7 @@ systemctl restart stunnel5 >/dev/null 2>&1
 # Install bbr
 sleep 1
 echo -e "[ ${green}INFO$NC ] Install bbr"
-#Optimasi Speed Mod By Akhir Zaman
+#Optimasi Speed Mod By Arz
 Add_To_New_Line(){
 	if [ "$(tail -n1 $1 | wc -l)" == "0"  ];then
 		echo "" >> "$1"
