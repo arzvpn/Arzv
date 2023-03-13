@@ -162,20 +162,21 @@ echo -e "     ${BICyan} SSH ${NC}: $ressh"" ${BICyan} NGINX ${NC}: $resngx"" ${B
 echo -e "     ${BICyan}          DROPBEAR ${NC}: $resdbr" "${BICyan} SSH-WS ${NC}: $ressshws"
 echo -e "${BICyan} ┌─────────────────────────────────────────────────────┐${NC}"
 echo -e "     ${BICyan}[${BIGreen}1${BICyan}]${Green} SSH ${NC}" 
-echo -e "     ${BICyan}[${BiGreen}2${BICyan}]${Green} VMESS ${NC}"    
+echo -e "     ${BICyan}[${BIGreen}2${BICyan}]${Green} VMESS ${NC}"    
 echo -e "     ${BICyan}[${BIGreen}3${BICyan}]${Green} VLESS ${NC}"    
 echo -e "     ${BICyan}[${BIGreen}4${BICyan}]${Green} TROJAN ${NC}" 
 echo -e "     ${BICyan}[${BIGreen}5${BICyan}]${Green} SHADOWSOCKS ${NC}"    
 echo -e "     ${BICyan}[${BIGreen}6${BICyan}]${Green} BACKUP/RESTORE ${NC}"    
 echo -e "     ${BICyan}[${BIGreen}7${BICyan}]${Green} SETTINGS ${NC}"    
-echo -e "     ${BICyan}[${BIGreen}8${BICyan}]${Green} INFO SCRIPT ${NC}"     
+echo -e "     ${BICyan}[${BIGreen}8${BICyan}]${Green} INFO SCRIPT ${NC}"  
+echo -e "     ${BICyan}[${BIGreen}9${BICyan}]${Green} INFO SERVER ${NC}"    
 echo -e "     ${BICyan}[${BIGreen}x${BICyan}]${Green} EXIT ${NC}"  
 echo -e "${BICyan} └─────────────────────────────────────────────────────┘${NC}"
 DATE=$(date +'%d %B %Y')
 datediff() {
     d1=$(date -d "$1" +%s)
     d2=$(date -d "$2" +%s)
-    echo -e "  ${BICyan}│$NC  Expiry In    : $(( (d1 - d2) / 86400 )) Days"
+    echo -e " ${BICyan}│$NC  Expiry In    : $(( (d1 - d2) / 86400 )) Days $NC"
 }
 mai="datediff "$Exp" "$DATE""
 echo -e " ${BICyan}┌─────────────────────────────────────┐${NC}"
@@ -200,6 +201,7 @@ case $opt in
 6) clear ; menu-backup ;;
 7) clear ; menu-set ;;
 8) clear ; info ;;
+9) clear ; infoserv ;;
 99) clear ; update ;;
 0) clear ; menu ;;
 x) exit ;;
