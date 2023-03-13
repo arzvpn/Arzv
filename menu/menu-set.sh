@@ -125,7 +125,7 @@ case $opt in
 02 | 2) clear ; certxray ;;
 03 | 3) clear ; running ;;
 04 | 4) clear ; nano /etc/issue.net ;;
-05 | 5) clear ; cek-bandwith ;;
+05 | 5) clear ; cek-bandwidth ;;
 06 | 6) clear ; restart ;;
 07 | 7) clear ; autoreboot ;;
 08 | 8) clear ; reboot ;;
