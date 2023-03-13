@@ -88,11 +88,6 @@ PERMISSION () {
     fi
     BURIQ
 }
-red='\e[1;31m'
-green='\e[1;32m'
-NC='\e[0m'
-green() { echo -e "\\033[32;1m${*}\\033[0m"; }
-red() { echo -e "\\033[31;1m${*}\\033[0m"; }
 PERMISSION
 if [ -f /home/needupdate ]; then
 red "Your script need to update first !"
@@ -103,7 +98,7 @@ else
 red "Permission Denied!"
 exit 0
 fi
-echo "Source Install..."
+echo "Install Main..."
 echo "Progress..."
 sleep 2
 
@@ -122,6 +117,6 @@ rm -f /root/vnstat-2.6.tar.gz >/dev/null 2>&1
 rm -rf /root/vnstat-2.6 >/dev/null 2>&1
 
 yellow() { echo -e "\\033[33;1m${*}\\033[0m"; }
-yellow "Source successfully installed..."
+yellow "Main successfully installed..."
 sleep 3
 clear
