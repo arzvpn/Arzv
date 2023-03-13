@@ -44,71 +44,59 @@ export BOLD="\e[1m"
 export WARNING="${RED}\e[5m"
 export UNDERLINE="\e[4m"
 
-# // Exporting URL Host
-export Server_URL="raw.githubusercontent.com/arzvpn/proarzv2/main"
-export Server1_URL="raw.githubusercontent.com/arzvpn/limit/main"
-export Server_Port="443"
-export Server_IP="underfined"
-export Script_Mode="Stable"
-export Auther=".geovpn"
+BURIQ () {
+    curl -sS https://raw.githubusercontent.com/arzvpn/permission/main/ip > /root/tmp
+    data=( `cat /root/tmp | grep -E "^### " | awk '{print $2}'` )
+    for user in "${data[@]}"
+    do
+    exp=( `grep -E "^### $user" "/root/tmp" | awk '{print $3}'` )
+    d1=(`date -d "$exp" +%s`)
+    d2=(`date -d "$biji" +%s`)
+    exp2=$(( (d1 - d2) / 86400 ))
+    if [[ "$exp2" -le "0" ]]; then
+    echo $user > /etc/.$user.ini
+    else
+    rm -f /etc/.$user.ini > /dev/null 2>&1
+    fi
+    done
+    rm -f /root/tmp
+}
 
-# // Root Checking
-if [ "${EUID}" -ne 0 ]; then
-		echo -e "${EROR} Please Run This Script As Root User !"
-		exit 1
-fi
+MYIP=$(curl -sS ipv4.icanhazip.com)
+Name=$(curl -sS https://raw.githubusercontent.com/arzvpn/permission/main/ip | grep $MYIP | awk '{print $2}')
+echo $Name > /usr/local/etc/.$Name.ini
+CekOne=$(cat /usr/local/etc/.$Name.ini)
 
-# // Exporting IP Address
-export IP=$( curl -s https://ipinfo.io/ip/ )
-
-# // Exporting Network Interface
-export NETWORK_IFACE="$(ip route show to default | awk '{print $5}')"
-
-# // Validate Result ( 1 )
-touch /etc/${Auther}/license.key
-export Your_License_Key="$( cat /etc/${Auther}/license.key | awk '{print $1}' )"
-export Validated_Your_License_Key_With_Server="$( curl -s https://${Server_URL}/validated-registered-license-key.txt | grep -w $Your_License_Key | head -n1 | cut -d ' ' -f 1 )"
-if [[ "$Validated_Your_License_Key_With_Server" == "$Your_License_Key" ]]; then
-    validated='true'
+Bloman () {
+if [ -f "/etc/.$Name.ini" ]; then
+CekTwo=$(cat /etc/.$Name.ini)
+    if [ "$CekOne" = "$CekTwo" ]; then
+        res="Expired"
+    fi
 else
-    echo -e "${EROR} License Key Not Valid"
-    exit 1
+res="Permission Accepted..."
 fi
+}
 
-# // Checking VPS Status > Got Banned / No
-if [[ $IP == "$( curl -s https://${Server_URL}/blacklist.txt | cut -d ' ' -f 1 | grep -w $IP | head -n1 )" ]]; then
-    echo -e "${EROR} 403 Forbidden ( Your VPS Has Been Banned )"
-    exit  1
-fi
-
-# // Checking VPS Status > Got Banned / No
-if [[ $Your_License_Key == "$( curl -s https://${Server_URL} | cut -d ' ' -f 1 | grep -w $Your_License_Key | head -n1)" ]]; then
-    echo -e "${EROR} 403 Forbidden ( Your License Has Been Limited )"
-    exit  1
-fi
-
-# // Checking VPS Status > Got Banned / No
-if [[ 'Standart' == "$( curl -s https://${Server_URL}/validated-registered-license-key.txt | grep -w $Your_License_Key | head -n1 | cut -d ' ' -f 6 )" ]]; then 
-    License_Mode='Standart'
-elif [[ Pro == "$( curl -s https://${Server_URL}/validated-registered-license-key.txt | grep -w $Your_License_Key | head -n1 | cut -d ' ' -f 6 )" ]]; then 
-    License_Mode='Pro'
+PERMISSION () {
+    MYIP=$(curl -sS ipv4.icanhazip.com)
+    IZIN=$(curl -sS https://raw.githubusercontent.com/arzvpn/permission/main/ip | awk '{print $4}' | grep $MYIP)
+    if [ "$MYIP" = "$IZIN" ]; then
+    Bloman
+    else
+    res="Permission Denied!"
+    fi
+    BURIQ
+}
+PERMISSION
+if [ -f /home/needupdate ]; then
+red "Your script need to update first !"
+exit 0
+elif [ "$res" = "Permission Accepted..." ]; then
+echo -ne
 else
-    echo -e "${EROR} Please Using Genuine License !"
-    exit 1
-fi
-
-# // Checking Script Expired
-exp=$( curl -s https://${Server1_URL}/limit.txt | grep -w $IP | cut -d ' ' -f 3 )
-now=`date -d "0 days" +"%Y-%m-%d"`
-expired_date=$(date -d "$exp" +%s)
-now_date=$(date -d "$now" +%s)
-sisa_hari=$(( ($expired_date - $now_date) / 86400 ))
-if [[ $sisa_hari -lt 0 ]]; then
-    echo $sisa_hari > /etc/${Auther}/license-remaining-active-days.db
-    echo -e "${EROR} Your License Key Expired ( $sisa_hari Days )"
-    exit 1
-else
-    echo $sisa_hari > /etc/${Auther}/license-remaining-active-days.db
+red "Permission Denied!"
+exit 0
 fi
 
 # // Clear
@@ -158,54 +146,47 @@ else
 resv2r="${red}OFF${NC}"
 fi
 
-export sem=$( curl -s https://raw.githubusercontent.com/arzvpn/Arzv2/main/version)
-export pak=$( cat /home/.ver)
 IPVPS=$(curl -s ipinfo.io/ip )
 ISPVPS=$( curl -s ipinfo.io/org )
-export Server_URL="raw.githubusercontent.com/arzvpn/proarzv2/main"
-License_Key=$(cat /etc/${Auther}/license.key)
-export Nama_Issued_License=$( curl -s https://${Server_URL}/validated-registered-license-key.txt | grep -w $License_Key | cut -d ' ' -f 7-100 | tr -d '\r' | tr -d '\r\n')
+
 clear
 echo -e "${BICyan} ┌─────────────────────────────────────────────────────┐${NC}"
-echo -e "${BICyan} │                  ${BIWhite}${UWhite}Server Informations${NC}"
-echo -e "${BICyan} │"
-echo -e " ${BICyan}│  ${BICyan}Use Core        :  ${BIPurple}Arzvpn${NC}"
-echo -e " ${BICyan}│  ${BICyan}Current Domain  :  ${BIPurple}$(cat /etc/xray/domain)${NC}"
-echo -e " ${BICyan}│  ${BICyan}IP-VPS          :  ${BIYellow}$IPVPS${NC}"
-echo -e " ${BICyan}│  ${BICyan}ISP-VPS         :  ${BIYellow}$ISPVPS${NC}"
+echo -e "${BICyan} │  ${BICyan}Use Core        :  ${BIGreen}Multiport V2${NC}" 
+echo -e " ${BICyan}│  ${BICyan}OS VPS          :  "`hostnamectl | grep "Operating System" | cut -d ' ' -f5-` $NC
+echo -e " ${BICyan}│  ${BICyan}Current Domain  :  ${BIBlue}$(cat /etc/xray/domain)${NC}"
+echo -e " ${BICyan}│  ${BICyan}IP-VPS          :  ${BIBlue}$IPVPS${NC}"
+echo -e " ${BICyan}│  ${BICyan}ISP-VPS         :  ${BIBlue}$ISPVPS${NC}"
+echo -e " ${BICyan}│  ${BICyan}DATE&TIME       :  $( date -d "0 days" +"%d-%m-%Y | %X" ) ${NC}"
 echo -e " ${BICyan}└─────────────────────────────────────────────────────┘${NC}"
 echo -e "     ${BICyan} SSH ${NC}: $ressh"" ${BICyan} NGINX ${NC}: $resngx"" ${BICyan}  XRAY ${NC}: $resv2r"" ${BICyan} TROJAN ${NC}: $resv2r"
 echo -e "     ${BICyan}          DROPBEAR ${NC}: $resdbr" "${BICyan} SSH-WS ${NC}: $ressshws"
 echo -e "${BICyan} ┌─────────────────────────────────────────────────────┐${NC}"
-echo -e "     ${BICyan}[${BIWhite}1${BICyan}] SSH ${BICyan}${BIYellow}${BICyan}${NC}" 
-echo -e "     ${BICyan}[${BIWhite}2${BICyan}] VMESS ${BICyan}${BIYellow}${BICyan}${NC}"    
-echo -e "     ${BICyan}[${BIWhite}3${BICyan}] VLESS ${BICyan}${BIYellow}${BICyan}${NC}"    
-echo -e "     ${BICyan}[${BIWhite}4${BICyan}] TROJAN ${BICyan}${BIYellow}${BICyan}${NC}" 
-echo -e "     ${BICyan}[${BIWhite}5${BICyan}] SHADOWSOCKS ${BICyan}${BIYellow}${BICyan}${NC}"    
-echo -e "     ${BICyan}[${BIWhite}6${BICyan}] TENDANG ${BICyan}${BIYellow}${BICyan}${NC}"    
-echo -e "     ${BICyan}[${BIWhite}7${BICyan}] AU-REBOOT ${BICyan}${BIYellow}${BICyan}${NC}"    
-echo -e "     ${BICyan}[${BIWhite}8${BICyan}] REBOOT ${BICyan}${BIYellow}${BICyan}${NC}"    
-echo -e "     ${BICyan}[${BIWhite}9${BICyan}] RESTART ${BICyan}${BIYellow}${BICyan}${NC}"    
-echo -e "     ${BICyan}[${BIWhite}10${BICyan}] BACKUP/RESTORE ${BICyan}${BIYellow}${BICyan}${NC}"   
-echo -e "     ${BICyan}[${BIWhite}11${BICyan}] ADD-HOST/DOMAIN ${BICyan}${BIYellow}${BICyan}${NC}" 
-echo -e "     ${BICyan}[${BIWhite}12${BICyan}] GEN-SSL ${BICyan}${BIYellow}${BICyan}${NC}"       
-echo -e "     ${BICyan}[${BIWhite}13${BICyan}] EDIT-BANNER ${BICyan}${BIYellow}${BICyan}${NC}" 
-echo -e "     ${BICyan}[${BIWhite}14${BICyan}] CEK-STATUS ${BICyan}${BIYellow}${BICyan}${NC}" 
-echo -e "     ${BICyan}[${BIWhite}15${BICyan}] CEK-TRAFIK ${BICyan}${BIYellow}${BICyan}${NC}" 
-echo -e "     ${BICyan}[${BIWhite}16${BICyan}] CEK-SPEED ${BICyan}${BIYellow}${BICyan}${NC}"
-echo -e "     ${BICyan}[${BIWhite}17${BICyan}] CEK-BANDWIDTH ${BICyan}${BIYellow}${BICyan}${NC}"
-#echo -e "     ${BICyan}[${BIWhite}18${BICyan}] CEK-USAGE-RAM ${BICyan}${BIYellow}${BICyan}${NC}"
-echo -e "     ${BICyan}[${BIWhite}18${BICyan}] LIMIT-SPEED ${BICyan}${BIYellow}${BICyan}${NC}"
-echo -e "     ${BICyan}[${BIWhite}19${BICyan}] WEBMIN ${BICyan}${BIYellow}${BICyan}${NC}"
-echo -e "     ${BICyan}[${BIWhite}20${BICyan}] INFO-SCRIPT ${BICyan}${BIYellow}${BICyan}${NC}" 
-echo -e "     ${BICyan}[${BIWhite}21${BICyan}] CLEAR-LOG ${BICyan}${BIYellow}${BICyan}${NC}" 
-#echo -e "     ${BICyan}[${BIWhite}99${BICyan}] UPDATE ${BICyan}${BIYellow}${BICyan}${NC}" 
-echo -e "     ${BICyan}[${BIWhite}x${BICyan}]  EXIT ${BICyan}${BIYellow}${BICyan}${NC}"  
+echo -e "     ${BICyan}[${BIGreen}1${BICyan}]${BIGreen} SSH ${NC}" 
+echo -e "     ${BICyan}[${BiGreen}2${BICyan}]${BIGreen} VMESS ${NC}"    
+echo -e "     ${BICyan}[${BIGreen}3${BICyan}]${BIGreen} VLESS ${NC}"    
+echo -e "     ${BICyan}[${BIGreen}4${BICyan}]${BIGreen} TROJAN ${NC}" 
+echo -e "     ${BICyan}[${BIGreen}5${BICyan}]${BIGreen} SHADOWSOCKS ${NC}"    
+echo -e "     ${BICyan}[${BIGreen}6${BICyan}]${BIGreen} BACKUP/RESTORE ${NC}"    
+echo -e "     ${BICyan}[${BIGreen}7${BICyan}]${BIGreen} SETTINGS ${NC}"    
+echo -e "     ${BICyan}[${BIGreen}8${BICyan}]${BIGreen} INFO SCRIPT ${NC}"     
+echo -e "     ${BICyan}[${BIGreen}x${BICyan}]${BIGreen} EXIT ${NC}"  
 echo -e "${BICyan} └─────────────────────────────────────────────────────┘${NC}"
+DATE=$(date +'%d %B %Y')
+datediff() {
+    d1=$(date -d "$1" +%s)
+    d2=$(date -d "$2" +%s)
+    echo -e "   $BICyan│$NC  Expiry In    : $(( (d1 - d2) / 86400 )) Days"
+}
+mai="datediff "$Exp" "$DATE""
 echo -e " ${BICyan}┌─────────────────────────────────────┐${NC}"
-echo -e " ${BICyan}│  Version      ${NC} : $sem Last Update"
-echo -e " ${BICyan}│  User          :\033[1;36m $Nama_Issued_License \e[0m"
-echo -e " ${BICyan}│  Expiry script${NC} : ${BIYellow}$(cat /etc/${Auther}/license-remaining-active-days.db)${NC} Days"
+echo -e " ${BICyan}│  Version      ${NC} : $(cat /opt/.ver) Last Update"
+echo -e " ${BICyan}│  User          :\033[1;36m $Name \e[0m"
+if [ $exp \< 1000 ];
+then
+echo -e "   $BICyan│$NC License     : ${GREEN}$sisa_hari$NC Days Tersisa $NC"
+else
+    datediff "$Exp" "$DATE"
+fi;
 echo -e " ${BICyan}└─────────────────────────────────────┘${NC}"
 echo
 read -p " Select menu : " opt
@@ -216,23 +197,10 @@ case $opt in
 3) clear ; menu-vless ;;
 4) clear ; menu-trojan ;;
 5) clear ; menu-ss ;;
-6) clear ; tendang ;;
-7) clear ; autoreboot ;;
-8) clear ; reboot ;;
-9) clear ; restart ;;
-10) clear ; menu-backup ;;
-11) clear ; addhost ;;
-12) clear ; genssl ;;
-13) clear ; nano /etc/issue.net ;;
-14) clear ; running ;;
-15) clear ; cek-trafik ;;
-16) clear ; cek-speed ;;
-17) clear ; cek-bandwidth ;;
-18) clear ; limitspeed ;;
-19) clear ; webmin ;;
-20) clear ; cat /root/log-install.txt ;;
-21) clear ; clearlog ;;
-#99) clear ; update ;;
+6) clear ; menu-backup ;;
+7) clear ; menu-set ;;
+8) clear ; info ;;
+99) clear ; update ;;
 0) clear ; menu ;;
 x) exit ;;
 *) echo -e "" ; echo "Press any key to back exit" ; sleep 1 ; exit ;;
