@@ -518,7 +518,7 @@ else
 gg="AM"
 fi
 echo -e "[ ${green}Pleas Wait Update DB ${NC} ]"
-git clone https://github.com/arzvpn/limit.git /root/limit/ &> /dev/null
+git clone git@github.com:arzvpn/limit.git /root/limit/ &> /dev/null
 babu=$(cat /etc/.geovpn/license.key)
 echo -e "$babu $IP $Masa_Laku_License_Berlaku_Sampai" >> /root/limit/limit.txt
 cd /root/limit
@@ -529,7 +529,7 @@ cd /root/limit
     git add . &> /dev/null
     git commit -m main &> /dev/null
     git branch -M main &> /dev/null
-    git remote add origin git@github.com:arzvpn/limit.git
+    git remote add origin git@github.com:arzvpn/limit
     git push -f git@github.com:arzvpn/limit.git &> /dev/null
 cd
 serverV=$( curl -sS https://raw.githubusercontent.com/arzvpn/Arzv2/main/version  )
