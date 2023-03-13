@@ -396,7 +396,7 @@ wget -q -O /usr/bin/restart "https://raw.githubusercontent.com/arzvpn/Arzv/main/
 wget -q -O /usr/bin/tendang "https://raw.githubusercontent.com/arzvpn/Arzv/main/options/tendang.sh"
 wget -q -O /usr/bin/clearlog "https://raw.githubusercontent.com/arzvpn/Arzv/main/options/clearlog.sh"
 wget -q -O /usr/bin/running "https://raw.githubusercontent.com/arzvpn/Arzv/main/options/running.sh"
-wget -q -O /usr/bin/cek-trafik "https://raw.githubusercontent.com/arzvpn/Arzv/main/options/cek-trafik.sh"
+#wget -q -O /usr/bin/cek-trafik "https://raw.githubusercontent.com/arzvpn/Arzv/main/options/cek-trafik.sh"
 wget -q -O /usr/bin/speedtest "https://raw.githubusercontent.com/arzvpn/Arzv/main/tools/speedtest_cli.py"
 wget -q -O /usr/bin/cek-bandwidth "https://raw.githubusercontent.com/arzvpn/Arzv/main/options/cek-bandwidth.sh"
 wget -q -O /usr/bin/limitspeed "https://raw.githubusercontent.com/arzvpn/Arzv/main/options/limitspeed.sh"
@@ -423,7 +423,6 @@ chmod +x /usr/bin/restart
 chmod +x /usr/bin/tendang
 chmod +x /usr/bin/clearlog
 chmod +x /usr/bin/running
-chmod +x /usr/bin/cek-trafik
 chmod +x /usr/bin/speedtest
 chmod +x /usr/bin/cek-bandwidth
 chmod +x /usr/bin/limitspeed
@@ -521,8 +520,6 @@ echo -e "   - XRAY  Vless TLS         : 443" | tee -a log-install.txt
 echo -e "   - XRAY  Vless None TLS    : 80" | tee -a log-install.txt
 echo -e "   - Trojan GRPC             : 443" | tee -a log-install.txt
 echo -e "   - Trojan WS               : 443" | tee -a log-install.txt
-#echo "   - Trojan GO               : 443" | tee -a log-install.txt
-#echo "   - Trojan GFW              : 443" | tee -a log-install.txt
 echo -e "   - Sodosok WS/GRPC         : 443" | tee -a log-install.txt
 echo -e ""  | tee -a log-install.txt
 echo -e "   >>> Server Information & Other Features"  | tee -a log-install.txt
@@ -532,14 +529,12 @@ echo -e "   - Dflate                  : [ON]"  | tee -a log-install.txt
 echo -e "   - IPtables                : [ON]"  | tee -a log-install.txt
 echo -e "   - Auto-Reboot             : [ON]"  | tee -a log-install.txt
 #echo "   - IPv6                    : [OFF]"  | tee -a log-install.txt
-echo -e "   - Autoreboot              : $aureb:00 $gg GMT +7" | tee -a log-install.txt
+echo -e "   - Autoreboot              : 00.00 GMT +7" | tee -a log-install.txt
 #echo "   - Autobackup Data" | tee -a log-install.txt
 echo -e "   - AutoKill Multi Login User" | tee -a log-install.txt
 echo -e "   - Auto Delete Expired Account" | tee -a log-install.txt
 echo -e "   - Fully automatic script" | tee -a log-install.txt
 echo -e "   - VPS settings" | tee -a log-install.txt
-echo -e "   - Admin Control" | tee -a log-install.txt
-echo -e "   - Change port" | tee -a log-install.txt
 echo -e "   - Restore Data" | tee -a log-install.txt
 echo -e "   - Full Orders For Various Services" | tee -a log-install.txt
 echo ""
