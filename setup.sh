@@ -414,6 +414,7 @@ wget -q -O /usr/bin/addhost "https://raw.githubusercontent.com/arzvpn/Arzv/main/
 wget -q -O /usr/bin/certxray "https://raw.githubusercontent.com/arzvpn/Arzv/main/menu/crt.sh"
 wget -q -O /usr/bin/menu-set "https://raw.githubusercontent.com/arzvpn/Arzv/main/menu/menu-set.sh"
 wget -q -O /usr/bin/info "https://raw.githubusercontent.com/arzvpn/Arzv/main/options/info.sh"
+wget -q -O /usr/bin/infoserv "https://raw.githubusercontent.com/arzvpn/Arzv/main/options/infoserv.sh"
 chmod +x /usr/bin/usernew
 chmod +x /usr/bin/add-ws
 chmod +x /usr/bin/add-ssws
@@ -441,6 +442,7 @@ chmod +x /usr/bin/addhost
 chmod +x /usr/bin/certxray
 chmod +x /usr/bin/menu-set
 chmod +x /usr/bin/info
+chmod +x /usr/bin/infoserv
 
 #cat > /etc/cron.d/re_otm <<-END
 #SHELL=/bin/sh
