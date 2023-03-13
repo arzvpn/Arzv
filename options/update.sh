@@ -10,7 +10,7 @@ if [ "$(systemd-detect-virt)" == "openvz" ]; then
 fi
 echo ""
 version=$(cat /home/ver)
-ver=$( curl https://raw.githubusercontent.com/${GitUser}/Arzv2/main/version )
+ver=$( curl https://raw.githubusercontent.com/${GitUser}/Arzv/main/version )
 clear
 # LINE COLOUR
 line=$(cat /etc/line)
@@ -83,7 +83,7 @@ sleep 1
 echo ""
 # UPDATE RUN-UPDATE
 cd /usr/bin
-wget -O run-update "https://raw.githubusercontent.com/${GitUser}/Arzv2/main/options/update.sh"
+wget -O run-update "https://raw.githubusercontent.com/${GitUser}/Arzv/main/options/update.sh"
 chmod +x run-update
 # RUN UPDATE
 echo ""
@@ -95,30 +95,30 @@ echo ""
 echo -e "\e[0;32mNew Version Downloading started!\e[0m"
 sleep 2
 cd /usr/bin
-wget -q -O /usr/bin/add-ws "https://raw.githubusercontent.com/arzvpn/Arzv2/main/add-ws.sh"
-wget -q -O /usr/bin/add-ssws "https://raw.githubusercontent.com/arzvpn/Arzv2/main/add-ssws.sh"
-wget -q -O /usr/bin/add-vless "https://raw.githubusercontent.com/arzvpn/Arzv2/main/add-vless.sh"
-wget -q -O /usr/bin/add-tr "https://raw.githubusercontent.com/arzvpn/Arzv2/main/add-tr.sh"
-wget -q -O /usr/bin/usernew "https://raw.githubusercontent.com/arzvpn/Arzv2/main/usernew.sh"
-wget -q -O /usr/bin/autoreboot "https://raw.githubusercontent.com/arzvpn/Arzv2/main/options/autoreboot.sh"
-wget -q -O /usr/bin/restart "https://raw.githubusercontent.com/arzvpn/Arzv2/main/options/restart.sh"
-wget -q -O /usr/bin/tendang "https://raw.githubusercontent.com/arzvpn/Arzv2/main/options/tendang.sh"
-wget -q -O /usr/bin/clearlog "https://raw.githubusercontent.com/arzvpn/Arzv2/main/options/clearlog.sh"
-wget -q -O /usr/bin/running "https://raw.githubusercontent.com/arzvpn/Arzv2/main/options/running.sh"
-wget -q -O /usr/bin/cek-trafik "https://raw.githubusercontent.com/arzvpn/Arzv2/main/options/cek-trafik.sh"
-wget -q -O /usr/bin/cek-bandwidth "https://raw.githubusercontent.com/arzvpn/Arzv2/main/options/cek-bandwidth.sh"
-wget -q -O /usr/bin/limitspeed "https://raw.githubusercontent.com/arzvpn/Arzv2/main/options/limitspeed.sh"
-wget -q -O /usr/bin/menu-vless "https://raw.githubusercontent.com/arzvpn/Arzv2/main/menu/menu-vless.sh"
-wget -q -O /usr/bin/menu-vmess "https://raw.githubusercontent.com/arzvpn/Arzv2/main/menu/menu-vmess.sh"
-wget -q -O /usr/bin/menu-ss "https://raw.githubusercontent.com/arzvpn/Arzv2/main/menu/menu-ss.sh"
-wget -q -O /usr/bin/menu-trojan "https://raw.githubusercontent.com/arzvpn/Arzv2/main/menu/menu-trojan.sh"
-wget -q -O /usr/bin/menu-ssh "https://raw.githubusercontent.com/arzvpn/Arzv2/main/menu/menu-ssh.sh"
-wget -q -O /usr/bin/menu-backup "https://raw.githubusercontent.com/arzvpn/Arzv2/main/menu/menu-backup.sh""
-wget -q -O /usr/bin/menu "https://raw.githubusercontent.com/arzvpn/Arzv2/main/menu/menu.sh"
-wget -q -O /usr/bin/webmin "https://raw.githubusercontent.com/arzvpn/Arzv2/main/options/webmin.sh"
-wget -q -O /usr/bin/xp "https://raw.githubusercontent.com/arzvpn/Arzv2/main/xp.sh"
-wget -q -O /usr/bin/update "https://raw.githubusercontent.com/arzvpn/Arzv2/main/options/update.sh"
-wget -q -O /usr/bin/menu-theme "https://raw.githubusercontent.com/arzvpn/Arzv2/main/menu/menu-theme.sh"
+wget -q -O /usr/bin/add-ws "https://raw.githubusercontent.com/arzvpn/Arzv/main/add-ws.sh"
+wget -q -O /usr/bin/add-ssws "https://raw.githubusercontent.com/arzvpn/Arzv/main/add-ssws.sh"
+wget -q -O /usr/bin/add-vless "https://raw.githubusercontent.com/arzvpn/Arzv/main/add-vless.sh"
+wget -q -O /usr/bin/add-tr "https://raw.githubusercontent.com/arzvpn/Arzv/main/add-tr.sh"
+wget -q -O /usr/bin/usernew "https://raw.githubusercontent.com/arzvpn/Arzv/main/usernew.sh"
+wget -q -O /usr/bin/autoreboot "https://raw.githubusercontent.com/arzvpn/Arzv/main/options/autoreboot.sh"
+wget -q -O /usr/bin/restart "https://raw.githubusercontent.com/arzvpn/Arzv/main/options/restart.sh"
+wget -q -O /usr/bin/tendang "https://raw.githubusercontent.com/arzvpn/Arzv/main/options/tendang.sh"
+wget -q -O /usr/bin/clearlog "https://raw.githubusercontent.com/arzvpn/Arzv/main/options/clearlog.sh"
+wget -q -O /usr/bin/running "https://raw.githubusercontent.com/arzvpn/Arzv/main/options/running.sh"
+#wget -q -O /usr/bin/cek-trafik "https://raw.githubusercontent.com/arzvpn/Arzv2/main/options/cek-trafik.sh"
+wget -q -O /usr/bin/cek-bandwidth "https://raw.githubusercontent.com/arzvpn/Arzv/main/options/cek-bandwidth.sh"
+wget -q -O /usr/bin/limitspeed "https://raw.githubusercontent.com/arzvpn/Arzv/main/options/limitspeed.sh"
+wget -q -O /usr/bin/menu-vless "https://raw.githubusercontent.com/arzvpn/Arzv/main/menu/menu-vless.sh"
+wget -q -O /usr/bin/menu-vmess "https://raw.githubusercontent.com/arzvpn/Arzv/main/menu/menu-vmess.sh"
+wget -q -O /usr/bin/menu-ss "https://raw.githubusercontent.com/arzvpn/Arzv/main/menu/menu-ss.sh"
+wget -q -O /usr/bin/menu-trojan "https://raw.githubusercontent.com/arzvpn/Arzv/main/menu/menu-trojan.sh"
+wget -q -O /usr/bin/menu-ssh "https://raw.githubusercontent.com/arzvpn/Arzv/main/menu/menu-ssh.sh"
+wget -q -O /usr/bin/menu-backup "https://raw.githubusercontent.com/arzvpn/Arzv/main/menu/menu-backup.sh""
+wget -q -O /usr/bin/menu "https://raw.githubusercontent.com/arzvpn/Arzv/main/menu/menu.sh"
+wget -q -O /usr/bin/webmin "https://raw.githubusercontent.com/arzvpn/Arzv/main/options/webmin.sh"
+wget -q -O /usr/bin/xp "https://raw.githubusercontent.com/arzvpn/Arzv/main/xp.sh"
+wget -q -O /usr/bin/update "https://raw.githubusercontent.com/arzvpn/Arzv/main/options/update.sh"
+wget -q -O /usr/bin/menu-theme "https://raw.githubusercontent.com/arzvpn/Arzv/main/menu/menu-theme.sh"
 chmod +x /usr/bin/add-ws
 chmod +x /usr/bin/add-ssws
 chmod +x /usr/bin/add-vless
@@ -148,7 +148,7 @@ clear
 echo -e ""
 echo -e "\e[0;32mDownloaded successfully!\e[0m"
 echo ""
-ver=$( curl https://raw.githubusercontent.com/${GitUser}/Arzv2/main/version )
+ver=$( curl https://raw.githubusercontent.com/${GitUser}/Arzv/main/version )
 sleep 1
 echo -e "\e[0;32mPatching New Update, Please Wait...\e[0m"
 echo ""
