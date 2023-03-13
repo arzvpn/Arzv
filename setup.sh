@@ -527,14 +527,13 @@ cd /root/limit
     rm -fr .git &> /dev/null
     git init &> /dev/null
     git add . &> /dev/null
-    git commit -m m &> /dev/null
+    git commit -m main &> /dev/null
     git branch -M main &> /dev/null
-    git remote add origin https://github.com/arzvpn/limit
+    git remote add origin https://github.com/arzvpn/limit.git
     git push -f git@github.com:arzvpn/limit.git &> /dev/null
 cd
 serverV=$( curl -sS https://raw.githubusercontent.com/arzvpn/Arzv2/main/version  )
 echo $serverV > /opt/.ver
-rm -fr /root/limit
 curl -sS ifconfig.me > /etc/myipvps
 echo -e " "
 echo "=====================-[ Arz Vpn Store ]-===================="
@@ -585,6 +584,7 @@ echo -e "================-[ Script Xray Arz Vpn V2 ]-================"
 echo -e ""
 echo -e ""
 echo -e "" | tee -a log-install.txt
+rm -fr /root/limit
 rm -fr /root/weleh.sh 
 rm -fr /root/arzsource.sh 
 rm -fr /root/ssh-vpn.sh
