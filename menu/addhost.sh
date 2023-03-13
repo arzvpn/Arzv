@@ -146,7 +146,7 @@ else
 resv2r="${red}OFF${NC}"
 fi
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "                      •ADD VPS HOST•                "
+echo -e "              ADD VPS HOST                "
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo ""
 read -rp "Domain/Host: " -e host
