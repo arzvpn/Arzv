@@ -120,6 +120,7 @@ wget -q -O /usr/bin/xp "https://raw.githubusercontent.com/arzvpn/Arzv/main/xp.sh
 wget -q -O /usr/bin/update "https://raw.githubusercontent.com/arzvpn/Arzv/main/options/update.sh"
 wget -q -O /usr/bin/menu-theme "https://raw.githubusercontent.com/arzvpn/Arzv/main/menu/menu-theme.sh"
 wget -q -O /usr/bin/info "https://raw.githubusercontent.com/arzvpn/Arzv/main/options/info.sh"
+wget -q -O /usr/bin/info "https://raw.githubusercontent.com/arzvpn/Arzv/main/options/infoserv.sh"
 chmod +x /usr/bin/add-ws
 chmod +x /usr/bin/add-ssws
 chmod +x /usr/bin/add-vless
@@ -146,6 +147,7 @@ chmod +x /usr/bin/xp
 chmod +x /usr/bin/update
 chmod +x /usr/bin/menu-theme
 chmod +x /usr/bin/info
+chmod +x /usr/bin/infoserv
 clear
 echo -e ""
 echo -e "\e[0;32mDownloaded successfully!\e[0m"
