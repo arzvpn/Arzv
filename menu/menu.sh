@@ -88,15 +88,17 @@ PERMISSION () {
     fi
     BURIQ
 }
+
+x="ok"
+
+
 PERMISSION
-if [ -f /home/needupdate ]; then
-red "Your script need to update first !"
-exit 0
-elif [ "$res" = "Permission Accepted..." ]; then
-echo -ne
+
+if [ "$res" = "Expired" ]; then
+Exp="\e[36mExpired\033[0m"
+rm -f /home/needupdate > /dev/null 2>&1
 else
-red "Permission Denied!"
-exit 0
+Exp=$(curl -sS https://raw.githubusercontent.com/arzvpn/permission/main/ip | grep $MYIP | awk '{print $3}')
 fi
 
 # // Clear
@@ -161,22 +163,22 @@ echo -e " ${BICyan}└───────────────────�
 echo -e "     ${BICyan} SSH ${NC}: $ressh"" ${BICyan} NGINX ${NC}: $resngx"" ${BICyan}  XRAY ${NC}: $resv2r"" ${BICyan} TROJAN ${NC}: $resv2r"
 echo -e "     ${BICyan}          DROPBEAR ${NC}: $resdbr" "${BICyan} SSH-WS ${NC}: $ressshws"
 echo -e "${BICyan} ┌─────────────────────────────────────────────────────┐${NC}"
-echo -e "     ${BICyan}[${BIGreen}1${BICyan}]${Green} SSH ${NC}" 
-echo -e "     ${BICyan}[${BIGreen}2${BICyan}]${Green} VMESS ${NC}"    
-echo -e "     ${BICyan}[${BIGreen}3${BICyan}]${Green} VLESS ${NC}"    
-echo -e "     ${BICyan}[${BIGreen}4${BICyan}]${Green} TROJAN ${NC}" 
-echo -e "     ${BICyan}[${BIGreen}5${BICyan}]${Green} SHADOWSOCKS ${NC}"    
-echo -e "     ${BICyan}[${BIGreen}6${BICyan}]${Green} BACKUP/RESTORE ${NC}"    
-echo -e "     ${BICyan}[${BIGreen}7${BICyan}]${Green} SETTINGS ${NC}"    
-echo -e "     ${BICyan}[${BIGreen}8${BICyan}]${Green} INFO SCRIPT ${NC}"  
-echo -e "     ${BICyan}[${BIGreen}9${BICyan}]${Green} INFO SERVER ${NC}"    
-echo -e "     ${BICyan}[${BIGreen}x${BICyan}]${Green} EXIT ${NC}"  
+echo -e "     ${BICyan}[${BIGreen}1${BICyan}]${GREEN} SSH ${NC}" 
+echo -e "     ${BICyan}[${BIGreen}2${BICyan}]${GREEN} VMESS ${NC}"    
+echo -e "     ${BICyan}[${BIGreen}3${BICyan}]${GREEN} VLESS ${NC}"    
+echo -e "     ${BICyan}[${BIGreen}4${BICyan}]${GREEN} TROJAN ${NC}" 
+echo -e "     ${BICyan}[${BIGreen}5${BICyan}]${GREEN} SHADOWSOCKS ${NC}"    
+echo -e "     ${BICyan}[${BIGreen}6${BICyan}]${GREEN} BACKUP/RESTORE ${NC}"    
+echo -e "     ${BICyan}[${BIGreen}7${BICyan}]${GREEN} SETTINGS ${NC}"    
+echo -e "     ${BICyan}[${BIGreen}8${BICyan}]${GREEN} INFO SCRIPT ${NC}"  
+echo -e "     ${BICyan}[${BIGreen}9${BICyan}]${GREEN} INFO SERVER ${NC}"    
+echo -e "     ${BICyan}[${BIGreen}x${BICyan}]${GREEN} EXIT ${NC}"  
 echo -e "${BICyan} └─────────────────────────────────────────────────────┘${NC}"
 DATE=$(date +'%d %B %Y')
 datediff() {
     d1=$(date -d "$1" +%s)
     d2=$(date -d "$2" +%s)
-    echo -e " ${BICyan}│$NC  Expiry In    : $(( (d1 - d2) / 86400 )) Days $NC"
+    echo -e " ${BICyan}│$NC  Expiry In     : $(( (d1 - d2) / 86400 )) Days $NC"
 }
 mai="datediff "$Exp" "$DATE""
 echo -e " ${BICyan}┌─────────────────────────────────────┐${NC}"
@@ -184,7 +186,7 @@ echo -e " ${BICyan}│  Version       : $(cat /opt/.ver) Last Update ${NC}"
 echo -e " ${BICyan}│  User          :\033[1;36m $Name \e[0m"
 if [ $exp \< 1000 ];
 then
-echo -e "   $BICyan│$NC License     : ${GREEN}$sisa_hari$NC Days Tersisa $NC"
+echo -e "   $BICyan│$NC License      : ${GREEN}$sisa_hari$NC Days Tersisa $NC"
 else
     datediff "$Exp" "$DATE"
 fi;
