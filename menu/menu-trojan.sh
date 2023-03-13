@@ -342,10 +342,10 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
     fi
 }
 clear
-echo -e "$BIBlue┌─────────────────────────────────────────────────┐${NC}"
-echo -e "$BIBlue│                    TROJAN MENU                  │$NC"
-echo -e "$BIBlue└─────────────────────────────────────────────────┘${NC}"
-echo -e " $BIBlue┌───────────────────────────────────────────────┐${NC}"
+echo -e "$BICyan┌─────────────────────────────────────────────────┐${NC}"
+echo -e "$BICyan│                    TROJAN MENU                  │$NC"
+echo -e "$BICyan└─────────────────────────────────────────────────┘${NC}"
+echo -e " $BICyan┌───────────────────────────────────────────────┐${NC}"
 echo -e "     ${BICyan}[${BIWhite}1${BICyan}] Create Trojan Account      "
 echo -e "     ${BICyan}[${BIWhite}2${BICyan}] Trial Trojan Account      "
 echo -e "     ${BICyan}[${BIWhite}3${BICyan}] Delete Account Trojan      "
@@ -354,7 +354,7 @@ echo -e "     ${BICyan}[${BIWhite}5${BICyan}] Cek User Active XRAY     "
 echo -e "     ${BICyan}[${BIWhite}6${BICyan}] Cek Detail Trojan      "
 
 
-echo -e " ${BIBlue}└──────────────────────────────────────────────┘${NC}"
+echo -e " ${BICyan}└──────────────────────────────────────────────┘${NC}"
 echo ""
 read -p " Select menu : " opt
 echo -e ""
