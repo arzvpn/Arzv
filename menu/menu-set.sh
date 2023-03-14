@@ -102,21 +102,21 @@ clear
 echo -e "┌─────────────────────────────────────────────────┐" | lolcat
 echo -e "│                  MENU SETTINGS                  │" | lolcat
 echo -e "└─────────────────────────────────────────────────┘" | lolcat
-echo -e " $BICyan┌───────────────────────────────────────────────┐${NC}"
-echo -e " $BICyan│$NC   ${BICyan}[${BIGreen}1${BICyan}]${BIGreen}  ADD Host/Domain${NC}(${GREEN}addhost${NC})"
-echo -e " $BICyan│$NC   ${BICyan}[${BIGreen}2${BICyan}]${BIGreen}  Renew CertXRAY${NC}(${GREEN}certxray${NC})"
-echo -e " $BICyan│$NC   ${BICyan}[${BIGreen}3${BICyan}]${BIGreen}  Check Running${NC}(${GREEN}running${NC})"
-echo -e " $BICyan│$NC   ${BICyan}[${BIGreen}4${BICyan}]${BIGreen}  Change Banner SSH${NC} "
-echo -e " $BICyan│$NC   ${BICyan}[${BIGreen}5${BICyan}]${BIGreen}  Info-Bandwidth${NC}(${GREEN}cek-bandwidth${NC})"
-echo -e " $BICyan│$NC   ${BICyan}[${BIGreen}6${BICyan}]${BIGreen}  Restart${NC}(${GREEN}restart${NC}) "
-echo -e " $BICyan│$NC   ${BICyan}[${BIGreen}7${BICyan}]${BIGreen}  Auto Reboot${NC}(${GREEN}autoreboot${NC})"
-echo -e " $BICyan│$NC   ${BICyan}[${BIGreen}8${BICyan}]${BIGreen}  Reboot${NC}(${GREEN}reboot${NC})"
-echo -e " $BICyan│$NC   ${BICyan}[${BIGreen}9${BICyan}]${BIGreen}  SpeedTest${NC}(${GREEN}speedtest${NC})"
-echo -e " $BICyan│$NC   ${BICyan}[${BIGreen}10${BICyan}]${BIGreen} Limit Speed${NC}(${GREEN}limitspeed${NC})"
-echo -e " $BICyan│$NC   ${BICyan}[${BIGreen}11${BICyan}]${BIGreen} Webmin${NC}(${GREEN}webmin${NC})"
-echo -e " $BICyan│$NC   ${BICyan}[${BIGreen}12${BICyan}]${BIGreen} UPDATE SCRIPT${NC}(${GREEN}update${NC})"
-echo -e " $BICyan│$NC   ${BICyan}[${BIGreen}0${BICyan}]${BIGreen}  Back To Menu${NC}"
-echo -e " $BICyan└───────────────────────────────────────────────┘${NC}"
+echo -e " ┌───────────────────────────────────────────────┐" | lolcat
+echo -e "   ${BICyan}[${BIGreen}1${BICyan}]${BIGreen}  ADD Host/Domain${NC}(${GREEN}addhost${NC})"
+echo -e "   ${BICyan}[${BIGreen}2${BICyan}]${BIGreen}  Renew CertXRAY${NC}(${GREEN}certxray${NC})"
+echo -e "   ${BICyan}[${BIGreen}3${BICyan}]${BIGreen}  Check Running${NC}(${GREEN}running${NC})"
+echo -e "   ${BICyan}[${BIGreen}4${BICyan}]${BIGreen}  Change Banner SSH${NC} "
+echo -e "   ${BICyan}[${BIGreen}5${BICyan}]${BIGreen}  Info-Bandwidth${NC}(${GREEN}cek-bandwidth${NC})"
+echo -e "   ${BICyan}[${BIGreen}6${BICyan}]${BIGreen}  Restart${NC}(${GREEN}restart${NC}) "
+echo -e "   ${BICyan}[${BIGreen}7${BICyan}]${BIGreen}  Auto Reboot${NC}(${GREEN}autoreboot${NC})"
+echo -e "   ${BICyan}[${BIGreen}8${BICyan}]${BIGreen}  Reboot${NC}(${GREEN}reboot${NC})"
+echo -e "   ${BICyan}[${BIGreen}9${BICyan}]${BIGreen}  SpeedTest${NC}(${GREEN}speedtest${NC})"
+echo -e "   ${BICyan}[${BIGreen}10${BICyan}]${BIGreen} Limit Speed${NC}(${GREEN}limitspeed${NC})"
+echo -e "   ${BICyan}[${BIGreen}11${BICyan}]${BIGreen} Webmin${NC}(${GREEN}webmin${NC})"
+echo -e "   ${BICyan}[${BIGreen}12${BICyan}]${BIGreen} UPDATE SCRIPT${NC}(${GREEN}update${NC})"
+echo -e "   ${BICyan}[${BIGreen}0${BICyan}]${BIGreen}  Back To Menu${NC}"
+echo -e " └───────────────────────────────────────────────┘" | lolcat
 echo -e ""
 read -p "  Select menu :  "  opt
 echo -e   ""
