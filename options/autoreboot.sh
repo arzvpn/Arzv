@@ -116,19 +116,17 @@ fi
 
 echo -e ""
 echo -e "------------------------------------" | lolcat
-echo -e "             AUTO REBOOT"
+echo -e "             AUTO REBOOT" | lolcat
 echo -e "------------------------------------" | lolcat
 echo -e ""
-echo -e "    1)  Auto Reboot 30 Minutes"
-echo -e "    2)  Auto Reboot 1 Hours"
-echo -e "    3)  Auto Reboot 12 Hours"
-echo -e "    4)  Auto Reboot 24 Hours"
-echo -e "    5)  Auto Reboot 1 Weeks"
-echo -e "    6)  Auto Reboot 1 Mount"
-echo -e "    7)  Turn Off Auto Reboot"
-echo -e ""
-echo -e "------------------------------------" | lolcat
-echo -e "    x)   MENU"
+echo -e "  ${BICyan}[${BIGreen}1${BICyan}]${BIGreen}  Auto Reboot 30 Minutes${NC}"
+echo -e "  ${BICyan}[${BIGreen}2${BICyan}]${BIGreen}  Auto Reboot 1 Hours${NC}"
+echo -e "  ${BICyan}[${BIGreen}3${BICyan}]${BIGreen}  Auto Reboot 12 Hours${NC}"
+echo -e "  ${BICyan}[${BIGreen}4${BICyan}]${BIGreen}  Auto Reboot 24 Hours${NC}"
+echo -e "  ${BICyan}[${BIGreen}5${BICyan}]${BIGreen}  Auto Reboot 1 Weeks${NC}"
+echo -e "  ${BICyan}[${BIGreen}6${BICyan}]${BIGreen}  Auto Reboot 1 Mount${NC}"
+echo -e "  ${BICyan}[${BIGreen}7${BICyan}]${BIGreen}  Turn Off Auto Reboot${NC}"
+echo -e "  ${BICyan}[${BIGreen}0${BICyan}]${BIGreen}  Back To Menu${NC}"
 echo -e "------------------------------------" | lolcat
 echo -e ""
 read -p "     Please Input Number  [1-7 or x] :  "  autoreboot
@@ -224,7 +222,7 @@ echo -e "======================================"
 service cron reload >/dev/null 2>&1
 service cron restart >/dev/null 2>&1
 ;;
-x)
+0)
 menu
 ;;
 *)
