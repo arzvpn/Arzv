@@ -112,29 +112,29 @@ echo -e ""
 echo -e "${cyan}======================================${off}"
 echo -e        "           BANDWITH MONITOR " | lolcat
 echo -e "${cyan}======================================${off}"
-echo -e "${green}"
-echo -e "     1 ⸩   Lihat Total Bandwith Tersisa"
+echo -e "  ${BICyan}[${BIGreen}1${BICyan}]${BIGreen}   Lihat Total Bandwith Tersisa${NC}"
 
-echo -e "     2 ⸩   Tabel Penggunaan Setiap 5 Menit"
+echo -e "  ${BICyan}[${BIGreen}2${BICyan}]${BIGreen}   Tabel Penggunaan Setiap 5 Menit${NC}"
 
-echo -e "     3 ⸩   Tabel Penggunaan Setiap Jam"
+echo -e "  ${BICyan}[${BIGreen}3${BICyan}]${BIGreen}   Tabel Penggunaan Setiap Jam${NC}"
 
-echo -e "     4 ⸩   Tabel Penggunaan Setiap Hari"
+echo -e "  ${BICyan}[${BIGreen}4${BICyan}]${BIGreen}   Tabel Penggunaan Setiap Hari${NC}"
 
-echo -e "     5 ⸩   Tabel Penggunaan Setiap Bulan"
+echo -e "  ${BICyan}[${BIGreen}5${BICyan}]${BIGreen}   Tabel Penggunaan Setiap Bulan${NC}"
 
-echo -e "     6 ⸩   Tabel Penggunaan Setiap Tahun"
+echo -e "  ${BICyan}[${BIGreen}6${BICyan}]${BIGreen}   Tabel Penggunaan Setiap Tahun${NC}"
 
-echo -e "     7 ⸩   Tabel Penggunaan Tertinggi"
+echo -e "  ${BICyan}[${BIGreen}7${BICyan}]${BIGreen}   Tabel Penggunaan Tertinggi${NC}"
 
-echo -e "     8 ⸩   Statistik Penggunaan Setiap Jam"
+echo -e "  ${BICyan}[${BIGreen}8${BICyan}]${BIGreen}   Statistik Penggunaan Setiap Jam${NC}"
 
-echo -e "     9 ⸩   Lihat Penggunaan Aktif Saat Ini"
+echo -e "  ${BICyan}[${BIGreen}9${BICyan}]${BIGreen}   Lihat Penggunaan Aktif Saat Ini${NC}"
 
-echo -e "    10 ⸩   Lihat Trafik Penggunaan Aktif Saat Ini [5s]"
+echo -e "  ${BICyan}[${BIGreen}10${BICyan}]${BIGreen}  Lihat Trafik Penggunaan Aktif Saat Ini [5s]${NC}"
 
-echo -e "     x ⸩   Menu"
-echo -e "${off}"
+echo -e "  ${BICyan}[${BIGreen}0${BICyan}]${BIGreen}   Back To Menu${NC}"
+
+echo -e "  ${BICyan}[${BIGreen}x${BICyan}]${BIGreen}   Exit${NC}"
 echo -e "${cyan}======================================${off}"
 echo -e "${green}"
 read -p "     [#]  Masukkan Nomor :  " noo
@@ -272,9 +272,15 @@ echo -e "${cyan}======================================${off}"
 echo -e "$baris2" | lolcat
 ;;
 
-x)
+0)
 sleep 1
 menu
+;;
+
+
+0)
+sleep 1
+exit
 ;;
 
 *)
