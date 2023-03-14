@@ -361,19 +361,19 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
     fi
 }
 clear
-echo -e "$BICyan┌─────────────────────────────────────────────────┐${NC}"
-echo -e "$BICyan│                SSWS PANEL MENU                  │$NC"
-echo -e "$BICyan└─────────────────────────────────────────────────┘${NC}"
-echo -e " $BICyan┌───────────────────────────────────────────────┐${NC}"
-echo -e "     ${BICyan}[${BIWhite}1${BICyan}] Create Sodosok Account     "
-echo -e "     ${BICyan}[${BIWhite}2${BICyan}] Trial Sodosok Account     "
-echo -e "     ${BICyan}[${BIWhite}3${BICyan}] Delete Sodosok Account     "
-echo -e "     ${BICyan}[${BIWhite}4${BICyan}] Renew Sodosok Account     "
-echo -e "     ${BICyan}[${BIWhite}5${BICyan}] Cek User Active XRAY     "
-echo -e "     ${BICyan}[${BIWhite}6${BICyan}] Detail Sodosok Account     "
-echo -e ""
-echo -e "     ${BICyan}[${BIWhite}0${BICyan}] Back To Menu     "
-echo -e " ${BICyan}└─────────────────────────────────────────────────────┘${NC}"
+echo -e "┌─────────────────────────────────────────────────┐" | lolcat
+echo -e "│                 SHADOWSOCKS MENU                │" | lolcat
+echo -e "└─────────────────────────────────────────────────┘" | lolcat
+echo -e " ┌───────────────────────────────────────────────┐" | lolcat
+echo -e "     ${BICyan}[${BIGreen}1${BICyan}]${BIGreen} Create ShadowSocks Account   ${NC}   "
+echo -e "     ${BICyan}[${BIGreen}2${BICyan}]${BIGreen} Trial ShadowSocks Account   ${NC}   "
+echo -e "     ${BICyan}[${BIGreen}3${BICyan}]${BIGreen} Delete ShadowSocks Account   ${NC}   "
+echo -e "     ${BICyan}[${BIGreen}4${BICyan}]${BIGreen} Renew ShadowSocks Account   ${NC}   "
+echo -e "     ${BICyan}[${BIGreen}5${BICyan}]${BIGreen} Cek User Active XRAY  ${NC}    "
+echo -e "     ${BICyan}[${BIGreen}6${BICyan}]${BIGreen} Detail ShadowSocks Account  ${NC} "
+echo -e "     ${BICyan}[${BIGreen}0${BICyan}]${BIGreen} Back To Menu ${NC} "
+echo -e "     ${BICyan}[${BIGreen}x${BICyan}]${BIGreen} Exit${NC} "
+echo -e " └─────────────────────────────────────────────────────┘" | lolcat
 echo ""
 read -p " Select menu : " opt
 echo -e ""
