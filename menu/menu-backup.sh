@@ -101,13 +101,14 @@ exit 0
 fi
 
 clear
-echo -e "${BICyan}┌─────────────────────────────────────────────────┐${NC}"
-echo -e "${BICyan}│                   BACKUP MENU                   │$NC"
-echo -e "${BICyan}└─────────────────────────────────────────────────┘${NC}"
+echo -e "┌─────────────────────────────────────────────────┐" | lolcat
+echo -e "│                   BACKUP MENU                   │" | lolcat
+echo -e "└─────────────────────────────────────────────────┘" | lolcat
 echo -e " ${BICyan}┌───────────────────────────────────────────────┐${NC}"
-echo -e " ${BICyan}│$NC   ${BICyan}[1]${NC} • Backup"
-echo -e " ${BICyan}│$NC   ${BICyan}[2]${NC} • Restore"
-echo -e " ${BICyan}│$NC   ${BICyan}[0]${NC} • Back To Menu"
+echo -e " ${BICyan}│$NC   ${BICyan}[${BIGreen}1${BICyan}]${BIGreen} Backup${NC}"
+echo -e " ${BICyan}│$NC   ${BICyan}[${BIGreen}2${BICyan}]${BIGreen} Restore${NC}"
+echo -e " ${BICyan}│$NC   ${BICyan}[${BIGreen}0${BICyan}]${BIGreen} Back To Menu${NC}"
+echo -e " ${BICyan}│$NC   ${BICyan}[${BIGreen}x${BICyan}]${BIGreen} Exit${NC}"
 echo -e " ${BICyan}└───────────────────────────────────────────────┘${NC}"
 echo -e ""
 read -p " Select menu :  "  opt
@@ -116,5 +117,6 @@ case $opt in
 01 | 1) clear ; backup ;;
 02 | 2) clear ; restore ;;
 00 | 0) clear ; menu ;;
+x) exit ;;
 *) clear ; menu-backup ;;
 esac
