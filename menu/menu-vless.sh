@@ -148,8 +148,8 @@ vlesslink3="vless://${uuid}@${domain}:443?mode=gun&security=tls&encryption=none&
 
 clear
 echo -e ""
-echo -e "\033[0;34m═════════════XRAY/VLESS═════════════${NC}"
-echo -e "\033[0;34m════════════════════════════════════\033[0m"
+echo -e "\033[0;34m═══════XRAY/VLESS═══════${NC}"
+echo -e "\033[0;34m════════════════════════\033[0m"
 echo -e "Remarks        : ${user}"
 echo -e "Domain         : ${domain}"
 echo -e "Expired On     : $exp"
@@ -161,13 +161,13 @@ echo -e "Encryption     : none"
 echo -e "Network        : ws"
 echo -e "Path           : /vless"
 echo -e "Path           : vless-grpc"
-echo -e "\033[0;34m════════════════════════════════════\033[0m"
+echo -e "\033[0;34m════════════════════════\033[0m"
 echo -e "Link TLS       : ${vlesslink1}"
-echo -e "\033[0;34m════════════════════════════════════\033[0m"
+echo -e "\033[0;34m════════════════════════\033[0m"
 echo -e "Link none TLS  : ${vlesslink2}"
-echo -e "\033[0;34m════════════════════════════════════\033[0m"
+echo -e "\033[0;34m════════════════════════\033[0m"
 echo -e "Link gRPC      : ${vlesslink3}"
-echo -e "\033[0;34m════════════════════════════════════\033[0m"
+echo -e "\033[0;34m════════════════════════\033[0m"
 echo ""
 read -n 1 -s -r -p "Press any key to back on menu"
 menu-vless
@@ -187,8 +187,8 @@ vlesslink2="vless://${uuid}@${domain}:80?path=/vless&encryption=none&type=ws#${u
 vlesslink3="vless://${uuid}@${domain}:443?mode=gun&security=tls&encryption=none&type=grpc&serviceName=vless-grpc&sni=bug.com#${user}"
 systemctl restart xray
 clear
-echo -e "\033[0;34m═════════════XRAY/VLESS═════════════${NC}"
-echo -e "\033[0;34m════════════════════════════════════\033[0m"
+echo -e "\033[0;34m═══════XRAY/VLESS═══════${NC}"
+echo -e "\033[0;34m════════════════════════\033[0m"
 echo -e "Remarks        : ${user}"
 echo -e "Domain         : ${domain}"
 echo -e "Port TLS       : 443"
@@ -199,15 +199,15 @@ echo -e "Encryption     : none"
 echo -e "Network        : ws"
 echo -e "Path           : /vless"
 echo -e "Path           : vless-grpc"
-echo -e "\033[0;34m════════════════════════════════════\033[0m"
+echo -e "\033[0;34m════════════════════════\033[0m"
 echo -e "Link TLS       : ${vlesslink1}"
-echo -e "\033[0;34m════════════════════════════════════\033[0m"
+echo -e "\033[0;34m════════════════════════\033[0m"
 echo -e "Link none TLS  : ${vlesslink2}"
-echo -e "\033[0;34m════════════════════════════════════\033[0m"
+echo -e "\033[0;34m════════════════════════\033[0m"
 echo -e "Link gRPC      : ${vlesslink3}"
-echo -e "\033[0;34m════════════════════════════════════\033[0m"
+echo -e "\033[0;34m════════════════════════\033[0m"
 echo -e "Expired On     : $exp"
-echo -e "\033[0;34m════════════════════════════════════\033[0m"
+echo -e "\033[0;34m════════════════════════\033[0m"
 echo ""
 read -n 1 -s -r -p "Press any key to back on menu"
 menu-vless
@@ -356,19 +356,19 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
     fi
 }
 clear
-echo -e "${BICyan}┌─────────────────────────────────────────────────┐${NC}"
-echo -e "${BICyan}│                     VLESS MENU                  │$NC"
-echo -e "${BICyan}└─────────────────────────────────────────────────┘${NC}"
-echo -e " ${BICyan}┌───────────────────────────────────────────────┐${NC}"
-echo -e "     ${BICyan}[${BIWhite}1${BICyan}] Create Vless Account     "
-echo -e "     ${BICyan}[${BIWhite}2${BICyan}] Trial Vless Acoount     "
-echo -e "     ${BICyan}[${BIWhite}3${BICyan}] Delete Account Vless     "
-echo -e "     ${BICyan}[${BIWhite}4${BICyan}] Renew Account Vless     "
-echo -e "     ${BICyan}[${BIWhite}5${BICyan}] Cek User Active XRAY     "
-echo -e "     ${BICyan}[${BIWhite}6${BICyan}] Detail Account Vless     "
-
-echo -e "     ${BICyan}[${BIWhite}0${BICyan}] Back To Menu     "
-echo -e " ${BICyan}└──────────────────────────────────────────────┘${NC}"
+echo -e "┌─────────────────────────────────────────────────┐" | lolcat
+echo -e "│                     VLESS MENU                  │" | lolcat
+echo -e "└─────────────────────────────────────────────────┘" | lolcat
+echo -e " ┌───────────────────────────────────────────────┐" | lolcat
+echo -e "     ${BICyan}[${BIGreen}1${BICyan}]${BIGreen} Create Vless Account${NC}     "
+echo -e "     ${BICyan}[${BIGreen}2${BICyan}]${BIGreen} Trial Vless Acoount  ${NC}   "
+echo -e "     ${BICyan}[${BIGreen}3${BICyan}]${BIGreen} Delete Account Vless ${NC}    "
+echo -e "     ${BICyan}[${BIGreen}4${BICyan}]${BIGreen} Renew Account Vless  ${NC}   "
+echo -e "     ${BICyan}[${BIGreen}5${BICyan}]${BIGreen} Cek User Active XRAY ${NC}    "
+echo -e "     ${BICyan}[${BIGreen}6${BICyan}]${BIGreen} Detail Account Vless  ${NC}   "
+echo -e "     ${BICyan}[${BIGreen}0${BICyan}]${BIGreen} Back To Menu   ${NC}  "
+echo -e "     ${BICyan}[${BIGreen}x${BICyan}]${BIGreen} Exit ${NC}  "
+echo -e " └──────────────────────────────────────────────┘" | lolcat
 echo ""
 read -p " Select menu : " opt
 echo -e ""
