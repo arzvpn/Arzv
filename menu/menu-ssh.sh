@@ -132,12 +132,12 @@ echo -e "$Pass\n$Pass\n"|passwd $Login &> /dev/null
 PID=`ps -ef |grep -v grep | grep sshws |awk '{print $2}'`
 
 if [[ ! -z "${PID}" ]]; then
-echo -e "${BIBlue}═════════════SSH ACCOUNTS═══════════${NC}"
-echo -e "${BIBlue}════════════════════════════════════${NC}"
+echo -e "${BIBlue}═══════SSH ACCOUNTS═════${NC}"
+echo -e "${BIBlue}════════════════════════${NC}"
 echo -e "Username   : $Login" 
 echo -e "Password   : $Pass"
 echo -e "Expired On : $exp" 
-echo -e "${BIBlue}════════════════════════════════════${NC}"
+echo -e "${BIBlue}════════════════════════${NC}"
 echo -e "IP         : $IP" 
 echo -e "Host       : $domen" 
 echo -e "OpenSSH    : $opensh"
@@ -146,19 +146,19 @@ echo -e "SSH-WS     : $portsshws"
 echo -e "SSH WS SSL : $wsssl" 
 echo -e "SSL/TLS    : $ssl" 
 echo -e "UDPGW      : 7100-7300" 
-echo -e "${BIBlue}════════════════════════════════════${NC}"
+echo -e "${BIBlue}════════════════════════${NC}"
 echo -e "GET / HTTP/1.1[crlf]Host: $domen[crlf]Connection: Keep-Alive[crlf]User-Agent: [ua][crlf]Upgrade: ws[crlf][crlf]"
 echo -e "${BIBlue}════════════════════════════════════${NC}"
 echo -e "${BICyan}Enjoy our Arz Auto Script Service${NC}" 
 
 else
 clear
-echo -e "${BIBlue}═════════════SSH ACCOUNTS═══════════${NC}"
-echo -e "${BIBlue}════════════════════════════════════${NC}"
+echo -e "${BIBlue}═══════SSH ACCOUNTS═════${NC}"
+echo -e "${BIBlue}════════════════════════${NC}"
 echo -e "Username   : $Login" 
 echo -e "Password   : $Pass"
 echo -e "Expired On : $exp" 
-echo -e "${BIBlue}════════════════════════════════════${NC}"
+echo -e "${BIBlue}═════════════════════════${NC}"
 echo -e "IP         : $IP" 
 echo -e "Host       : $domen" 
 echo -e "OpenSSH    : $opensh"
@@ -167,9 +167,9 @@ echo -e "SSH-WS     : $portsshws"
 echo -e "SSH WS SSL : $wsssl" 
 echo -e "SSL/TLS    : $ssl" 
 echo -e "UDPGW      : 7100-7300" 
-echo -e "${BIBlue}════════════════════════════════════${NC}"
+echo -e "${BIBlue}═════════════════════════${NC}"
 echo -e "GET / HTTP/1.1[crlf]Host: $domen[crlf]Connection: Keep-Alive[crlf]User-Agent: [ua][crlf]Upgrade: ws[crlf][crlf]"
-echo -e "${BIBlue}════════════════════════════════════${NC}"
+echo -e "${BIBlue}══════════════════════════${NC}"
 echo -e "${BICyan} Enjoy our Arz Auto Script Service${NC}"
 fi
 echo ""
@@ -427,9 +427,9 @@ else
 sts="${Error}"
 fi
 clear
-echo -e "${BIBlue}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e "\E[44;1;39m             AUTOKILL SSH          \E[0m"
-echo -e "${BIBlue}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+echo -e "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" | lolcat
+echo -e "             AUTOKILL SSH          " | lolcat
+echo -e "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" | lolcat
 echo -e "Status Autokill : $sts        "
 echo -e ""
 echo -e "[1]  AutoKill After 5 Minutes"
@@ -521,22 +521,22 @@ read -n 1 -s -r -p "Press any key to back on menu"
 menu-ssh
 }
 clear
-echo -e "${BICyan}┌─────────────────────────────────────────────────┐${NC}"
-echo -e "${BICyan}│                      SSH MENU                   │$NC"
-echo -e "${BICyan}└─────────────────────────────────────────────────┘${NC}"
-echo -e "${BICyan}┌───────────────────────────────────────────────┐${NC}"
-echo -e "     ${BICyan}[1]${NC} Create SSH Account     "
-echo -e "     ${BICyan}[2]${NC} Trial SSH Acoount      "
-echo -e "     ${BICyan}[3]${NC} Delete SSH Acoount      "
-echo -e "     ${BICyan}[4]${NC} Renew SSH Account      "
-echo -e "     ${BICyan}[5]${NC} Cek User SSH     "
-echo -e "     ${BICyan}[6]${NC} Mullog SSH     "
-echo -e "     ${BICyan}[7]${NC} Auto Del user Exp     "
-echo -e "     ${BICyan}[8]${NC} Auto Kill user SSH    "
-echo -e "     ${BICyan}[9]${NC} Cek Member SSH"
-
-echo -e "     ${BICyan}[0]${NC} Back To Menu      "
-echo -e "${BICyan}└───────────────────────────────────────────────┘${NC}"
+echo -e "┌─────────────────────────────────────────────────┐" | lolcat
+echo -e "│                      SSH MENU                   │" | lolcat
+echo -e "└─────────────────────────────────────────────────┘" | lolcat
+echo -e "┌───────────────────────────────────────────────┐" | lolcat
+echo -e "     ${BICyan}[${BIGreen}1${BICyan}]${BIGreen} Create SSH Account ${NC}    "
+echo -e "     ${BICyan}[${BIGreen}1${BICyan}]${BIGreen} Trial SSH Acoount  ${NC}    "
+echo -e "     ${BICyan}[${BIGreen}1${BICyan}]${BIGreen} Delete SSH Acoount  ${NC}    "
+echo -e "     ${BICyan}[${BIGreen}1${BICyan}]${BIGreen} Renew SSH Account    ${NC}  "
+echo -e "     ${BICyan}[${BIGreen}1${BICyan}]${BIGreen} Cek User SSH  ${NC}   "
+echo -e "     ${BICyan}[${BIGreen}1${BICyan}]${BIGreen} Mullog SSH   ${NC}  "
+echo -e "     ${BICyan}[${BIGreen}1${BICyan}]${BIGreen} Auto Del user Exp  ${NC}   "
+echo -e "     ${BICyan}[${BIGreen}1${BICyan}]${BIGreen} Auto Kill user SSH ${NC}   "
+echo -e "     ${BICyan}[${BIGreen}1${BICyan}]${BIGreen} Cek Member SSH${NC}"
+echo -e "     ${BICyan}[${BIGreen}1${BICyan}]${BIGreen} Back To Menu  ${NC}    "
+echo -e "     ${BICyan}[${BIGreen}1${BICyan}]${BIGreen} Exit ${NC}"
+echo -e "└───────────────────────────────────────────────┘" | lolcat
 echo ""
 read -p " Select menu : " opt
 echo -e ""
@@ -551,5 +551,6 @@ case $opt in
 8) clear ; autokill ;;
 9) clear ; member ;;
 0) clear ; menu ;;
+x) exit ;;
 *) echo -e "" ; echo "Press any key to back on menu" ; sleep 1 ; menu ;;
 esac
