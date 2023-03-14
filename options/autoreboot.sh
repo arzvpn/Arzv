@@ -127,6 +127,7 @@ echo -e "  ${BICyan}[${BIGreen}5${BICyan}]${BIGreen}  Auto Reboot 1 Weeks${NC}"
 echo -e "  ${BICyan}[${BIGreen}6${BICyan}]${BIGreen}  Auto Reboot 1 Mount${NC}"
 echo -e "  ${BICyan}[${BIGreen}7${BICyan}]${BIGreen}  Turn Off Auto Reboot${NC}"
 echo -e "  ${BICyan}[${BIGreen}0${BICyan}]${BIGreen}  Back To Menu${NC}"
+echo -e "  ${BICyan}[${BIGreen}x${BICyan}]${BIGreen}  Exit${NC}"
 echo -e "------------------------------------" | lolcat
 echo -e ""
 read -p "     Please Input Number  [1-7 or x] :  "  autoreboot
@@ -224,6 +225,9 @@ service cron restart >/dev/null 2>&1
 ;;
 0)
 menu
+;;
+x)
+exit
 ;;
 *)
 echo "Please enter an correct number"
