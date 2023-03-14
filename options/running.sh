@@ -352,7 +352,12 @@ kernelku=$(uname -r)
 Domen="$(cat /etc/xray/domain)"
 echo -e ""
 echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
-echo -e "\E[44;1;39m            ⇱ Service Information ⇲             \E[0m"
+echo -e "       >>> Service Server Information <<<             " | lolcat
+echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
+echo -e " IP VPS               : $(curl -s ipinfo.io/ip )" | lolcat
+echo -e " Current Domain       : $(cat /etc/xray/domain)" | lolcat
+echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
+echo -e "          >>> Service Information <<<             " | lolcat
 echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
 echo -e " SSH / TUN               :$status_ssh"
 #echo -e "OpenVPN                 :$status_openvpn"
