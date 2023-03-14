@@ -27,4 +27,8 @@
 ✅ SSH Websocket : 80 <br>
 ✅ Vmess WS none TLS : 80 <br>
 ✅ Vless WS none TLS : 80 <br>
-✅ Stunnel4 : 447,777 <br>
+✅ Stunnel5 : 447,777 <br>
+
+## Support OS
+### Ubuntu 18.04, Ubuntu 20.04, Ubuntu 22.04
+### Debian 9, Debian 10, Debian 11
