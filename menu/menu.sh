@@ -162,8 +162,8 @@ ISPVPS=$( curl -s ipinfo.io/org )
 
 clear
 echo -e " ┌─────────────────────────────────────────────────────┐" | lolcat
-
-echo -e " ${BICyan}└─────────────────────────────────────────────────────┘${NC}"
+echo -e " │                       MAIN MENU                     │" | lolcat
+echo -e " └─────────────────────────────────────────────────────┘" | lolcat
 echo -e "${BICyan} ┌─────────────────────────────────────────────────────┐${NC}"
 echo -e "${BICyan} │  ${BICyan}Premium Version   :  ${BIGreen}Multiport XRAY Arz V2${NC}" 
 if [ "$cekup" = "day" ]; then
@@ -182,35 +182,35 @@ echo -e " ${BICyan}│  ${BICyan}DATE&TIME         :  $( date -d "0 days" +"%d-%
 echo -e " ${BICyan}└─────────────────────────────────────────────────────┘${NC}"
 echo -e "     ${BICyan} SSH ${NC}: $ressh"" ${BICyan} NGINX ${NC}: $resngx"" ${BICyan}  XRAY ${NC}: $resv2r"" ${BICyan} TROJAN ${NC}: $resv2r"
 echo -e "     ${BICyan}          DROPBEAR ${NC}: $resdbr" "${BICyan} SSH-WS ${NC}: $ressshws"
-echo -e "${BICyan} ┌─────────────────────────────────────────────────────┐${NC}"
-echo -e "     ${BICyan}[${BIGreen}1${BICyan}]${GREEN} SSH ${NC}" 
-echo -e "     ${BICyan}[${BIGreen}2${BICyan}]${GREEN} VMESS ${NC}"    
-echo -e "     ${BICyan}[${BIGreen}3${BICyan}]${GREEN} VLESS ${NC}"    
-echo -e "     ${BICyan}[${BIGreen}4${BICyan}]${GREEN} TROJAN ${NC}" 
-echo -e "     ${BICyan}[${BIGreen}5${BICyan}]${GREEN} SHADOWSOCKS ${NC}"    
-echo -e "     ${BICyan}[${BIGreen}6${BICyan}]${GREEN} BACKUP/RESTORE ${NC}"    
-echo -e "     ${BICyan}[${BIGreen}7${BICyan}]${GREEN} SETTINGS ${NC}"    
-echo -e "     ${BICyan}[${BIGreen}8${BICyan}]${GREEN} INFO SCRIPT ${NC}"  
-echo -e "     ${BICyan}[${BIGreen}9${BICyan}]${GREEN} INFO SERVER ${NC}"    
-echo -e "     ${BICyan}[${BIGreen}x${BICyan}]${GREEN} EXIT ${NC}"  
-echo -e "${BICyan} └─────────────────────────────────────────────────────┘${NC}"
+echo -e " ┌─────────────────────────────────────────────────────┐" | lolcat
+echo -e "     ${BICyan}[${BIGreen}1${BICyan}]${BIGreen} SSH${NC}(${GREEN}menu-ssh${NC})" 
+echo -e "     ${BICyan}[${BIGreen}2${BICyan}]${BIGreen} VMESS${NC}(${GREEN}menu-vmess${NC})"    
+echo -e "     ${BICyan}[${BIGreen}3${BICyan}]${BIGreen} VLESS${NC}(${GREEN}menu-vless${NC})"    
+echo -e "     ${BICyan}[${BIGreen}4${BICyan}]${BIGreen} TROJAN${NC}(${GREEN}menu-trojan${NC})" 
+echo -e "     ${BICyan}[${BIGreen}5${BICyan}]${BIGreen} SHADOWSOCKS${NC}(${GREEN}menu-ss${NC})"    
+echo -e "     ${BICyan}[${BIGreen}6${BICyan}]${BIGreen} BACKUP/RESTORE${NC}(${GREEN}menu-backup${NC})"    
+echo -e "     ${BICyan}[${BIGreen}7${BICyan}]${BIGreen} SETTINGS${NC}(${GREEN}menu-set${NC})"    
+echo -e "     ${BICyan}[${BIGreen}8${BICyan}]${BIGreen} INFO-SCRIPT${NC}(${GREEN}info${NC})"  
+echo -e "     ${BICyan}[${BIGreen}9${BICyan}]${BIGreen} INFO-SERVER${NC}(${GREEN}infoserv${NC})"    
+echo -e "     ${BICyan}[${BIGreen}x${BICyan}]${BIGreen} EXIT MAIN MENU${NC}(${GREEN}exit${NC})"  
+echo -e " └─────────────────────────────────────────────────────┘" | lolcat
 DATE=$(date +'%d %B %Y')
 datediff() {
     d1=$(date -d "$1" +%s)
     d2=$(date -d "$2" +%s)
-    echo -e " ${BICyan}│$NC  Expiry In     : $(( (d1 - d2) / 86400 )) Days $NC"
+    echo -e " │  Expiry In     : $(( (d1 - d2) / 86400 )) Days " | lolcat
 }
 mai="datediff "$Exp" "$DATE""
-echo -e " ${BICyan}┌─────────────────────────────────────┐${NC}"
-echo -e " ${BICyan}│  Version       : $(cat /opt/.ver) Last Update ${NC}"
-echo -e " ${BICyan}│  User          :\033[1;36m $Name \e[0m"
+echo -e " ┌─────────────────────────────────────┐" | lolcat
+echo -e " │  Version       : $(cat /opt/.ver) Last Version " | lolcat
+echo -e " │  User          : $Name " | lolcat
 if [ $exp \< 1000 ];
 then
 echo -e "   $BICyan│$NC License      : ${GREEN}$sisa_hari$NC Days Tersisa $NC"
 else
     datediff "$Exp" "$DATE"
 fi;
-echo -e " ${BICyan}└─────────────────────────────────────┘${NC}"
+echo -e " └─────────────────────────────────────┘" | lolcat
 echo
 read -p " Select menu : " opt
 echo -e ""
