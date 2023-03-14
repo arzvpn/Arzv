@@ -132,9 +132,9 @@ else
 sts="${Error}"
 fi
 clear
-echo -e " =============================="
-echo -e "     Limit Bandwidth Speed         "
-echo -e " =============================="
+echo -e " ========================================" | lolcat
+echo -e "          Limit Bandwidth Speed          " | lolcat
+echo -e " ========================================" | lolcat
 echo -e " Status $sts"
 echo -e "  1. Start Limit"
 echo -e "  2. Stop Limit"
