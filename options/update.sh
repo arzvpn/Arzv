@@ -118,7 +118,7 @@ wget -q -O /usr/bin/menu "https://raw.githubusercontent.com/arzvpn/Arzv/main/men
 wget -q -O /usr/bin/webmin "https://raw.githubusercontent.com/arzvpn/Arzv/main/options/webmin.sh"
 wget -q -O /usr/bin/xp "https://raw.githubusercontent.com/arzvpn/Arzv/main/xp.sh"
 wget -q -O /usr/bin/update "https://raw.githubusercontent.com/arzvpn/Arzv/main/options/update.sh"
-wget -q -O /usr/bin/menu-theme "https://raw.githubusercontent.com/arzvpn/Arzv/main/menu/menu-theme.sh"
+#wget -q -O /usr/bin/menu-theme "https://raw.githubusercontent.com/arzvpn/Arzv/main/menu/menu-theme.sh"
 wget -q -O /usr/bin/info "https://raw.githubusercontent.com/arzvpn/Arzv/main/options/info.sh"
 wget -q -O /usr/bin/infoserv "https://raw.githubusercontent.com/arzvpn/Arzv/main/options/infoserv.sh"
 chmod +x /usr/bin/add-ws
@@ -145,7 +145,7 @@ chmod +x /usr/bin/menu
 chmod +x /usr/bin/webmin
 chmod +x /usr/bin/xp
 chmod +x /usr/bin/update
-chmod +x /usr/bin/menu-theme
+#chmod +x /usr/bin/menu-theme
 chmod +x /usr/bin/info
 chmod +x /usr/bin/infoserv
 clear
