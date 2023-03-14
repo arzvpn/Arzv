@@ -43,6 +43,15 @@ export RECEIVE="[${YELLOW} RECEIVE ${NC}]"
 export BOLD="\e[1m"
 export WARNING="${RED}\e[5m"
 export UNDERLINE="\e[4m"
+cpu_usage1="$(ps aux | awk 'BEGIN {sum=0} {sum+=$3}; END {print sum}')"
+cpu_usage="$((${cpu_usage1/\.*} / ${corediilik:-1}))"
+cpu_usage+=" %"
+tram=$( free -h | awk 'NR==2 {print $2}' )
+uram=$( free -h | awk 'NR==2 {print $3}' )
+uphours=`uptime -p | awk '{print $2,$3}' | cut -d , -f1`
+upminutes=`uptime -p | awk '{print $4,$5}' | cut -d , -f1`
+uptimecek=`uptime -p | awk '{print $6,$7}' | cut -d , -f1`
+cekup=`uptime -p | grep -ow "day"`
 
 BURIQ () {
     curl -sS https://raw.githubusercontent.com/arzvpn/permission/main/ip > /root/tmp
@@ -152,13 +161,24 @@ IPVPS=$(curl -s ipinfo.io/ip )
 ISPVPS=$( curl -s ipinfo.io/org )
 
 clear
+echo -e " ┌─────────────────────────────────────────────────────┐" | lolcat
+
+echo -e " ${BICyan}└─────────────────────────────────────────────────────┘${NC}"
 echo -e "${BICyan} ┌─────────────────────────────────────────────────────┐${NC}"
-echo -e "${BICyan} │  ${BICyan}Use Core        :  ${BIGreen}Multiport V2${NC}" 
-echo -e " ${BICyan}│  ${BICyan}OS VPS          :  "`hostnamectl | grep "Operating System" | cut -d ' ' -f5-` $NC
-echo -e " ${BICyan}│  ${BICyan}Current Domain  :  ${BIBlue}$(cat /etc/xray/domain)${NC}"
-echo -e " ${BICyan}│  ${BICyan}IP-VPS          :  ${BIBlue}$IPVPS${NC}"
-echo -e " ${BICyan}│  ${BICyan}ISP-VPS         :  ${BIBlue}$ISPVPS${NC}"
-echo -e " ${BICyan}│  ${BICyan}DATE&TIME       :  $( date -d "0 days" +"%d-%m-%Y | %X" ) ${NC}"
+echo -e "${BICyan} │  ${BICyan}Premium Version   :  ${BIGreen}Multiport XRAY Arz V2${NC}" 
+if [ "$cekup" = "day" ]; then
+echo -e " ${BICyan}│  ${BICyan}System Uptime     :  $uphours $upminutes $uptimecek${NC}"
+else
+echo -e " ${BICyan}│  ${BICyan}System Uptime     :  $uphours $upminutes ${NC}"
+fi
+echo -e " ${BICyan}│  ${BICyan}OS VPS            :  "`hostnamectl | grep "Operating System" | cut -d ' ' -f5-` $NC
+echo -e " ${BICyan}│  ${BICyan}Memory Usage      :  $uram / $tram ${NC}"
+echo -e " ${BICyan}│  ${BICyan}CPU Usage         :  $cpu_usage ${NC}"
+echo -e " ${BICyan}│  ${BICyan}Current Domain    :  ${BIBlue}$(cat /etc/xray/domain)${NC}"
+echo -e " ${BICyan}│  ${BICyan}IP VPS            :  ${BIBlue}$IPVPS${NC}"
+echo -e " ${BICyan}│  ${BICyan}ISP VPS           :  ${BIBlue}$ISPVPS${NC}"
+echo -e " ${BICyan}│  ${BICyan}REGION            :  $(curl -s ipinfo.io/timezone )${NC}"
+echo -e " ${BICyan}│  ${BICyan}DATE&TIME         :  $( date -d "0 days" +"%d-%m-%Y | %X" ) ${NC}"
 echo -e " ${BICyan}└─────────────────────────────────────────────────────┘${NC}"
 echo -e "     ${BICyan} SSH ${NC}: $ressh"" ${BICyan} NGINX ${NC}: $resngx"" ${BICyan}  XRAY ${NC}: $resv2r"" ${BICyan} TROJAN ${NC}: $resv2r"
 echo -e "     ${BICyan}          DROPBEAR ${NC}: $resdbr" "${BICyan} SSH-WS ${NC}: $ressshws"
