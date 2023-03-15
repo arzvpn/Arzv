@@ -165,23 +165,23 @@ echo -e " ┌──────────────────────�
 echo -e " │                       MAIN MENU                     │" | lolcat
 echo -e " └─────────────────────────────────────────────────────┘" | lolcat
 echo -e "${BICyan} ┌─────────────────────────────────────────────────────┐${NC}"
-echo -e "${BICyan} │  ${BIBlue}Premium Version   :  ${LIGHT}Multiport XRAY Arz V2${NC}" 
+echo -e "${BICyan} │  ${BIBlue}Premium Version   :  ${NC}Multiport XRAY Arz V2" | lolcat
 if [ "$cekup" = "day" ]; then
-echo -e " ${BICyan}│  ${BIBlue}System Uptime     :  $uphours $upminutes $uptimecek${NC}"
+echo -e " ${BICyan}│  ${BIBlue}System Uptime     :  ${BICyan}$uphours $upminutes $uptimecek${NC}"
 else
-echo -e " ${BICyan}│  ${BIBlue}System Uptime     :  $uphours $upminutes ${NC}"
+echo -e " ${BICyan}│  ${BIBlue}System Uptime     :  ${BICyan}$uphours $upminutes ${NC}"
 fi
 echo -e " ${BICyan}│  ${BIBlue}OS VPS            :  "`hostnamectl | grep "Operating System" | cut -d ' ' -f5-` $NC
-echo -e " ${BICyan}│  ${BIBlue}Memory Usage      :  $uram / $tram ${NC}"
-echo -e " ${BICyan}│  ${BIBlue}CPU Usage         :  $cpu_usage ${NC}"
-echo -e " ${BICyan}│  ${BIBlue}Current Domain    :  ${BIBlue}$(cat /etc/xray/domain)${NC}"
-echo -e " ${BICyan}│  ${BIBlue}IP VPS            :  ${BIBlue}$IPVPS${NC}"
-echo -e " ${BICyan}│  ${BIBlue}ISP VPS           :  ${BIBlue}$ISPVPS${NC}"
-echo -e " ${BICyan}│  ${BIBlue}REGION            :  $(curl -s ipinfo.io/timezone )${NC}"
-echo -e " ${BICyan}│  ${BIBlue}DATE&TIME         :  $( date -d "0 days" +"%d-%m-%Y | %X" ) ${NC}"
+echo -e " ${BICyan}│  ${BIBlue}Memory Usage      :  ${BICyan}$uram / $tram ${NC}"
+echo -e " ${BICyan}│  ${BIBlue}CPU Usage         :  ${BICyan}$cpu_usage ${NC}"
+echo -e " ${BICyan}│  ${BIBlue}Current Domain    :  ${BICyan}${BIBlue}$(cat /etc/xray/domain)${NC}"
+echo -e " ${BICyan}│  ${BIBlue}IP VPS            :  ${BICyan}${BIBlue}$IPVPS${NC}"
+echo -e " ${BICyan}│  ${BIBlue}ISP VPS           :  ${BICyan}${BIBlue}$ISPVPS${NC}"
+echo -e " ${BICyan}│  ${BIBlue}REGION            :  ${BICyan}$(curl -s ipinfo.io/timezone )${NC}"
+echo -e " ${BICyan}│  ${BIBlue}DATE&TIME         :  ${BICyan}$( date -d "0 days" +"%d-%m-%Y | %X" ) ${NC}"
 echo -e " ${BICyan}└─────────────────────────────────────────────────────┘${NC}"
-echo -e "     ${BIBlue} SSH ${NC}: $ressh"" ${BICyan} NGINX ${NC}: $resngx"" ${BIBlue}  XRAY ${NC}: $resv2r"" ${BICyan} TROJAN ${NC}: $resv2r"
-echo -e "     ${BIBlue}          DROPBEAR ${NC}: $resdbr" "${BICyan} SSH-WS ${NC}: $ressshws"
+echo -e "     ${BIBlue} SSH ${NC}: $ressh"" ${BIBlue} NGINX ${NC}: $resngx"" ${BIBlue}  XRAY ${NC}: $resv2r"" ${BIBlue} TROJAN ${NC}: $resv2r"
+echo -e "     ${BIBlue}          DROPBEAR ${NC}: $resdbr" "${BIBlue} SSH-WS ${NC}: $ressshws"
 echo -e " ┌─────────────────────────────────────────────────────┐" | lolcat
 echo -e "     ${BICyan}[${BIGreen}1${BICyan}]${BIGreen} SSH${NC}(${GREEN}menu-ssh${NC})" 
 echo -e "     ${BICyan}[${BIGreen}2${BICyan}]${BIGreen} VMESS${NC}(${GREEN}menu-vmess${NC})"    
