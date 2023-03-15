@@ -165,7 +165,7 @@ echo -e " ┌──────────────────────�
 echo -e " │                       MAIN MENU                     │" | lolcat
 echo -e " └─────────────────────────────────────────────────────┘" | lolcat
 echo -e "${BICyan} ┌─────────────────────────────────────────────────────┐${NC}"
-echo -e "${BICyan} │  ${BIBlue}Premium Version   :  ${BIPurple}Multiport XRAY Arz V2${NC}" 
+echo -e "${BICyan} │  ${BIBlue}Premium Version   :  ${IGreen}Multiport XRAY Arz V2${NC}" 
 if [ "$cekup" = "day" ]; then
 echo -e " ${BICyan}│  ${BIBlue}System Uptime     :  ${BICyan}$uphours $upminutes $uptimecek${NC}"
 else
