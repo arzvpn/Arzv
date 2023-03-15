@@ -195,8 +195,8 @@ clear;clear;clear
 
 # // Starting Setup Domain
 echo -e "${YELLOW}-----------------------------------------------------${NC}"
-echo -e "Anda Ingin Menggunakan Domain Pribadi ?"
-echo -e "Atau Ingin Menggunakan Domain Otomatis ?"
+echo -e " ${GREEN}[1]${NC} Gunakan Domain Pribadi"
+echo -e " ${GREEN}[2]${NC} Gunakan Domain Otomatis"
 echo -e "Jika Ingin Menggunakan Domain Pribadi, Ketik ${GREEN}1${NC}"
 echo -e "dan Jika Ingin menggunakan Domain Otomatis, Ketik ${GREEN}2${NC}"
 echo -e "${YELLOW}-----------------------------------------------------${NC}"
@@ -227,7 +227,7 @@ mkdir -p /usr/local/etc/xray
 
 # // String / Request Data
 sub=$(</dev/urandom tr -dc a-z0-9 | head -c4)
-DOMAIN=scarzvpn.live
+DOMAIN=multiarz.tech
 SUB_DOMAIN=${sub}.multiarz.tech
 CF_ID=arzstore22@gmail.com
 CF_KEY=8772ff286d8515ccb36caf0f0f69b2fde1831
