@@ -533,16 +533,16 @@ echo -e "│                      SSH MENU                   │" | lolcat
 echo -e "└─────────────────────────────────────────────────┘" | lolcat
 echo -e "┌───────────────────────────────────────────────┐" | lolcat
 echo -e "     ${BICyan}[${BIGreen}1${BICyan}]${BIGreen} Create SSH Account ${NC}    "
-echo -e "     ${BICyan}[${BIGreen}1${BICyan}]${BIGreen} Trial SSH Acoount  ${NC}    "
-echo -e "     ${BICyan}[${BIGreen}1${BICyan}]${BIGreen} Delete SSH Acoount  ${NC}    "
-echo -e "     ${BICyan}[${BIGreen}1${BICyan}]${BIGreen} Renew SSH Account    ${NC}  "
-echo -e "     ${BICyan}[${BIGreen}1${BICyan}]${BIGreen} Cek User SSH  ${NC}   "
-echo -e "     ${BICyan}[${BIGreen}1${BICyan}]${BIGreen} Mullog SSH   ${NC}  "
-echo -e "     ${BICyan}[${BIGreen}1${BICyan}]${BIGreen} Auto Del user Exp  ${NC}   "
-echo -e "     ${BICyan}[${BIGreen}1${BICyan}]${BIGreen} Auto Kill user SSH ${NC}   "
-echo -e "     ${BICyan}[${BIGreen}1${BICyan}]${BIGreen} Cek Member SSH${NC}"
-echo -e "     ${BICyan}[${BIGreen}1${BICyan}]${BIGreen} Back To Menu  ${NC}    "
-echo -e "     ${BICyan}[${BIGreen}1${BICyan}]${BIGreen} Exit ${NC}"
+echo -e "     ${BICyan}[${BIGreen}2${BICyan}]${BIGreen} Trial SSH Acoount  ${NC}    "
+echo -e "     ${BICyan}[${BIGreen}3${BICyan}]${BIGreen} Delete SSH Acoount  ${NC}    "
+echo -e "     ${BICyan}[${BIGreen}4${BICyan}]${BIGreen} Renew SSH Account    ${NC}  "
+echo -e "     ${BICyan}[${BIGreen}5${BICyan}]${BIGreen} Cek User SSH  ${NC}   "
+echo -e "     ${BICyan}[${BIGreen}6${BICyan}]${BIGreen} Mullog SSH   ${NC}  "
+echo -e "     ${BICyan}[${BIGreen}7${BICyan}]${BIGreen} Auto Del user Exp  ${NC}   "
+echo -e "     ${BICyan}[${BIGreen}8${BICyan}]${BIGreen} Auto Kill user SSH ${NC}   "
+echo -e "     ${BICyan}[${BIGreen}9${BICyan}]${BIGreen} Cek Member SSH${NC}"
+echo -e "     ${BICyan}[${BIGreen}0${BICyan}]${BIGreen} Back To Menu  ${NC}    "
+echo -e "     ${BICyan}[${BIGreen}x${BICyan}]${BIGreen} Exit ${NC}"
 echo -e "└───────────────────────────────────────────────┘" | lolcat
 echo ""
 read -p " Select menu : " opt
