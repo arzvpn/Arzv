@@ -165,7 +165,7 @@ echo -e " ┌──────────────────────�
 echo -e " │                       MAIN MENU                     │" | lolcat
 echo -e " └─────────────────────────────────────────────────────┘" | lolcat
 echo -e "${BICyan} ┌─────────────────────────────────────────────────────┐${NC}"
-echo -e "${BICyan} │  ${BIBlue}Premium Version   :  ${NC}Multiport XRAY Arz V2" | lolcat
+echo -e "${BICyan} │  ${BIBlue}Premium Version   :  ${BIPurple}Multiport XRAY Arz V2${NC}" 
 if [ "$cekup" = "day" ]; then
 echo -e " ${BICyan}│  ${BIBlue}System Uptime     :  ${BICyan}$uphours $upminutes $uptimecek${NC}"
 else
@@ -174,9 +174,9 @@ fi
 echo -e " ${BICyan}│  ${BIBlue}OS VPS            :  "`hostnamectl | grep "Operating System" | cut -d ' ' -f5-` $NC
 echo -e " ${BICyan}│  ${BIBlue}Memory Usage      :  ${BICyan}$uram / $tram ${NC}"
 echo -e " ${BICyan}│  ${BIBlue}CPU Usage         :  ${BICyan}$cpu_usage ${NC}"
-echo -e " ${BICyan}│  ${BIBlue}Current Domain    :  ${BICyan}${BIBlue}$(cat /etc/xray/domain)${NC}"
-echo -e " ${BICyan}│  ${BIBlue}IP VPS            :  ${BICyan}${BIBlue}$IPVPS${NC}"
-echo -e " ${BICyan}│  ${BIBlue}ISP VPS           :  ${BICyan}${BIBlue}$ISPVPS${NC}"
+echo -e " ${BICyan}│  ${BIBlue}Current Domain    :  ${BICyan}$(cat /etc/xray/domain)${NC}"
+echo -e " ${BICyan}│  ${BIBlue}IP VPS            :  ${BICyan}$IPVPS${NC}"
+echo -e " ${BICyan}│  ${BIBlue}ISP VPS           :  ${BICyan}$ISPVPS${NC}"
 echo -e " ${BICyan}│  ${BIBlue}REGION            :  ${BICyan}$(curl -s ipinfo.io/timezone )${NC}"
 echo -e " ${BICyan}│  ${BIBlue}DATE&TIME         :  ${BICyan}$( date -d "0 days" +"%d-%m-%Y | %X" ) ${NC}"
 echo -e " ${BICyan}└─────────────────────────────────────────────────────┘${NC}"
