@@ -115,7 +115,9 @@ echo -e "   ${BICyan}[${BIGreen}9${BICyan}]${BIGreen}  SpeedTest${NC}(${GREEN}sp
 echo -e "   ${BICyan}[${BIGreen}10${BICyan}]${BIGreen} Limit Speed${NC}(${GREEN}limitspeed${NC})"
 echo -e "   ${BICyan}[${BIGreen}11${BICyan}]${BIGreen} Webmin${NC}(${GREEN}webmin${NC})"
 echo -e "   ${BICyan}[${BIGreen}12${BICyan}]${BIGreen} UPDATE SCRIPT${NC}(${GREEN}update${NC})"
+echo -e "   ${BICyan}[${BIGreen}13${BICyan}]${BIGreen} About SCRIPT${NC}(${GREEN}about${NC})"
 echo -e "   ${BICyan}[${BIGreen}0${BICyan}]${BIGreen}  Back To Menu${NC}"
+echo -e "   ${BICyan}[${BIGreen}x${BICyan}]${BIGreen}  Exit${NC}"
 echo -e " └───────────────────────────────────────────────┘" | lolcat
 echo -e ""
 read -p "  Select menu :  "  opt
@@ -133,7 +135,9 @@ case $opt in
 10 | 10) clear ; limitspeed ;;
 11 | 11) clear ; webmin ;;
 12 | 12) clear ; update ;;
+13 | 13) clear ; about ;;
 00 | 0) clear ; menu ;;
+x) exit ;;
 *) clear ; menu-set ;;
 esac
 
