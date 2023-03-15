@@ -379,11 +379,11 @@ read -p " Select menu : " opt
 echo -e ""
 case $opt in
 1) clear ; add-ssws ;;
-2) clear ; trialssws ;
+2) clear ; trialssws ;;
 3) clear ; delws ;;
-4) clear ; renewws;;
+4) clear ; renewws ;;
 5) clear ; cekws ;;
-6) clear ; detailssws ;
+6) clear ; detailssws ;;
 0) clear ; menu ;;
 x) exit ;;
 *) echo -e "" ; echo "Press any key to back on menu" ; sleep 1 ; menu ;;
