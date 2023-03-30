@@ -5,6 +5,7 @@
 ### _Lifetime tanpa change ip 30K_
 ### _Lifetime 3x ganti ip 60K_
 ### _Source script 600k_
+### FULL TUTOR 1,2JT
 
 ## Silahkan Hubungi
 ### https://t.me/Store_Arz
