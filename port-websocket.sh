@@ -56,15 +56,15 @@ User=root
 CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 NoNewPrivileges=true
-ExecStart=/usr/bin/python -O /usr/local/bin/ws-stunnel $vpn
+ExecStart=/usr/bin/python -O /usr/local/bin/ws-dropbear $vpn
 Restart=on-failure
 [Install]
 WantedBy=multi-user.target
 END
 systemctl daemon-reload
-systemctl enable ws-stunnel
-systemctl start ws-stunnel
-systemctl restart ws-stunnel
+systemctl enable ws-dropbear
+systemctl start ws-dropbear
+systemctl restart ws-dropbear
 sed -i "s/   - Websocket SSH(HTTP)     : $portsshws/   - Websocket SSH(HTTP)     : $vpn/g" /root/log-install.txt
 echo -e "\e[032;1mPort $vpn modified successfully\e[0m"
 else
