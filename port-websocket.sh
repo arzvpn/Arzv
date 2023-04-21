@@ -44,8 +44,8 @@ exit 0
 fi
 cek=$(netstat -nutlp | grep -w $vpn)
 if [[ -z $cek ]]; then
-rm -f /etc/systemd/system/ws-stunnel.service
-cat > /etc/systemd/system/ws-stunnel.service <<END
+rm -f /etc/systemd/system/ws-dropbear.service
+cat > /etc/systemd/system/ws-dropbear.service <<END
 [Unit]
 Description=Python WS-Dropbear
 Documentation=https://panel.arzvpnstore.my.id
@@ -56,7 +56,7 @@ User=root
 CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 NoNewPrivileges=true
-ExecStart=/usr/bin/python -O /usr/local/bin/ws-dropbear 2082
+ExecStart=/usr/bin/python -O /usr/local/bin/ws-dropbear $vpn
 Restart=on-failure
 [Install]
 WantedBy=multi-user.target
