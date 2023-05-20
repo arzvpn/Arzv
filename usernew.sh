@@ -127,9 +127,6 @@ useradd -e `date -d "$masaaktif days" +"%Y-%m-%d"` -s /bin/false -M $Login
 exp="$(chage -l $Login | grep "Account expires" | awk -F": " '{print $2}')"
 echo -e "$Pass\n$Pass\n"|passwd $Login &> /dev/null
 PID=`ps -ef |grep -v grep | grep sshws |awk '{print $2}'`
-PUB=$( cat /etc/slowdns/server.pub )
-NS=`cat /etc/xray/dns`
-
 if [[ ! -z "${PID}" ]]; then
 echo -e "${BIBlue}═════SSH ACCOUNTS═════${NC}"
 echo -e "${BIBlue}══════════════════════${NC}"
@@ -139,8 +136,6 @@ echo -e "Expired On : $exp"
 echo -e "${BIBlue}══════════════════════${NC}"
 echo -e "IP         : $IP" 
 echo -e "Host       : $domen" 
-echo -e "PUBKEY     : $PUB"
-echo -e "NS DNS     : $NS" 
 echo -e "OpenSSH    : $opensh"
 echo -e "Dropbear   : $db" 
 echo -e "SSH-WS     : $portsshws" 
@@ -166,8 +161,6 @@ echo -e "Expired On : $exp"
 echo -e "${BIBlue}══════════════════════${NC}"
 echo -e "IP         : $IP" 
 echo -e "Host       : $domen" 
-echo -e "PUBKEY     : $PUB"
-echo -e "NS DNS     : $NS" 
 echo -e "OpenSSH    : $opensh"
 echo -e "Dropbear   : $db" 
 echo -e "SSH-WS     : $portsshws" 
