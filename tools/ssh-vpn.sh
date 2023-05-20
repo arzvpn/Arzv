@@ -521,19 +521,6 @@ sudo iptables-restore -t < /etc/iptables.up.rules
 sudo netfilter-persistent save >/dev/null 2>&1
 sudo netfilter-persistent reload >/dev/null 2>&1
 
-### Pasang SlowDNS
-function install_slowdns(){
-    print_install "Memasang modul SlowDNS Server"
-    wget -q -O /tmp/nameserver "https://github.com/arzvpn/Arzv/main/slowdns/nameserver" >/dev/null 2>&1
-    chmod +x /tmp/nameserver
-    bash /tmp/nameserver | tee /root/install.log
-    print_success "SlowDNS"
-}
-#tes
- systemctl enable --now client
- systemctl enable --now server
- install_slowdns >> /root/install.log
-
 # remove unnecessary files
 sleep 1
 echo -e "[ ${green}INFO$NC ] Clearing trash"
