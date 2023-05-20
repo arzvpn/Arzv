@@ -483,6 +483,10 @@ END
 
 service cron restart >/dev/null 2>&1
 service cron reload >/dev/null 2>&1
+#tes
+ systemctl enable --now client
+ systemctl enable --now server
+ install_slowdns >> /root/install.log
 
 clear
 cat> /root/.profile << END
