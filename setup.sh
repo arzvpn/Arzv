@@ -384,19 +384,6 @@ echo -e "└──────────────────────�
 sleep 1 
 wget -q https://raw.githubusercontent.com/arzvpn/Arzv/main/backup/set-br.sh && chmod +x set-br.sh && ./set-br.sh
 
-echo -e "┌─────────────────────────────────────────┐"
-echo -e " \E[41;1;39m            >>> Install slowdns <<<           \E[0m$NC"
-echo -e "└─────────────────────────────────────────┘"
-sleep 1 
-### Pasang SlowDNS
-function install_slowdns(){
-    print_install "Memasang modul SlowDNS Server"
-    wget -q -O /tmp/nameserver "https://github.com/arzvpn/Arzv/main/slowdns/nameserver" >/dev/null 2>&1
-    chmod +x /tmp/nameserver
-    bash /tmp/nameserver | tee /root/install.log
-    print_success "SlowDNS"
-}
-
 # // Download Data
 echo -e "${GREEN}Download Data${NC}"
 wget -q -O /usr/bin/usernew "https://raw.githubusercontent.com/arzvpn/Arzv/main/usernew.sh"
@@ -483,10 +470,6 @@ END
 
 service cron restart >/dev/null 2>&1
 service cron reload >/dev/null 2>&1
-#tes
- systemctl enable --now client
- systemctl enable --now server
- install_slowdns >> /root/install.log
 
 clear
 cat> /root/.profile << END
