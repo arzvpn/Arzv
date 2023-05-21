@@ -1,5 +1,5 @@
 #!/bin/sh
-REPOS="https://github.com/arzvpn/myridwan/abc/raw/ipuk/"
+REPOS="https://github.com/arzvpn/arzaio/raw/main/"
 ns_domain_cloudflare() {
 	DOMAIN="multiarz.tech"
 	DOMAIN_PATH=$(cat /etc/xray/domain)
