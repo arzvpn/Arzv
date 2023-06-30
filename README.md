@@ -3,8 +3,8 @@
 ## HARGA AUTOSCRIPT
 ### _1 Bulan 10k_
 ### _Lifetime tanpa change ip 30K_
-### _Lifetime 3x ganti ip 60K_
-### _Source script 600k_
+### _Lifetime 2x ganti ip 50K_
+### _Source script 500k_
 ### FULL TUTOR 1,2JT
 
 ## Silahkan Hubungi
