@@ -125,6 +125,7 @@ menu
 
 uuid=$(cat /proc/sys/kernel/random/uuid)
 read -p "Expired (days): " masaaktif
+read -p "Limit User (GB): " Quota
 exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
 sed -i '/#vmess$/a\### '"$user $exp"'\
 },{"id": "'""$uuid""'","alterId": '"0"',"email": "'""$user""'"' /etc/xray/config.json
@@ -188,6 +189,7 @@ vmesslink2="vmess://$(echo $ask | base64 -w 0)"
 vmesslink3="vmess://$(echo $grpc | base64 -w 0)"
 systemctl restart xray > /dev/null 2>&1
 service cron restart > /dev/null 2>&1
+
 clear
 echo -e "${BIBlue}═════XRAY/VMESS═════${NC}"
 echo -e "${BIBlue}════════════════════${NC}"
@@ -201,6 +203,7 @@ echo -e "id            : ${uuid}"
 echo -e "alterId       : 0" 
 echo -e "Security      : auto" 
 echo -e "Network       : ws" 
+echo -e "User Quota    : ${Quota} GB"
 echo -e "Path          : /vmess" 
 echo -e "Path          : /worryfree" 
 echo -e "Path          : http://bug/worryfree" 
