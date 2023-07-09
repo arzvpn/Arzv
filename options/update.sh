@@ -95,7 +95,7 @@ echo ""
 echo -e "\e[0;32mNew Version Downloading started!\e[0m"
 sleep 2
 cd /usr/bin
-wget -q -O /usr/bin/add-ws "https://raw.githubusercontent.com/arzvpn/Arzv/main/add-ws.sh"
+wget -q -O /usr/bin/add-ws "https://raw.githubusercontent.com/arzvpn/Arzv/main/add-ws.sh" 
 wget -q -O /usr/bin/add-ssws "https://raw.githubusercontent.com/arzvpn/Arzv/main/add-ssws.sh"
 wget -q -O /usr/bin/add-vless "https://raw.githubusercontent.com/arzvpn/Arzv/main/add-vless.sh"
 wget -q -O /usr/bin/add-tr "https://raw.githubusercontent.com/arzvpn/Arzv/main/add-tr.sh"
@@ -113,7 +113,7 @@ wget -q -O /usr/bin/menu-vmess "https://raw.githubusercontent.com/arzvpn/Arzv/ma
 wget -q -O /usr/bin/menu-ss "https://raw.githubusercontent.com/arzvpn/Arzv/main/menu/menu-ss.sh"
 wget -q -O /usr/bin/menu-trojan "https://raw.githubusercontent.com/arzvpn/Arzv/main/menu/menu-trojan.sh"
 wget -q -O /usr/bin/menu-ssh "https://raw.githubusercontent.com/arzvpn/Arzv/main/menu/menu-ssh.sh"
-wget -q -O /usr/bin/menu-backup "https://raw.githubusercontent.com/arzvpn/Arzv/main/menu/menu-backup.sh""
+wget -q -O /usr/bin/menu-backup "https://raw.githubusercontent.com/arzvpn/Arzv/main/menu/menu-backup.sh"
 wget -q -O /usr/bin/menu "https://raw.githubusercontent.com/arzvpn/Arzv/main/menu/menu.sh"
 wget -q -O /usr/bin/webmin "https://raw.githubusercontent.com/arzvpn/Arzv/main/options/webmin.sh"
 wget -q -O /usr/bin/xp "https://raw.githubusercontent.com/arzvpn/Arzv/main/xp.sh"
@@ -179,7 +179,7 @@ menu
 ;;
 x)
 clear
-echo ""
+echo -e ""
 read -n 1 -s -r -p "Press any key to back on menu"
 menu
 ;;
