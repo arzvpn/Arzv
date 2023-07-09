@@ -125,7 +125,6 @@ menu
 
 uuid=$(cat /proc/sys/kernel/random/uuid)
 read -p "Expired (days): " masaaktif
-read -p "Limit User (GB): " Quota
 exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
 sed -i '/#vmess$/a\### '"$user $exp"'\
 },{"id": "'""$uuid""'","alterId": '"0"',"email": "'""$user""'"' /etc/xray/config.json
@@ -203,7 +202,6 @@ echo -e "id            : ${uuid}"
 echo -e "alterId       : 0" 
 echo -e "Security      : auto" 
 echo -e "Network       : ws" 
-echo -e "User Quota    : ${Quota} GB"
 echo -e "Path          : /vmess" 
 echo -e "Path          : /worryfree" 
 echo -e "Path          : http://bug/worryfree" 
