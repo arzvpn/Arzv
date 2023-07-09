@@ -69,6 +69,8 @@ sleep 1
 echo -e "\e[1;36mYou Have The Latest Version\e[m"
 echo -e "\e[1;31mThankyou.\e[0m"
 sleep 2
+update
+fi
 clear
 echo -e "\e[1;31mUpdate Available Now..\e[m"
 echo -e ""
@@ -81,7 +83,7 @@ sleep 1
 echo ""
 # UPDATE RUN-UPDATE
 cd /usr/bin
-wget -O run-update "https://raw.githubusercontent.com/${GitUser}/Arzv/main/options/update.sh"
+wget -O update "https://raw.githubusercontent.com/${GitUser}/Arzv/main/options/update.sh"
 chmod +x update
 # RUN UPDATE
 echo ""
