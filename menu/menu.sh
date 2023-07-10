@@ -164,70 +164,70 @@ IPVPS=$(curl -s ipinfo.io/ip )
 ISPVPS=$( curl -s ipinfo.io/org )
 
 clear
-echo -e " ┌─────────────────────────────────────────────────────┐" | lolcat
-echo -e " │                       MAIN MENU                     │" | lolcat
-echo -e " └─────────────────────────────────────────────────────┘" | lolcat
-echo -e "${BICyan} ┌─────────────────────────────────────────────────────┐${NC}"
-echo -e "${BICyan} │\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\│${NC}"
-echo -e "${BICyan} │    \/    \/    \/    \/    \/    \/    \/    \/     │${NC}"
-echo -e "${BICyan} │       \/    \/    \/    \/    \/    \/    \/        │${NC}"
-echo -e "${BICyan} │  ${BIBlue}Owner AutoScript  :  ${IBlue}Arz Vpn Store ${NC}" 
-echo -e "${BICyan} │  ${BIBlue}Premium Version   :  ${IGreen}MultiXray Arz V2${NC}" 
+echo -e "   ┌─────────────────────────────────────────────────────┐" | lolcat
+echo -e "   │                       MAIN MENU                     │" | lolcat
+echo -e "   └─────────────────────────────────────────────────────┘" | lolcat
+echo -e "${BICyan}   ┌─────────────────────────────────────────────────────┐${NC}"
+echo -e "${BICyan}   │\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\│${NC}"
+echo -e "${BICyan}   │    \/    \/    \/    \/    \/    \/    \/    \/     │${NC}"
+echo -e "${BICyan}   │       \/    \/    \/    \/    \/    \/    \/        │${NC}"
+echo -e "${BICyan}   │  ${BIBlue}Owner AutoScript  :  ${IBlue}Arz Vpn Store ${NC}" 
+echo -e "${BICyan}   │  ${BIBlue}Premium Version   :  ${IGreen}MultiXray Arz V2${NC}" 
 if [ "$cekup" = "day" ]; then
-echo -e " ${BICyan}│  ${BIBlue}System Uptime     :  ${ICyan}$uphours $upminutes $uptimecek${NC}"
+echo -e " ${BICyan}  │  ${BIBlue}System Uptime     :  ${ICyan}$uphours $upminutes $uptimecek${NC}"
 else
-echo -e " ${BICyan}│  ${BIBlue}System Uptime     :  ${ICyan}$uphours $upminutes ${NC}"
+echo -e " ${BICyan}  │  ${BIBlue}System Uptime     :  ${ICyan}$uphours $upminutes ${NC}"
 fi
-echo -e " ${BICyan}│  ${BIBlue}OS VPS            :  "`hostnamectl | grep "Operating System" | cut -d ' ' -f5-` $NC
-echo -e " ${BICyan}│  ${BIBlue}Memory Usage      :  ${ICyan}$uram / $tram ${NC}"
-echo -e " ${BICyan}│  ${BIBlue}CPU Usage         :  ${ICyan}$cpu_usage ${NC}"
-echo -e " ${BICyan}│  ${BIBlue}Current Domain    :  ${ICyan}$(cat /etc/xray/domain)${NC}"
-echo -e " ${BICyan}│  ${BIBlue}IP VPS            :  ${ICyan}$IPVPS${NC}"
-echo -e " ${BICyan}│  ${BIBlue}ISP VPS           :  ${ICyan}$ISPVPS${NC}"
-echo -e " ${BICyan}│  ${BIBlue}REGION            :  ${ICyan}$(curl -s ipinfo.io/timezone )${NC}"
-echo -e " ${BICyan}│  ${BIBlue}DATE&TIME         :  ${ICyan}$( date -d "0 days" +"%d-%m-%Y | %X" ) ${NC}"
-echo -e "${BICyan} │       /\    /\    /\    /\    /\    /\    /\    /\  │${NC}"
-echo -e "${BICyan} │    /\    /\    /\    /\    /\    /\    /\    /\     │${NC}"
-echo -e "${BICyan} │/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/│${NC}"
-echo -e " ${BICyan}└─────────────────────────────────────────────────────┘${NC}"
-echo -e "     ${BIBlue} SSH ${NC}: $ressh"" ${BIBlue} NGINX ${NC}: $resngx"" ${BIBlue}  XRAY ${NC}: $resv2r"" ${BIBlue} TROJAN ${NC}: $resv2r"
-echo -e "     ${BIBlue}          DROPBEAR ${NC}: $resdbr" "${BIBlue} SSH-WS ${NC}: $ressshws"
-echo -e " ${BIWhite}┌────────────────────────────────────────────┐${NC}" 
-echo -e " ${BIWhite}│                JUMLAH AKUN               $NC"               
-echo -e " ${BIWhite}│            ${BIRed}SSH              XRAY            $NC" 
-echo -e " ${BIWhite}│           ${IYellow} $jumssh                $jumx $NC" 
-echo -e " ${BIWhite}└────────────────────────────────────────────┘${NC}" 
-echo -e " ┌─────────────────────────────────────────────────────┐" | lolcat
-echo -e "      ${BICyan}[${BIGreen}1${BICyan}]${BIGreen} SSH${NC}(${GREEN}menu-ssh${NC})" 
-echo -e "      ${BICyan}[${BIGreen}2${BICyan}]${BIGreen} VMESS${NC}(${GREEN}menu-vmess${NC})"    
-echo -e "      ${BICyan}[${BIGreen}3${BICyan}]${BIGreen} VLESS${NC}(${GREEN}menu-vless${NC})"    
-echo -e "      ${BICyan}[${BIGreen}4${BICyan}]${BIGreen} TROJAN${NC}(${GREEN}menu-trojan${NC})" 
-echo -e "      ${BICyan}[${BIGreen}5${BICyan}]${BIGreen} SHADOWSOCKS${NC}(${GREEN}menu-ss${NC})"    
-echo -e "      ${BICyan}[${BIGreen}6${BICyan}]${BIGreen} BACKUP/RESTORE${NC}(${GREEN}menu-backup${NC})"    
-echo -e "      ${BICyan}[${BIGreen}7${BICyan}]${BIGreen} SETTINGS${NC}(${GREEN}menu-set${NC})"    
-echo -e "      ${BICyan}[${BIGreen}8${BICyan}]${BIGreen} INFO-SCRIPT${NC}(${GREEN}info${NC})"  
-echo -e "      ${BICyan}[${BIGreen}9${BICyan}]${BIGreen} INFO-SERVER${NC}(${GREEN}infoserv${NC})"    
-echo -e "      ${BICyan}[${BIGreen}x${BICyan}]${BIGreen} EXIT MAIN MENU${NC}(${GREEN}exit${NC})"  
-echo -e " └─────────────────────────────────────────────────────┘" | lolcat
+echo -e " ${BICyan}  │  ${BIBlue}OS VPS            :  "`hostnamectl | grep "Operating System" | cut -d ' ' -f5-` $NC
+echo -e " ${BICyan}  │  ${BIBlue}Memory Usage      :  ${ICyan}$uram / $tram ${NC}"
+echo -e " ${BICyan}  │  ${BIBlue}CPU Usage         :  ${ICyan}$cpu_usage ${NC}"
+echo -e " ${BICyan}  │  ${BIBlue}Current Domain    :  ${ICyan}$(cat /etc/xray/domain)${NC}"
+echo -e " ${BICyan}  │  ${BIBlue}IP VPS            :  ${ICyan}$IPVPS${NC}"
+echo -e " ${BICyan}  │  ${BIBlue}ISP VPS           :  ${ICyan}$ISPVPS${NC}"
+echo -e " ${BICyan}  │  ${BIBlue}REGION            :  ${ICyan}$(curl -s ipinfo.io/timezone )${NC}"
+echo -e " ${BICyan}  │  ${BIBlue}DATE&TIME         :  ${ICyan}$( date -d "0 days" +"%d-%m-%Y | %X" ) ${NC}"
+echo -e "${BICyan}   │       /\    /\    /\    /\    /\    /\    /\    /\  │${NC}"
+echo -e "${BICyan}   │    /\    /\    /\    /\    /\    /\    /\    /\     │${NC}"
+echo -e "${BICyan}   │/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/│${NC}"
+echo -e " ${BICyan}  └─────────────────────────────────────────────────────┘${NC}"
+echo -e "       ${BIBlue} SSH ${NC}: $ressh"" ${BIBlue} NGINX ${NC}: $resngx"" ${BIBlue}  XRAY ${NC}: $resv2r"" ${BIBlue} TROJAN ${NC}: $resv2r"
+echo -e "       ${BIBlue}          DROPBEAR ${NC}: $resdbr" "${BIBlue} SSH-WS ${NC}: $ressshws"
+echo -e "      ${BIWhite}┌────────────────────────────────────────────┐${NC}" 
+echo -e "      ${BIWhite}│                JUMLAH AKUN               $NC"               
+echo -e "      ${BIWhite}│            ${BIRed}SSH              XRAY            $NC" 
+echo -e "      ${BIWhite}│           ${IYellow} $jumssh                $jumx $NC" 
+echo -e "      ${BIWhite}└────────────────────────────────────────────┘${NC}" 
+echo -e "   ┌─────────────────────────────────────────────────────┐" | lolcat
+echo -e "        ${BICyan}[${BIGreen}1${BICyan}]${BIGreen} SSH${NC}(${GREEN}menu-ssh${NC})" 
+echo -e "        ${BICyan}[${BIGreen}2${BICyan}]${BIGreen} VMESS${NC}(${GREEN}menu-vmess${NC})"    
+echo -e "        ${BICyan}[${BIGreen}3${BICyan}]${BIGreen} VLESS${NC}(${GREEN}menu-vless${NC})"    
+echo -e "        ${BICyan}[${BIGreen}4${BICyan}]${BIGreen} TROJAN${NC}(${GREEN}menu-trojan${NC})" 
+echo -e "        ${BICyan}[${BIGreen}5${BICyan}]${BIGreen} SHADOWSOCKS${NC}(${GREEN}menu-ss${NC})"    
+echo -e "        ${BICyan}[${BIGreen}6${BICyan}]${BIGreen} BACKUP/RESTORE${NC}(${GREEN}menu-backup${NC})"    
+echo -e "        ${BICyan}[${BIGreen}7${BICyan}]${BIGreen} SETTINGS${NC}(${GREEN}menu-set${NC})"    
+echo -e "        ${BICyan}[${BIGreen}8${BICyan}]${BIGreen} INFO-SCRIPT${NC}(${GREEN}info${NC})"  
+echo -e "        ${BICyan}[${BIGreen}9${BICyan}]${BIGreen} INFO-SERVER${NC}(${GREEN}infoserv${NC})"    
+echo -e "        ${BICyan}[${BIGreen}x${BICyan}]${BIGreen} EXIT MAIN MENU${NC}(${GREEN}exit${NC})"  
+echo -e "   └─────────────────────────────────────────────────────┘" | lolcat
 DATE=$(date +'%d %B %Y')
 datediff() {
     d1=$(date -d "$1" +%s)
     d2=$(date -d "$2" +%s)
-    echo -e " │  Expiry In     : $(( (d1 - d2) / 86400 )) Days " | lolcat
+    echo -e "   │  Expiry In     : $(( (d1 - d2) / 86400 )) Days " | lolcat
 }
 mai="datediff "$Exp" "$DATE""
-echo -e " ┌─────────────────────────────────────┐" | lolcat
-echo -e " │  Version       : $(cat /opt/.ver) Last Version " | lolcat
-echo -e " │  User          : $Name " | lolcat
+echo -e "   ┌─────────────────────────────────────┐" | lolcat
+echo -e "   │  Version       : $(cat /opt/.ver) Last Version " | lolcat
+echo -e "   │  User          : $Name " | lolcat
 if [ $exp \< 1000 ];
 then
 echo -e "   $BICyan│$NC License      : ${GREEN}$sisa_hari$NC Days Tersisa $NC"
 else
     datediff "$Exp" "$DATE"
 fi;
-echo -e " └─────────────────────────────────────┘" | lolcat
+echo -e "   └─────────────────────────────────────┘" | lolcat
 echo
-read -p " Select menu : " opt
+   read -p " Select menu : " opt
 echo -e ""
 case $opt in
 1) clear ; menu-ssh ;;
