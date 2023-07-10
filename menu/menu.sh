@@ -165,7 +165,7 @@ echo -e " ┌──────────────────────�
 echo -e " │                       MAIN MENU                     │" | lolcat
 echo -e " └─────────────────────────────────────────────────────┘" | lolcat
 echo -e "${BICyan} ┌─────────────────────────────────────────────────────┐${NC}"
-echo -e "${BICyan} │${BIBlue}\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\${BICyan}│${NC}"
+echo -e "${BICyan} │${BIBlue} \\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\ ${BICyan}│${NC}"
 echo -e "${BICyan} │ ${BIBlue}   \\//    \\//    \\//    \\//    \\//    \\//     ${BICyan}│${NC}"
 echo -e "${BICyan} │ ${BIBlue}    \/      \/      \/      \/      \/      \/      ${BICyan}│${NC}"
 echo -e "${BICyan} │  ${BIBlue}Owner AutoScript  :  ${IBlue}Arz Vpn Store" ${NC}" 
@@ -185,7 +185,7 @@ echo -e " ${BICyan}│  ${BIBlue}REGION            :  ${BICyan}$(curl -s ipinfo.
 echo -e " ${BICyan}│  ${BIBlue}DATE&TIME         :  ${BICyan}$( date -d "0 days" +"%d-%m-%Y | %X" ) ${NC}"
 echo -e "${BICyan} │ ${BIBlue}   /\      /\      /\      /\      /\      /\       ${BICyan}│${NC}"
 echo -e "${BICyan} │ ${BIBlue}  //\\    //\\    //\\    //\\    //\\    //\\      ${BICyan}│${NC}"
-echo -e "${BICyan} │${BIBlue}//\\/\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//${BICyan}│${NC}"
+echo -e "${BICyan} │${BIBlue}//\\/\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\// ${BICyan}│${NC}"
 echo -e " ${BICyan}└─────────────────────────────────────────────────────┘${NC}"
 echo -e "     ${BIBlue} SSH ${NC}: $ressh"" ${BIBlue} NGINX ${NC}: $resngx"" ${BIBlue}  XRAY ${NC}: $resv2r"" ${BIBlue} TROJAN ${NC}: $resv2r"
 echo -e "     ${BIBlue}          DROPBEAR ${NC}: $resdbr" "${BIBlue} SSH-WS ${NC}: $ressshws"
