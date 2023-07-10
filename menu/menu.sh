@@ -194,8 +194,8 @@ echo -e "     ${BIBlue} SSH ${NC}: $ressh"" ${BIBlue} NGINX ${NC}: $resngx"" ${B
 echo -e "     ${BIBlue}          DROPBEAR ${NC}: $resdbr" "${BIBlue} SSH-WS ${NC}: $ressshws"
 echo -e " ${BIWhite}┌────────────────────────────────────────────┐${NC}" 
 echo -e " ${BIWhite}│                JUMLAH AKUN               $NC"               
-echo -e " ${BIWhite}│          ${BIRed}SSH              XRAY            $NC" 
-echo -e " ${BIWhite}│         ${IYellow} $jumssh                $jumx $NC" 
+echo -e " ${BIWhite}│            ${BIRed}SSH              XRAY            $NC" 
+echo -e " ${BIWhite}│           ${IYellow} $jumssh                $jumx $NC" 
 echo -e " ${BIWhite}└────────────────────────────────────────────┘${NC}" 
 echo -e " ┌─────────────────────────────────────────────────────┐" | lolcat
 echo -e "      ${BICyan}[${BIGreen}1${BICyan}]${BIGreen} SSH${NC}(${GREEN}menu-ssh${NC})" 
