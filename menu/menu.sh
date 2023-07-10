@@ -192,10 +192,10 @@ echo -e "${BICyan} │/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/│${
 echo -e " ${BICyan}└─────────────────────────────────────────────────────┘${NC}"
 echo -e "     ${BIBlue} SSH ${NC}: $ressh"" ${BIBlue} NGINX ${NC}: $resngx"" ${BIBlue}  XRAY ${NC}: $resv2r"" ${BIBlue} TROJAN ${NC}: $resv2r"
 echo -e "     ${BIBlue}          DROPBEAR ${NC}: $resdbr" "${BIBlue} SSH-WS ${NC}: $ressshws"
-echo -e " ${BIWhite}┌──────────────────────────────────────────────────┐${NC}" 
+echo -e " ${BIWhite}┌────────────────────────────────────────────┐${NC}" 
 echo -e " ${BIWhite}│          ${BIRed}SSH              XRAY            $NC" 
-echo -e " ${BIWhite}│          ${IYellow} $jumssh              $jumx $NC" 
-echo -e " ${BIWhite}└──────────────────────────────────────────────────┘${NC}" 
+echo -e " ${BIWhite}│         ${IYellow} $jumssh                $jumx $NC" 
+echo -e " ${BIWhite}└────────────────────────────────────────────┘${NC}" 
 echo -e " ┌─────────────────────────────────────────────────────┐" | lolcat
 echo -e "     ${BICyan}[${BIGreen}1${BICyan}]${BIGreen} SSH${NC}(${GREEN}menu-ssh${NC})" 
 echo -e "     ${BICyan}[${BIGreen}2${BICyan}]${BIGreen} VMESS${NC}(${GREEN}menu-vmess${NC})"    
