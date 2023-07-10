@@ -171,18 +171,18 @@ echo -e "${BICyan} │       \/    \/    \/    \/    \/    \/    \/        │${
 echo -e "${BICyan} │  ${BIBlue}Owner AutoScript  :  ${IBlue}Arz Vpn Store ${NC}" 
 echo -e "${BICyan} │  ${BIBlue}Premium Version   :  ${IGreen}MultiXray Arz V2${NC}" 
 if [ "$cekup" = "day" ]; then
-echo -e " ${BICyan}│  ${BIBlue}System Uptime     :  ${BICyan}$uphours $upminutes $uptimecek${NC}"
+echo -e " ${BICyan}│  ${BIBlue}System Uptime     :  ${ICyan}$uphours $upminutes $uptimecek${NC}"
 else
-echo -e " ${BICyan}│  ${BIBlue}System Uptime     :  ${BICyan}$uphours $upminutes ${NC}"
+echo -e " ${BICyan}│  ${BIBlue}System Uptime     :  ${ICyan}$uphours $upminutes ${NC}"
 fi
 echo -e " ${BICyan}│  ${BIBlue}OS VPS            :  "`hostnamectl | grep "Operating System" | cut -d ' ' -f5-` $NC
-echo -e " ${BICyan}│  ${BIBlue}Memory Usage      :  ${BICyan}$uram / $tram ${NC}"
-echo -e " ${BICyan}│  ${BIBlue}CPU Usage         :  ${BICyan}$cpu_usage ${NC}"
-echo -e " ${BICyan}│  ${BIBlue}Current Domain    :  ${BICyan}$(cat /etc/xray/domain)${NC}"
-echo -e " ${BICyan}│  ${BIBlue}IP VPS            :  ${BICyan}$IPVPS${NC}"
-echo -e " ${BICyan}│  ${BIBlue}ISP VPS           :  ${BICyan}$ISPVPS${NC}"
-echo -e " ${BICyan}│  ${BIBlue}REGION            :  ${BICyan}$(curl -s ipinfo.io/timezone )${NC}"
-echo -e " ${BICyan}│  ${BIBlue}DATE&TIME         :  ${BICyan}$( date -d "0 days" +"%d-%m-%Y | %X" ) ${NC}"
+echo -e " ${BICyan}│  ${BIBlue}Memory Usage      :  ${ICyan}$uram / $tram ${NC}"
+echo -e " ${BICyan}│  ${BIBlue}CPU Usage         :  ${ICyan}$cpu_usage ${NC}"
+echo -e " ${BICyan}│  ${BIBlue}Current Domain    :  ${ICyan}$(cat /etc/xray/domain)${NC}"
+echo -e " ${BICyan}│  ${BIBlue}IP VPS            :  ${ICyan}$IPVPS${NC}"
+echo -e " ${BICyan}│  ${BIBlue}ISP VPS           :  ${ICyan}$ISPVPS${NC}"
+echo -e " ${BICyan}│  ${BIBlue}REGION            :  ${ICyan}$(curl -s ipinfo.io/timezone )${NC}"
+echo -e " ${BICyan}│  ${BIBlue}DATE&TIME         :  ${ICyan}$( date -d "0 days" +"%d-%m-%Y | %X" ) ${NC}"
 echo -e "${BICyan} │       /\    /\    /\    /\    /\    /\    /\    /\  │${NC}"
 echo -e "${BICyan} │    /\    /\    /\    /\    /\    /\    /\    /\     │${NC}"
 echo -e "${BICyan} │/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/│${NC}"
