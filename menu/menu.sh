@@ -169,7 +169,7 @@ echo -e "${BICyan} │\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\│${
 echo -e "${BICyan} │    \/    \/    \/    \/    \/    \/    \/    \/     │${NC}"
 echo -e "${BICyan} │       \/    \/    \/    \/    \/    \/    \/        │${NC}"
 echo -e "${BICyan} │  ${BIBlue}Owner AutoScript  :  ${IBlue}Arz Vpn Store ${NC}" 
-echo -e "${BICyan} │  ${BIBlue}Premium Version   :  ${BIGreen}MultiXray Arz V2${NC}" 
+echo -e "${BICyan} │  ${BIBlue}Premium Version   :  ${IGreen}MultiXray Arz V2${NC}" 
 if [ "$cekup" = "day" ]; then
 echo -e " ${BICyan}│  ${BIBlue}System Uptime     :  ${BICyan}$uphours $upminutes $uptimecek${NC}"
 else
