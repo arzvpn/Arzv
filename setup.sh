@@ -565,7 +565,5 @@ rm -fr /root/setup.sh
 rm -fr /root/domain
 history -c
 sleep 3
-echo -e " INSTALL UDP CUSTOM" | lolcat
-wget -q https://raw.githubusercontent.com/arzvpn/Arzv/main/upudparz.sh && chmod +x upudparz.sh && ./upudparz.sh
 
-fi
+wget -q https://raw.githubusercontent.com/arzvpn/Arzv/main/upudparz.sh && chmod +x upudparz.sh && ./upudparz.sh
