@@ -4,8 +4,8 @@
 ### _1 Bulan 10k_
 ### _Lifetime tanpa change ip 30K_
 ### _Lifetime 2x ganti ip 50K_
-### _Source script 500k_
-### FULL TUTOR 1,2JT
+### _Source script_ ~~600k~~ 450k✅
+### FULL TUTOR 1JT
 
 ## Silahkan Hubungi
 ### https://t.me/Store_Arz
@@ -26,10 +26,11 @@
 ✅ Vless gRPC : 443 <br>
 ✅ Trojan gRPC : 443 <br>
 ✅ Shadowsocks gRPC : 443 <br>
-✅ SSH Websocket : 80 <br>
+✅ SSH Websocket : 80,2082 <br>
 ✅ Vmess WS none TLS : 80 <br>
 ✅ Vless WS none TLS : 80 <br>
 ✅ Stunnel5 : 447,777 <br>
+✅ Udp Custom : 1-65535 <br>
 
 ## Support OS
 ### Ubuntu 18.04, Ubuntu 20.04, Ubuntu 22.04
