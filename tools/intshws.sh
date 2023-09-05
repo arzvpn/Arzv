@@ -5,6 +5,7 @@ cd
 
 #Install Script Websocket-SSH Python
 wget -O /usr/local/bin/ws-stunnel https://raw.githubusercontent.com/arzvpn/Arzv/main/tools/ws-stunnel
+wget -O /usr/local/bin/ws-dropbear https://raw.githubusercontent.com/arzvpn/Arzv/main/tools/ws-dropbear
 
 #izin permision
 chmod +x /usr/local/bin/ws-stunnel
