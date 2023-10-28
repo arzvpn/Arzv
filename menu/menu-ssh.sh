@@ -397,7 +397,7 @@ now=$(date +%Y-%m-%d)
     d1=$(date -d "$exp" +%s)
     d2=$(date -d "$now" +%s)
     exp2=$(( (d1 - d2) / 86400 ))
-    exp3=$(($exp2 + $masaaktif))
+    exp3=$(($exp2 + $Days))
     exp4=`date -d "$exp3 days" +"%Y-%m-%d"`
 passwd -u $User
 usermod -e  $exp4 $User
