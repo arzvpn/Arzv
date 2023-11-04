@@ -240,7 +240,6 @@ sed -i '/#vmessworry$/a\### '"$user $exp"'\
 sed -i '/#vmesskuota$/a\### '"$user $exp"'\
 },{"id": "'""$uuid""'","alterId": '"0"',"email": "'""$user""'"' /etc/xray/config.json
 sed -i '/#vmessgrpc$/a\### '"$user $exp"'\
-sed -i '/#vmessgrpc$/a\### '"$user $exp"'\
 },{"id": "'""$uuid""'","alterId": '"0"',"email": "'""$user""'"' /etc/xray/config.json
 asu=`cat<<EOF
       {
